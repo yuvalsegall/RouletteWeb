@@ -1,17 +1,19 @@
-
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for betType.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
- * <pre>
+ * Java class for betType.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ * <p>
+ * <
+ * pre>
  * &lt;simpleType name="betType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="STRAIGHT"/>
@@ -38,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlType(name = "betType")
 @XmlEnum
@@ -79,7 +81,7 @@ public enum BetType {
     }
 
     public static BetType fromValue(String v) {
-        for (BetType c: BetType.values()) {
+        for (BetType c : BetType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

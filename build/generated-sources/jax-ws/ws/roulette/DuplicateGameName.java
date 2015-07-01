@@ -1,16 +1,17 @@
-
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for DuplicateGameName complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for DuplicateGameName complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="DuplicateGameName">
  *   &lt;complexContent>
@@ -23,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DuplicateGameName", propOrder = {
@@ -38,11 +39,9 @@ public class DuplicateGameName {
 
     /**
      * Gets the value of the faultInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RouletteFault }
-     *     
+     *
+     * @return possible object is {@link RouletteFault }
+     *
      */
     public RouletteFault getFaultInfo() {
         return faultInfo;
@@ -50,11 +49,9 @@ public class DuplicateGameName {
 
     /**
      * Sets the value of the faultInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RouletteFault }
-     *     
+     *
+     * @param value allowed object is {@link RouletteFault }
+     *
      */
     public void setFaultInfo(RouletteFault value) {
         this.faultInfo = value;
@@ -62,11 +59,9 @@ public class DuplicateGameName {
 
     /**
      * Gets the value of the message property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getMessage() {
         return message;
@@ -74,11 +69,9 @@ public class DuplicateGameName {
 
     /**
      * Sets the value of the message property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setMessage(String value) {
         this.message = value;

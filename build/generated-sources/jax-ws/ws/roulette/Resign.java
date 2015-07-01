@@ -1,16 +1,17 @@
-
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for resign complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for resign complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="resign">
  *   &lt;complexContent>
@@ -22,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resign", propOrder = {
@@ -35,7 +36,7 @@ public class Resign {
 
     /**
      * Gets the value of the playerId property.
-     * 
+     *
      */
     public int getPlayerId() {
         return playerId;
@@ -43,7 +44,7 @@ public class Resign {
 
     /**
      * Sets the value of the playerId property.
-     * 
+     *
      */
     public void setPlayerId(int value) {
         this.playerId = value;

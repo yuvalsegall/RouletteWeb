@@ -32,15 +32,12 @@ public class CreateGame extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        RouletteWebService server = (RouletteWebService) getServletContext().getAttribute("gameWebService");
+        Utils utils = new Utils();
+        RouletteWebService server = utils.gerServer(response);
         if (server == null) {
-            response.setStatus(503);
-            response.setHeader("exception", "Service Unavailable");
             return;
         }
-        if (Utils.isParamsOk(request, "computerPlayers")) {
-            response.setStatus(400);
-            response.setHeader("exception", "Bad Request");
+        if (!Utils.isParamsOk(request, response, Integer.class, "computerPlayers", "humanPlayers", "initalSumOfMoney", "maxWages", "minWages") || !Utils.isParamsOk(request, response, String.class, "gameName", "rouletteType")) {
             return;
         }
         try {
@@ -50,10 +47,7 @@ public class CreateGame extends HttpServlet {
             response.setStatus(409);
             response.setHeader("exception", ex.getMessage());
         } catch (InvalidParameters_Exception ex) {
-            response.setStatus(400);
-            response.setHeader("exception", ex.getMessage());
-        } catch (Exception ex) {
-            response.setStatus(500);
+            response.setStatus(406);
             response.setHeader("exception", ex.getMessage());
         }
     }

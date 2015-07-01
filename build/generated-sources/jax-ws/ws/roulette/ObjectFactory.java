@@ -1,4 +1,3 @@
-
 package ws.roulette;
 
 import javax.xml.bind.JAXBElement;
@@ -6,20 +5,16 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the ws.roulette package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
- * provided in this class.
- * 
+ * This object contains factory methods for each Java content interface and Java
+ * element interface generated in the ws.roulette package.
+ * <p>
+ * An ObjectFactory allows you to programatically construct new instances of the
+ * Java representation for XML content. The Java representation of XML content
+ * can consist of schema derived interfaces and classes representing the binding
+ * of schema type definitions, element declarations and model groups. Factory
+ * methods for each of these are provided in this class.
+ *
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -52,15 +47,16 @@ public class ObjectFactory {
     private final static QName _GetWaitingGames_QNAME = new QName("http://roulette.ws/", "getWaitingGames");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ws.roulette
-     * 
+     * Create a new ObjectFactory that can be used to create new instances of
+     * schema derived classes for package: ws.roulette
+     *
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link GetWaitingGamesResponse }
-     * 
+     *
      */
     public GetWaitingGamesResponse createGetWaitingGamesResponse() {
         return new GetWaitingGamesResponse();
@@ -68,7 +64,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetGameDetails }
-     * 
+     *
      */
     public GetGameDetails createGetGameDetails() {
         return new GetGameDetails();
@@ -76,7 +72,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ResignResponse }
-     * 
+     *
      */
     public ResignResponse createResignResponse() {
         return new ResignResponse();
@@ -84,7 +80,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InvalidParameters }
-     * 
+     *
      */
     public InvalidParameters createInvalidParameters() {
         return new InvalidParameters();
@@ -92,7 +88,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JoinGameResponse }
-     * 
+     *
      */
     public JoinGameResponse createJoinGameResponse() {
         return new JoinGameResponse();
@@ -100,7 +96,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetEvents }
-     * 
+     *
      */
     public GetEvents createGetEvents() {
         return new GetEvents();
@@ -108,7 +104,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JoinGame }
-     * 
+     *
      */
     public JoinGame createJoinGame() {
         return new JoinGame();
@@ -116,7 +112,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GameDoesNotExists }
-     * 
+     *
      */
     public GameDoesNotExists createGameDoesNotExists() {
         return new GameDoesNotExists();
@@ -124,7 +120,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FinishBetting }
-     * 
+     *
      */
     public FinishBetting createFinishBetting() {
         return new FinishBetting();
@@ -132,7 +128,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateGame }
-     * 
+     *
      */
     public CreateGame createCreateGame() {
         return new CreateGame();
@@ -140,7 +136,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FinishBettingResponse }
-     * 
+     *
      */
     public FinishBettingResponse createFinishBettingResponse() {
         return new FinishBettingResponse();
@@ -148,7 +144,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetWaitingGames }
-     * 
+     *
      */
     public GetWaitingGames createGetWaitingGames() {
         return new GetWaitingGames();
@@ -156,7 +152,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateGameResponse }
-     * 
+     *
      */
     public CreateGameResponse createCreateGameResponse() {
         return new CreateGameResponse();
@@ -164,7 +160,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetPlayersDetails }
-     * 
+     *
      */
     public GetPlayersDetails createGetPlayersDetails() {
         return new GetPlayersDetails();
@@ -172,7 +168,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetEventsResponse }
-     * 
+     *
      */
     public GetEventsResponse createGetEventsResponse() {
         return new GetEventsResponse();
@@ -180,7 +176,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InvalidXML }
-     * 
+     *
      */
     public InvalidXML createInvalidXML() {
         return new InvalidXML();
@@ -188,7 +184,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateGameFromXML }
-     * 
+     *
      */
     public CreateGameFromXML createCreateGameFromXML() {
         return new CreateGameFromXML();
@@ -196,7 +192,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MakeBet }
-     * 
+     *
      */
     public MakeBet createMakeBet() {
         return new MakeBet();
@@ -204,7 +200,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetPlayerDetailsResponse }
-     * 
+     *
      */
     public GetPlayerDetailsResponse createGetPlayerDetailsResponse() {
         return new GetPlayerDetailsResponse();
@@ -212,7 +208,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetGameDetailsResponse }
-     * 
+     *
      */
     public GetGameDetailsResponse createGetGameDetailsResponse() {
         return new GetGameDetailsResponse();
@@ -220,7 +216,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetPlayerDetails }
-     * 
+     *
      */
     public GetPlayerDetails createGetPlayerDetails() {
         return new GetPlayerDetails();
@@ -228,7 +224,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DuplicateGameName }
-     * 
+     *
      */
     public DuplicateGameName createDuplicateGameName() {
         return new DuplicateGameName();
@@ -236,7 +232,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MakeBetResponse }
-     * 
+     *
      */
     public MakeBetResponse createMakeBetResponse() {
         return new MakeBetResponse();
@@ -244,7 +240,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateGameFromXMLResponse }
-     * 
+     *
      */
     public CreateGameFromXMLResponse createCreateGameFromXMLResponse() {
         return new CreateGameFromXMLResponse();
@@ -252,7 +248,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetPlayersDetailsResponse }
-     * 
+     *
      */
     public GetPlayersDetailsResponse createGetPlayersDetailsResponse() {
         return new GetPlayersDetailsResponse();
@@ -260,7 +256,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Resign }
-     * 
+     *
      */
     public Resign createResign() {
         return new Resign();
@@ -268,7 +264,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RouletteFault }
-     * 
+     *
      */
     public RouletteFault createRouletteFault() {
         return new RouletteFault();
@@ -276,7 +272,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GameDetails }
-     * 
+     *
      */
     public GameDetails createGameDetails() {
         return new GameDetails();
@@ -284,7 +280,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PlayerDetails }
-     * 
+     *
      */
     public PlayerDetails createPlayerDetails() {
         return new PlayerDetails();
@@ -292,15 +288,16 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Event }
-     * 
+     *
      */
     public Event createEvent() {
         return new Event();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlayerDetailsResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetPlayerDetailsResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getPlayerDetailsResponse")
     public JAXBElement<GetPlayerDetailsResponse> createGetPlayerDetailsResponse(GetPlayerDetailsResponse value) {
@@ -308,8 +305,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InvalidXML }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link InvalidXML }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "InvalidXML")
     public JAXBElement<InvalidXML> createInvalidXML(InvalidXML value) {
@@ -317,8 +315,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateGameFromXML }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link CreateGameFromXML }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "createGameFromXML")
     public JAXBElement<CreateGameFromXML> createCreateGameFromXML(CreateGameFromXML value) {
@@ -326,8 +325,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MakeBet }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link MakeBet }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "makeBet")
     public JAXBElement<MakeBet> createMakeBet(MakeBet value) {
@@ -335,8 +335,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetGameDetailsResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetGameDetailsResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getGameDetailsResponse")
     public JAXBElement<GetGameDetailsResponse> createGetGameDetailsResponse(GetGameDetailsResponse value) {
@@ -344,8 +345,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DuplicateGameName }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link DuplicateGameName }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "DuplicateGameName")
     public JAXBElement<DuplicateGameName> createDuplicateGameName(DuplicateGameName value) {
@@ -353,8 +355,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MakeBetResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link MakeBetResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "makeBetResponse")
     public JAXBElement<MakeBetResponse> createMakeBetResponse(MakeBetResponse value) {
@@ -362,8 +365,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlayerDetails }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetPlayerDetails }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getPlayerDetails")
     public JAXBElement<GetPlayerDetails> createGetPlayerDetails(GetPlayerDetails value) {
@@ -371,8 +375,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Resign }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link Resign }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "resign")
     public JAXBElement<Resign> createResign(Resign value) {
@@ -380,8 +385,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlayersDetailsResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetPlayersDetailsResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getPlayersDetailsResponse")
     public JAXBElement<GetPlayersDetailsResponse> createGetPlayersDetailsResponse(GetPlayersDetailsResponse value) {
@@ -389,8 +395,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateGameFromXMLResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link CreateGameFromXMLResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "createGameFromXMLResponse")
     public JAXBElement<CreateGameFromXMLResponse> createCreateGameFromXMLResponse(CreateGameFromXMLResponse value) {
@@ -398,8 +405,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ResignResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link ResignResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "resignResponse")
     public JAXBElement<ResignResponse> createResignResponse(ResignResponse value) {
@@ -407,8 +415,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetWaitingGamesResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetWaitingGamesResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getWaitingGamesResponse")
     public JAXBElement<GetWaitingGamesResponse> createGetWaitingGamesResponse(GetWaitingGamesResponse value) {
@@ -416,8 +425,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetGameDetails }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetGameDetails }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getGameDetails")
     public JAXBElement<GetGameDetails> createGetGameDetails(GetGameDetails value) {
@@ -425,8 +435,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JoinGameResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link JoinGameResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "joinGameResponse")
     public JAXBElement<JoinGameResponse> createJoinGameResponse(JoinGameResponse value) {
@@ -434,8 +445,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InvalidParameters }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link InvalidParameters }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "InvalidParameters")
     public JAXBElement<InvalidParameters> createInvalidParameters(InvalidParameters value) {
@@ -443,8 +455,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FinishBetting }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link FinishBetting }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "finishBetting")
     public JAXBElement<FinishBetting> createFinishBetting(FinishBetting value) {
@@ -452,8 +465,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GameDoesNotExists }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GameDoesNotExists }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "GameDoesNotExists")
     public JAXBElement<GameDoesNotExists> createGameDoesNotExists(GameDoesNotExists value) {
@@ -461,8 +475,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEvents }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetEvents }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getEvents")
     public JAXBElement<GetEvents> createGetEvents(GetEvents value) {
@@ -470,8 +485,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link JoinGame }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link JoinGame }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "joinGame")
     public JAXBElement<JoinGame> createJoinGame(JoinGame value) {
@@ -479,8 +495,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateGameResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link CreateGameResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "createGameResponse")
     public JAXBElement<CreateGameResponse> createCreateGameResponse(CreateGameResponse value) {
@@ -488,8 +505,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlayersDetails }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetPlayersDetails }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getPlayersDetails")
     public JAXBElement<GetPlayersDetails> createGetPlayersDetails(GetPlayersDetails value) {
@@ -497,8 +515,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetEventsResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getEventsResponse")
     public JAXBElement<GetEventsResponse> createGetEventsResponse(GetEventsResponse value) {
@@ -506,8 +525,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateGame }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link CreateGame }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "createGame")
     public JAXBElement<CreateGame> createCreateGame(CreateGame value) {
@@ -515,8 +535,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FinishBettingResponse }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link FinishBettingResponse }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "finishBettingResponse")
     public JAXBElement<FinishBettingResponse> createFinishBettingResponse(FinishBettingResponse value) {
@@ -524,8 +545,9 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetWaitingGames }{@code >}}
-     * 
+     * Create an instance of
+     * {@link JAXBElement }{@code <}{@link GetWaitingGames }{@code >}}
+     *
      */
     @XmlElementDecl(namespace = "http://roulette.ws/", name = "getWaitingGames")
     public JAXBElement<GetWaitingGames> createGetWaitingGames(GetWaitingGames value) {

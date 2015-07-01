@@ -31,38 +31,38 @@ public class CreateGameFromXML extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
+     * @throws java.io.IOException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        RouletteWebService server = (RouletteWebService) getServletContext().getAttribute("gameWebService");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Utils utils = new Utils();
+        RouletteWebService server = utils.gerServer(response);
         if (server == null) {
-            response.setStatus(503);
-            response.setHeader("exception", "Service Unavailable");
-        } else {
-            try {
-                String gameName = server.createGameFromXML(request.getParameter("xmlData"));
-                Gson gson = new Gson();
-                response.setStatus(201);
-                response.setContentType("application/json");
-                try (PrintWriter out = response.getWriter()) {
-                    out.println(gson.toJson(gameName));
-                }
-            } catch (DuplicateGameName_Exception ex) {
-                response.setStatus(409);
-                response.setHeader("exception", ex.getMessage());
-            } catch (InvalidParameters_Exception ex) {
-                response.setStatus(400);
-                response.setHeader("exception", ex.getMessage());
-            } catch (InvalidXML_Exception ex) {
-                response.setStatus(415);
-                response.setHeader("exception", ex.getMessage());
-            } catch (Exception ex) {
-                response.setStatus(500);
-                response.setHeader("exception", ex.getMessage());
+            return;
+        }
+        if (!Utils.isParamsOk(request, response, String.class, "xmlData")) {
+            return;
+        }
+        try {
+            String gameName = server.createGameFromXML(request.getParameter("xmlData"));
+            response.setStatus(201);
+            response.setContentType("application/json");
+            Gson gson = new Gson();
+            try (PrintWriter out = response.getWriter()) {
+                out.println(gson.toJson(gameName));
             }
+        } catch (DuplicateGameName_Exception ex) {
+            response.setStatus(409);
+            response.setHeader("exception", ex.getMessage());
+        } catch (InvalidParameters_Exception ex) {
+            response.setStatus(406);
+            response.setHeader("exception", ex.getMessage());
+        } catch (InvalidXML_Exception ex) {
+            response.setStatus(415);
+            response.setHeader("exception", ex.getMessage());
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

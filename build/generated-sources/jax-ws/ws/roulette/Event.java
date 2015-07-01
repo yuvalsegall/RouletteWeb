@@ -1,4 +1,3 @@
-
 package ws.roulette;
 
 import java.util.ArrayList;
@@ -8,12 +7,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for event complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for event complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="event">
  *   &lt;complexContent>
@@ -32,8 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "event", propOrder = {
@@ -60,7 +61,7 @@ public class Event {
 
     /**
      * Gets the value of the amount property.
-     * 
+     *
      */
     public int getAmount() {
         return amount;
@@ -68,7 +69,7 @@ public class Event {
 
     /**
      * Sets the value of the amount property.
-     * 
+     *
      */
     public void setAmount(int value) {
         this.amount = value;
@@ -76,11 +77,9 @@ public class Event {
 
     /**
      * Gets the value of the betType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BetType }
-     *     
+     *
+     * @return possible object is {@link BetType }
+     *
      */
     public BetType getBetType() {
         return betType;
@@ -88,11 +87,9 @@ public class Event {
 
     /**
      * Sets the value of the betType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BetType }
-     *     
+     *
+     * @param value allowed object is {@link BetType }
+     *
      */
     public void setBetType(BetType value) {
         this.betType = value;
@@ -100,7 +97,7 @@ public class Event {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      */
     public int getId() {
         return id;
@@ -108,7 +105,7 @@ public class Event {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      */
     public void setId(int value) {
         this.id = value;
@@ -116,25 +113,24 @@ public class Event {
 
     /**
      * Gets the value of the numbers property.
-     * 
+     *
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the numbers property.
-     * 
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the numbers property.
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getNumbers().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Integer }
-     * 
-     * 
+     * Objects of the following type(s) are allowed in the list {@link Integer }
+     *
+     *
      */
     public List<Integer> getNumbers() {
         if (numbers == null) {
@@ -145,11 +141,9 @@ public class Event {
 
     /**
      * Gets the value of the playerName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getPlayerName() {
         return playerName;
@@ -157,11 +151,9 @@ public class Event {
 
     /**
      * Sets the value of the playerName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setPlayerName(String value) {
         this.playerName = value;
@@ -169,7 +161,7 @@ public class Event {
 
     /**
      * Gets the value of the timeout property.
-     * 
+     *
      */
     public int getTimeout() {
         return timeout;
@@ -177,7 +169,7 @@ public class Event {
 
     /**
      * Sets the value of the timeout property.
-     * 
+     *
      */
     public void setTimeout(int value) {
         this.timeout = value;
@@ -185,11 +177,9 @@ public class Event {
 
     /**
      * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EventType }
-     *     
+     *
+     * @return possible object is {@link EventType }
+     *
      */
     public EventType getType() {
         return type;
@@ -197,11 +187,9 @@ public class Event {
 
     /**
      * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EventType }
-     *     
+     *
+     * @param value allowed object is {@link EventType }
+     *
      */
     public void setType(EventType value) {
         this.type = value;
@@ -209,7 +197,7 @@ public class Event {
 
     /**
      * Gets the value of the winningNumber property.
-     * 
+     *
      */
     public int getWinningNumber() {
         return winningNumber;
@@ -217,7 +205,7 @@ public class Event {
 
     /**
      * Sets the value of the winningNumber property.
-     * 
+     *
      */
     public void setWinningNumber(int value) {
         this.winningNumber = value;

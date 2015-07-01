@@ -37,7 +37,7 @@ public class GetGameDetails extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetGameDetails</title>");            
+            out.println("<title>Servlet GetGameDetails</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet GetGameDetails at " + request.getContextPath() + "</h1>");

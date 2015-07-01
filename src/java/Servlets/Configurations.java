@@ -36,10 +36,9 @@ public class Configurations extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Object serverObj = getServletContext().getAttribute("gameWebService");
-        if (serverObj == null) {
-            response.setStatus(503);
-            response.setHeader("exception", "Service Unavailable");
+        Utils utils = new Utils();
+        RouletteWebService server = utils.gerServer(response);
+        if (server == null) {
             return;
         }
         response.setStatus(200);
@@ -56,9 +55,7 @@ public class Configurations extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("ip") == null || request.getParameter("port") == null) {
-            response.setStatus(400);
-            response.setHeader("exception", "Bad Request");
+        if (!Utils.isParamsOk(request, response, String.class, "ip", "port")) {
             return;
         }
         URL url = new URL("http://" + request.getParameter("ip").trim() + ":" + request.getParameter("port").trim() + "/RouletteServer/RouletteWebServiceService");

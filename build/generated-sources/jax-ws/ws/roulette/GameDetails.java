@@ -1,16 +1,17 @@
-
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for gameDetails complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for gameDetails complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="gameDetails">
  *   &lt;complexContent>
@@ -31,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "gameDetails", propOrder = {
@@ -62,7 +63,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the computerizedPlayers property.
-     * 
+     *
      */
     public int getComputerizedPlayers() {
         return computerizedPlayers;
@@ -70,7 +71,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the computerizedPlayers property.
-     * 
+     *
      */
     public void setComputerizedPlayers(int value) {
         this.computerizedPlayers = value;
@@ -78,7 +79,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the humanPlayers property.
-     * 
+     *
      */
     public int getHumanPlayers() {
         return humanPlayers;
@@ -86,7 +87,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the humanPlayers property.
-     * 
+     *
      */
     public void setHumanPlayers(int value) {
         this.humanPlayers = value;
@@ -94,7 +95,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the initalSumOfMoney property.
-     * 
+     *
      */
     public int getInitalSumOfMoney() {
         return initalSumOfMoney;
@@ -102,7 +103,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the initalSumOfMoney property.
-     * 
+     *
      */
     public void setInitalSumOfMoney(int value) {
         this.initalSumOfMoney = value;
@@ -110,7 +111,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the intMaxWages property.
-     * 
+     *
      */
     public int getIntMaxWages() {
         return intMaxWages;
@@ -118,7 +119,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the intMaxWages property.
-     * 
+     *
      */
     public void setIntMaxWages(int value) {
         this.intMaxWages = value;
@@ -126,7 +127,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the joinedHumanPlayers property.
-     * 
+     *
      */
     public int getJoinedHumanPlayers() {
         return joinedHumanPlayers;
@@ -134,7 +135,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the joinedHumanPlayers property.
-     * 
+     *
      */
     public void setJoinedHumanPlayers(int value) {
         this.joinedHumanPlayers = value;
@@ -142,7 +143,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the loadedFromXML property.
-     * 
+     *
      */
     public boolean isLoadedFromXML() {
         return loadedFromXML;
@@ -150,7 +151,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the loadedFromXML property.
-     * 
+     *
      */
     public void setLoadedFromXML(boolean value) {
         this.loadedFromXML = value;
@@ -158,7 +159,7 @@ public class GameDetails {
 
     /**
      * Gets the value of the minWages property.
-     * 
+     *
      */
     public int getMinWages() {
         return minWages;
@@ -166,7 +167,7 @@ public class GameDetails {
 
     /**
      * Sets the value of the minWages property.
-     * 
+     *
      */
     public void setMinWages(int value) {
         this.minWages = value;
@@ -174,11 +175,9 @@ public class GameDetails {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getName() {
         return name;
@@ -186,11 +185,9 @@ public class GameDetails {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -198,11 +195,9 @@ public class GameDetails {
 
     /**
      * Gets the value of the rouletteType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RouletteType }
-     *     
+     *
+     * @return possible object is {@link RouletteType }
+     *
      */
     public RouletteType getRouletteType() {
         return rouletteType;
@@ -210,11 +205,9 @@ public class GameDetails {
 
     /**
      * Sets the value of the rouletteType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RouletteType }
-     *     
+     *
+     * @param value allowed object is {@link RouletteType }
+     *
      */
     public void setRouletteType(RouletteType value) {
         this.rouletteType = value;
@@ -222,11 +215,9 @@ public class GameDetails {
 
     /**
      * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link GameStatus }
-     *     
+     *
+     * @return possible object is {@link GameStatus }
+     *
      */
     public GameStatus getStatus() {
         return status;
@@ -234,11 +225,9 @@ public class GameDetails {
 
     /**
      * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GameStatus }
-     *     
+     *
+     * @param value allowed object is {@link GameStatus }
+     *
      */
     public void setStatus(GameStatus value) {
         this.status = value;

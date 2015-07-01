@@ -1,16 +1,17 @@
-
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for getEvents complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
+ * Java class for getEvents complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ *
  * <pre>
  * &lt;complexType name="getEvents">
  *   &lt;complexContent>
@@ -23,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getEvents", propOrder = {
@@ -38,7 +39,7 @@ public class GetEvents {
 
     /**
      * Gets the value of the eventId property.
-     * 
+     *
      */
     public int getEventId() {
         return eventId;
@@ -46,7 +47,7 @@ public class GetEvents {
 
     /**
      * Sets the value of the eventId property.
-     * 
+     *
      */
     public void setEventId(int value) {
         this.eventId = value;
@@ -54,7 +55,7 @@ public class GetEvents {
 
     /**
      * Gets the value of the playerId property.
-     * 
+     *
      */
     public int getPlayerId() {
         return playerId;
@@ -62,7 +63,7 @@ public class GetEvents {
 
     /**
      * Sets the value of the playerId property.
-     * 
+     *
      */
     public void setPlayerId(int value) {
         this.playerId = value;
