@@ -58,6 +58,7 @@ public class Configurations extends HttpServlet {
             throws ServletException, IOException {
         if (request.getParameter("ip") == null || request.getParameter("port") == null) {
             response.setStatus(400);
+            response.setHeader("exception", "Bad Request");
             return;
         }
         URL url = new URL("http://" + request.getParameter("ip").trim() + ":" + request.getParameter("port").trim() + "/RouletteServer/RouletteWebServiceService");
