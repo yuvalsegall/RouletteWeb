@@ -38,13 +38,12 @@ function gameStartClicked(){
         data: {'numOfComputerPlayers':'1','numOfHumanPlayers':'1','initialSumOfMoney':'10', 'maxWages':'1', 'minWages':'0', 'gameName':'aaa', 'rouletteType':'AMERICAN'},
         url: MAIN_URL+'CreateGame',
         timeout: 500000,
-        error: function(data, textStatus, request) {
-        	alert(data.status);
-        	alert(data.responseText);
+        error: function(response) {
+        	alert(response.status);
+        	alert(response.getResponseHeader('exception'));
         },
         success: function(response, xhr) {
-            alert(xhr.status);
-            alert(xhr.responseText);
+            alert(response);
         }
     });
 }
