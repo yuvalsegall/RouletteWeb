@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/Yuval%20Segall/Desktop/Java/WSDL%201.2/RouletteWebServiceService.wsdl" uri="src/conf/xml-resources/web-service-references/RouletteWebServiceService/wsdl/RouletteWebServiceService.wsdl"/>
+    <system systemId="file:/C:/Users/Yuval%20Segall/Desktop/Java/WSDL%201.2/RouletteWebServiceService_schema1.xsd" uri="src/conf/xml-resources/web-service-references/RouletteWebServiceService/wsdl/RouletteWebServiceService_schema1.xsd"/>
+</catalog>
