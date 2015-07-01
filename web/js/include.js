@@ -36,7 +36,7 @@ function setSliders(){
 function gameStartClicked(){
     $.ajax({
         data: "",
-        url: 'MAIN_URL'+'CreateGame',
+        url: MAIN_URL+'CreateGame',
         timeout: 5000,
         error: function() {
             alert("Failed to get ajax response");
