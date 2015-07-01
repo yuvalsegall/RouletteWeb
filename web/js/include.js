@@ -85,14 +85,14 @@ function checkParams() {
 }
 
 function showError(msg) {
-    $('#errorMessage').text(msg).show().fadeOut(2000);
+    $('#errorMessage').text(msg).show().fadeOut(2500);
 }
 
 function createGame() {
     $.ajax({
         data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computers').val(), 'humanPlayers': $('#humans').val(), 'minWages': $('#minWages').val(), 'maxWages': $('#maxWages').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmount').val()},
         url: 'CreateGame',
-        timeout: 500000,
+        timeout: 5000,
         error: function (response) {
             showError(response.getResponseHeader('exception'));
         },
@@ -113,5 +113,5 @@ function loadGameFromXML(){
 
 function replacePage(source, target){
 	$('#'+source).fadeOut();
-	$('#'+target).fadeOut();
+	$('#'+target).fadeIn();
 }

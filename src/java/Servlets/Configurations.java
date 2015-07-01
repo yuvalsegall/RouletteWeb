@@ -36,9 +36,10 @@ public class Configurations extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Utils utils = new Utils();
-        RouletteWebService server = utils.gerServer(response);
-        if (server == null) {
+        Object serverObj = getServletContext().getAttribute("gameWebService");
+        if (serverObj == null || !(serverObj instanceof RouletteWebService)) {
+            response.setStatus(503);
+            response.setHeader("exception", "Service Unavailable");
             return;
         }
         response.setStatus(200);

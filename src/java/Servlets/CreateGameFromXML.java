@@ -34,11 +34,13 @@ public class CreateGameFromXML extends HttpServlet {
      * @throws java.io.IOException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Utils utils = new Utils();
-        RouletteWebService server = utils.gerServer(response);
-        if (server == null) {
+        Object serverObj = getServletContext().getAttribute("gameWebService");
+        if (serverObj == null || !(serverObj instanceof RouletteWebService)) {
+            response.setStatus(503);
+            response.setHeader("exception", "Service Unavailable");
             return;
         }
+        RouletteWebService server = (RouletteWebService) serverObj;
         if (!Utils.isParamsOk(request, response, String.class, "xmlData")) {
             return;
         }

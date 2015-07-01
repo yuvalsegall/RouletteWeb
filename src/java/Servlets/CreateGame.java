@@ -32,11 +32,13 @@ public class CreateGame extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        Utils utils = new Utils();
-        RouletteWebService server = utils.gerServer(response);
-        if (server == null) {
+        Object serverObj = getServletContext().getAttribute("gameWebService");
+        if (serverObj == null || !(serverObj instanceof RouletteWebService)) {
+            response.setStatus(503);
+            response.setHeader("exception", "Service Unavailable");
             return;
         }
+        RouletteWebService server = (RouletteWebService) serverObj;
         if (!Utils.isParamsOk(request, response, Integer.class, "computerPlayers", "humanPlayers", "initalSumOfMoney", "maxWages", "minWages") || !Utils.isParamsOk(request, response, String.class, "gameName", "rouletteType")) {
             return;
         }
