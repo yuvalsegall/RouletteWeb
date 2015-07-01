@@ -36,7 +36,7 @@ public class CreateGame extends HttpServlet {
             response.setHeader("exception", "Service Unavailable");
             return;
         }
-        if (Utils.isParamsOk(request, "computerPlayers")) {
+        if (Utils.isIntergerParamsOk(request, "computerPlayers")) {
             response.setStatus(400);
             response.setHeader("exception", "Bad Request");
             return;

@@ -1,6 +1,5 @@
 package Servlets;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 /*
@@ -14,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class Utils {
 
-    public static Boolean isParamsOk(HttpServletRequest request, String... params) {
+    public static Boolean isIntergerParamsOk(HttpServletRequest request, String... params) {
         for (String param : params) {
-            if (request.getParameter(param) == null) {
+            if (request.getParameter(param) == null || Integer.valueOf(request.getParameter(param)) == null) {
                 return false;
             }
         }
