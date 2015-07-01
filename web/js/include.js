@@ -34,6 +34,15 @@ function setSliders(){
 }
 
 function gameStartClicked(){
-	alert($.getJSON('MAIN_URL'+'CreateGame'));
-	
+    $.ajax({
+        data: "",
+        url: 'MAIN_URL'+'CreateGame',
+        timeout: 5000,
+        error: function() {
+            alert("Failed to get ajax response");
+        },
+        success: function(response) {
+            alert("Got Ajax Response - " + response);
+        }
+    });
 }
