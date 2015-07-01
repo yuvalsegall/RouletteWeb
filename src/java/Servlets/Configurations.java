@@ -26,34 +26,6 @@ public class Configurations extends HttpServlet {
     private static RouletteWebService gameWebService = null;
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            URL url = new URL("http://" + request.getParameter("ip").trim() + ":" + request.getParameter("port").trim() + "/RouletteServer/RouletteWebServiceService");
-            service = new RouletteWebServiceService(url);
-            gameWebService = service.getRouletteWebServicePort();
-            if (gameWebService == null) {
-                response.setStatus(404);
-                response.setHeader("exception", "Server not found");
-            }
-            getServletContext().setAttribute("gameWebService", gameWebService);
-            response.setStatus(201);
-        } catch (Exception ex) {
-            response.setStatus(500);
-            response.setHeader("exception", ex.getMessage());
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
@@ -64,7 +36,13 @@ public class Configurations extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Object serverObj = getServletContext().getAttribute("gameWebService");
+        if (serverObj == null) {
+            response.setStatus(503);
+            response.setHeader("exception", "Service Unavailable");
+            return;
+        }
+        response.setStatus(200);
     }
 
     /**
@@ -78,7 +56,19 @@ public class Configurations extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getParameter("ip") == null || request.getParameter("port") == null) {
+            response.setStatus(400);
+            return;
+        }
+        URL url = new URL("http://" + request.getParameter("ip").trim() + ":" + request.getParameter("port").trim() + "/RouletteServer/RouletteWebServiceService");
+        service = new RouletteWebServiceService(url);
+        gameWebService = service.getRouletteWebServicePort();
+        if (gameWebService == null) {
+            response.setStatus(404);
+            response.setHeader("exception", "Server not found");
+        }
+        getServletContext().setAttribute("gameWebService", gameWebService);
+        response.setStatus(201);
     }
 
     /**

@@ -5,8 +5,6 @@
  */
 package Servlets;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,36 +32,43 @@ public class CreateGame extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RouletteWebService server = (RouletteWebService) getServletContext().getAttribute("gameWebService");
         if (server == null) {
-            response.setStatus(404);
-            response.setHeader("exception", "Server not found");
-        } else {
-            try {
-                server.createGame(Integer.valueOf(request.getParameter("computerPlayers")), Integer.valueOf(request.getParameter("humanPlayers")), Integer.valueOf(request.getParameter("initalSumOfMoney")), Integer.valueOf(request.getParameter("maxWages")), Integer.valueOf(request.getParameter("minWages")), request.getParameter("gameName"), request.getParameter("rouletteType").equals("AMERICAN") ? AMERICAN : FRENCH);
-                response.setStatus(201);
-            } catch (DuplicateGameName_Exception ex) {
-                response.setStatus(409);
-                response.setHeader("exception", ex.getMessage());
-            } catch (InvalidParameters_Exception ex) {
-                response.setStatus(400);
-                response.setHeader("exception", ex.getMessage());
-            } catch (Exception ex) {
-                response.setStatus(500);
-                response.setHeader("exception", ex.getMessage());
-            }
+            response.setStatus(503);
+            response.setHeader("exception", "Service Unavailable");
+            return;
+        }
+        if (Utils.isParamsOk(request, "computerPlayers")) {
+            response.setStatus(400);
+            response.setHeader("exception", "Bad Request");
+            return;
+        }
+        try {
+            server.createGame(Integer.valueOf(request.getParameter("computerPlayers")), Integer.valueOf(request.getParameter("humanPlayers")), Integer.valueOf(request.getParameter("initalSumOfMoney")), Integer.valueOf(request.getParameter("maxWages")), Integer.valueOf(request.getParameter("minWages")), request.getParameter("gameName"), request.getParameter("rouletteType").equals("AMERICAN") ? AMERICAN : FRENCH);
+            response.setStatus(201);
+        } catch (DuplicateGameName_Exception ex) {
+            response.setStatus(409);
+            response.setHeader("exception", ex.getMessage());
+        } catch (InvalidParameters_Exception ex) {
+            response.setStatus(400);
+            response.setHeader("exception", ex.getMessage());
+        } catch (Exception ex) {
+            response.setStatus(500);
+            response.setHeader("exception", ex.getMessage());
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+}
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -77,7 +82,7 @@ public class CreateGame extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -88,7 +93,7 @@ public class CreateGame extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 }
