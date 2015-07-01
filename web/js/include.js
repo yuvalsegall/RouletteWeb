@@ -98,6 +98,12 @@ function createGame(){
         },
         success: function(response, xhr) {
             alert(response);
+            replacePage('createGame', 'joinGame');
         }
     });
+}
+
+function replacePage(source, target){
+	$('#'+source).fadeOut();
+	$('#'+target).fadeOut();
 }
