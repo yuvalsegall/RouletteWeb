@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ws.roulette.GameDetails;
+import ws.roulette.GameDoesNotExists_Exception;
+import ws.roulette.RouletteWebService;
 
 /**
  *
@@ -31,18 +35,25 @@ public class GetGameDetails extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetGameDetails</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetGameDetails at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Utils utils = new Utils();
+        RouletteWebService server = utils.gerServer(response);
+        if (server == null) {
+            return;
+        }
+        if (!Utils.isParamsOk(request, response, String.class, "gameName")) {
+            return;
+        }
+        try {
+            GameDetails gameDetails = server.getGameDetails(request.getParameter("gameName"));
+            response.setContentType("application/json");
+            Gson gson = new Gson();
+            try (PrintWriter out = response.getWriter()) {
+                out.println(gson.toJson(gameDetails));
+            }
+            response.setStatus(200);
+        } catch (GameDoesNotExists_Exception ex) {
+            response.setStatus(404);
+            response.setHeader("exception", ex.getMessage());
         }
     }
 
