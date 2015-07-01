@@ -25,138 +25,152 @@
                 </button>
                 <a class="navbar-brand" href="#">Roulette</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" id='navMenuLinks'>
-                    <li role="presentation" class="active"><a href="#">Create Game</a></li>
-                    <li role="presentation"><a href="#">Load from XML</a></li>
-                    <li role="presentation"><a href="#">Join Game</a></li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div id='loginDiv' class="form-group">
-                        <input id='serverAddress' type="text" class="form-control" value="localhost">
-                        <input id='serverPort' type="text" class="form-control" value="8080">
-                    </div>
-                    <input type="button" class="btn btn-default" onClick='setServer()'>Connect</input>
-                </form>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    <div id='createGame'>
-        <div class='formBack'>
-            <div class='row'>
-                <div id='gameNameDiv' class='col-xs-3 myCol'>
-                    <input id='gameName' type="text" class="form-control" placeholder="Game Name">
-                </div>
-                <div class="col-xs-3 myCol">
-                    <div id='errorMessage' class="alert-danger" role="alert"></div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Table Type:</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <input type="checkbox" id="tableTypeIsFrench">
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Min Wages:</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <div class='row'>
-                        <div class='col-xs-2'>
-                            <b>0</b>
-                        </div>
-                        <div class='col-xs-8'>	
-                            <input id="minWages" data-slider-id='minBetsSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>
-                        </div>
-                        <div class='col-xs-2'>
-                            <b>1</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Max Wages:</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <div class='row'>
-                        <div class='col-xs-2'>
-                            <b>1</b>
-                        </div>
-                        <div class='col-xs-8'>	
-                            <input id="maxWages" data-slider-id='maxBetsSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="4"/>
-                        </div>
-                        <div class='col-xs-2'>
-                            <b>10</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Initial Sum ($):</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <div class='row'>
-                        <div class='col-xs-2'>
-                            <b>10</b>
-                        </div>
-                        <div class='col-xs-8'>	
-                            <input id="initialAmount" data-slider-id='maxBetsSlider' type="text" data-slider-min="10" data-slider-max="100" data-slider-step="5" data-slider-value="30"/>
-                        </div>
-                        <div class='col-xs-2'>
-                            <b>100</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Human players:</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <div class='row'>
-                        <div class='col-xs-2'>
-                            <b>0</b>
-                        </div>
-                        <div class='col-xs-8'>	
-                            <input id="humans" data-slider-id='humansSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="1"/>
-                        </div>
-                        <div class='col-xs-2'>
-                            <b>6</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-xs-2 myCol'>
-                    <label>Computer players:</label>
-                </div>
-                <div class='col-xs-3 myCol'>
-                    <div class='row'>
-                        <div class='col-xs-2'>
-                            <b>0</b>
-                        </div>
-                        <div class='col-xs-8'>	
-                            <input id="computers" data-slider-id='computersSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="2"/>
-                        </div>
-                        <div class='col-xs-2'>
-                            <b>6</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='checkParams()'>
-        </div>
-    </div>
-    <div id='joinGame'>
-        <h1>joinGame</h1>
-    </div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav" id='navMenuLinks'>
+			  <li role="presentation" class="active"><a href="#">Create Game</a></li>
+			  <li role="presentation"><a href="#">Load from XML</a></li>
+			  <li role="presentation"><a href="#">Join Game</a></li>
+			</ul>
+			<form class="navbar-form navbar-left">
+	        <div id='loginDiv' class="form-group">
+	          <input id='serverAddress' type="text" class="form-control" value="localhost">
+	          <input id='serverPort' type="text" class="form-control" value="80">
+	        </div>
+	        <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'></input>
+	      </form>
+      	</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div id='createGame'>
+		<div id='errorMessageBox'>
+			<div id='errorMessage' class="alert alert-danger" role="alert"></div>
+		</div>
+		<div class='formBack'>
+			<h4>Load From XML</h4>
+			<div class='row'>
+				<div class='col-xs-1 myCol'>
+					<span class="btn btn-default btn-file">
+					    Browse <input type="file" id="XMLFileChooser">
+					</span>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<input id='fileNameField' type="text" class="form-control" disabled></input>
+				</div>
+				<div class='col-xs-2 myCol'>
+					<input id='uploadFile' type="button" class='btn btn-default' value='Upload' onClick='loadGameFromXML()' disabled></input>
+				</div>
+			</div>
+			<h4>Create New Game</h4>
+			<div class='row'>
+				<div id='gameNameDiv' class='col-xs-3 myCol'>
+					<input id='gameName' type="text" class="form-control" placeholder="Game Name">
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Table Type:</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<input type="checkbox" id="tableTypeIsFrench">
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Min Wages:</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<div class='row'>
+						<div class='col-xs-2'>
+							<b>0</b>
+						</div>
+						<div class='col-xs-8'>	
+							<input id="minWages" data-slider-id='minBetsSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>
+						</div>
+						<div class='col-xs-2'>
+							<b>1</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Max Wages:</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<div class='row'>
+						<div class='col-xs-2'>
+							<b>1</b>
+						</div>
+						<div class='col-xs-8'>	
+							<input id="maxWages" data-slider-id='maxBetsSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="4"/>
+						</div>
+						<div class='col-xs-2'>
+							<b>10</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Initial Sum ($):</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<div class='row'>
+						<div class='col-xs-2'>
+							<b>10</b>
+						</div>
+						<div class='col-xs-8'>	
+							<input id="initialAmount" data-slider-id='maxBetsSlider' type="text" data-slider-min="10" data-slider-max="100" data-slider-step="5" data-slider-value="30"/>
+						</div>
+						<div class='col-xs-2'>
+							<b>100</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Human players:</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<div class='row'>
+						<div class='col-xs-2'>
+							<b>0</b>
+						</div>
+						<div class='col-xs-8'>	
+							<input id="humans" data-slider-id='humansSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="1"/>
+						</div>
+						<div class='col-xs-2'>
+							<b>6</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-xs-2 myCol'>
+					<label>Computer players:</label>
+				</div>
+				<div class='col-xs-3 myCol'>
+					<div class='row'>
+						<div class='col-xs-2'>
+							<b>0</b>
+						</div>
+						<div class='col-xs-8'>	
+							<input id="computers" data-slider-id='computersSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="2"/>
+						</div>
+						<div class='col-xs-2'>
+							<b>6</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='checkParams()'>
+		</div>
+	</div>
+	<div id='joinGame'>
+		<h1>joinGame</h1>
+	</div>
     <footer class="footer">
         <div class="container">
             <p class="text-muted">Created By Dan Nir & Yuval Segall</p>

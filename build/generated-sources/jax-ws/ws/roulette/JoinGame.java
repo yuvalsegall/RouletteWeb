@@ -1,17 +1,16 @@
+
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for joinGame complex type.
- *
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
+ * <p>Java class for joinGame complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="joinGame">
  *   &lt;complexContent>
@@ -24,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "joinGame", propOrder = {
@@ -39,9 +38,11 @@ public class JoinGame {
 
     /**
      * Gets the value of the gameName property.
-     *
-     * @return possible object is {@link String }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getGameName() {
         return gameName;
@@ -49,9 +50,11 @@ public class JoinGame {
 
     /**
      * Sets the value of the gameName property.
-     *
-     * @param value allowed object is {@link String }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setGameName(String value) {
         this.gameName = value;
@@ -59,9 +62,11 @@ public class JoinGame {
 
     /**
      * Gets the value of the playerName property.
-     *
-     * @return possible object is {@link String }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPlayerName() {
         return playerName;
@@ -69,9 +74,11 @@ public class JoinGame {
 
     /**
      * Sets the value of the playerName property.
-     *
-     * @param value allowed object is {@link String }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPlayerName(String value) {
         this.playerName = value;

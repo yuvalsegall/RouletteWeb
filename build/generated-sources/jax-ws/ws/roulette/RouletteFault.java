@@ -1,17 +1,16 @@
+
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for rouletteFault complex type.
- *
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
+ * <p>Java class for rouletteFault complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="rouletteFault">
  *   &lt;complexContent>
@@ -24,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rouletteFault", propOrder = {
@@ -39,9 +38,11 @@ public class RouletteFault {
 
     /**
      * Gets the value of the faultCode property.
-     *
-     * @return possible object is {@link String }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getFaultCode() {
         return faultCode;
@@ -49,9 +50,11 @@ public class RouletteFault {
 
     /**
      * Sets the value of the faultCode property.
-     *
-     * @param value allowed object is {@link String }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setFaultCode(String value) {
         this.faultCode = value;
@@ -59,9 +62,11 @@ public class RouletteFault {
 
     /**
      * Gets the value of the faultString property.
-     *
-     * @return possible object is {@link String }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getFaultString() {
         return faultString;
@@ -69,9 +74,11 @@ public class RouletteFault {
 
     /**
      * Sets the value of the faultString property.
-     *
-     * @param value allowed object is {@link String }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setFaultString(String value) {
         this.faultString = value;

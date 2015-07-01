@@ -49,20 +49,20 @@ function checkServerStatus() {
     });
 }
 
-function setServer() {
-    $.ajax({
-        type: "POST",
-        url: 'Configurations',
-        data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
-        error: function (response) {
-            showError(response.getResponseHeader('exception'));
-        },
-        success: function (response) {
-            hasServer = true;
-            enableGame();
-        },
-        dataType: null
-    });
+function setServer(){
+	$.ajax({
+	  type: "POST",
+	  url:  'Configurations',
+	  data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+	  error: function(response){
+	  	showError('Error Connectiong to server, try again');
+	  },
+	  success: function(response){
+	  	hasServer = true;
+	  	enableGame();
+	  },
+	  dataType: null
+	});
 }
 
 function waitForLogin() {
@@ -103,7 +103,15 @@ function createGame() {
     });
 }
 
-function replacePage(source, target) {
-    $('#' + source).fadeOut();
-    $('#' + target).fadeOut();
+$(document).on('change', '#XMLFileChooser', function(e){
+  $('#fileNameField').val($('#XMLFileChooser').val());
+  $("#uploadFile").prop('disabled', false);
+});
+
+function loadGameFromXML(){
+}
+
+function replacePage(source, target){
+	$('#'+source).fadeOut();
+	$('#'+target).fadeOut();
 }

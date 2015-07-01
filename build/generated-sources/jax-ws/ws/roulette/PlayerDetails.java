@@ -1,17 +1,16 @@
+
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for playerDetails complex type.
- *
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
+ * <p>Java class for playerDetails complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="playerDetails">
  *   &lt;complexContent>
@@ -26,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "playerDetails", propOrder = {
@@ -45,7 +44,7 @@ public class PlayerDetails {
 
     /**
      * Gets the value of the money property.
-     *
+     * 
      */
     public int getMoney() {
         return money;
@@ -53,7 +52,7 @@ public class PlayerDetails {
 
     /**
      * Sets the value of the money property.
-     *
+     * 
      */
     public void setMoney(int value) {
         this.money = value;
@@ -61,9 +60,11 @@ public class PlayerDetails {
 
     /**
      * Gets the value of the name property.
-     *
-     * @return possible object is {@link String }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
@@ -71,9 +72,11 @@ public class PlayerDetails {
 
     /**
      * Sets the value of the name property.
-     *
-     * @param value allowed object is {@link String }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
@@ -81,9 +84,11 @@ public class PlayerDetails {
 
     /**
      * Gets the value of the status property.
-     *
-     * @return possible object is {@link PlayerStatus }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link PlayerStatus }
+     *     
      */
     public PlayerStatus getStatus() {
         return status;
@@ -91,9 +96,11 @@ public class PlayerDetails {
 
     /**
      * Sets the value of the status property.
-     *
-     * @param value allowed object is {@link PlayerStatus }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PlayerStatus }
+     *     
      */
     public void setStatus(PlayerStatus value) {
         this.status = value;
@@ -101,9 +108,11 @@ public class PlayerDetails {
 
     /**
      * Gets the value of the type property.
-     *
-     * @return possible object is {@link PlayerType }
-     *
+     * 
+     * @return
+     *     possible object is
+     *     {@link PlayerType }
+     *     
      */
     public PlayerType getType() {
         return type;
@@ -111,9 +120,11 @@ public class PlayerDetails {
 
     /**
      * Sets the value of the type property.
-     *
-     * @param value allowed object is {@link PlayerType }
-     *
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PlayerType }
+     *     
      */
     public void setType(PlayerType value) {
         this.type = value;

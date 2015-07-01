@@ -1,3 +1,4 @@
+
 package ws.roulette;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -5,14 +6,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for joinGameResponse complex type.
- *
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
+ * <p>Java class for joinGameResponse complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="joinGameResponse">
  *   &lt;complexContent>
@@ -24,8 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "joinGameResponse", propOrder = {
@@ -38,7 +37,7 @@ public class JoinGameResponse {
 
     /**
      * Gets the value of the return property.
-     *
+     * 
      */
     public int getReturn() {
         return _return;
@@ -46,7 +45,7 @@ public class JoinGameResponse {
 
     /**
      * Sets the value of the return property.
-     *
+     * 
      */
     public void setReturn(int value) {
         this._return = value;
