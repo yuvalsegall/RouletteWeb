@@ -1,0 +1,29 @@
+#main{
+	/*padding-top:50px;*/
+}
+
+.formBack{
+	padding: 5px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.myCol{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#minBetsSlider,
+#maxBetsSlider,
+#humansSlider,
+#tableTypeIsFrench,
+#computersSlider {
+	width: 100%;
+}
+
+#minBetsSlider .slider-selection,
+#maxBetsSlider .slider-selection,
+#humansSlider .slider-selection,
+#computersSlider .slider-selection {
+	background: #BABABA;
+}
