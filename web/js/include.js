@@ -1,5 +1,6 @@
 var MAIN_URL = 'http://gsy.no-ip.org/RouletteWeb/';
 var MAX_PLAYERS = 6;
+var hasServer = false;
 
 $(function(){
 	setForm();	
@@ -30,6 +31,46 @@ function setForm(){
       on: 'French',
       off: 'American'
 	});
+	checkServerStatus();
+}
+
+function checkServerStatus(){
+    $.ajax({
+        data: null,
+        url: 'Configurations',
+        timeout: 5000,
+        error: function(response) {
+			waitForLogin();
+        },
+        success: function(response, xhr) {
+        	hasServer = true;
+            $('#loginDiv').hide();
+        }
+    });	
+}
+
+function setServer(){
+	$.ajax({
+	  type: "POST",
+	  url:  'Configurations',
+	  data: {'server': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+	  error: function(response){
+	  	showError(response.getResponseHeader('exception'));
+	  },
+	  success: function(response){
+	  	hasServer = true;
+	  	enableGame();
+	  },
+	  dataType: null
+	});	
+}
+
+function waitForLogin(){
+	$("#startGameButton").prop('disabled', true);
+}
+
+function enableGame(){
+$("#startGameButton").prop('disabled', false);	
 }
 
 function checkParams(){
@@ -50,7 +91,7 @@ function showError(msg){
 function createGame(){
     $.ajax({
         data: {'gameName':$('#gameName').val(), 'computerPlayers':$('#computers').val(), 'humanPlayers':$('#humans').val(), 'minWages': $('#minWages').val(), 'maxWages': $('#maxWages').val(), 'rouletteType':$('#check_id').is(":checked")?'FRENCH':'AMERICAN', 'initalSumOfMoney': $('#initialAmount').val()},
-        url: MAIN_URL+'CreateGame',
+        url: 'CreateGame',
         timeout: 500000,
         error: function(response) {
         	showError(response.getResponseHeader('exception'));
