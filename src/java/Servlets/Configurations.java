@@ -6,22 +6,25 @@
 package Servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URL;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ws.roulette.RouletteWebService;
+import ws.roulette.RouletteWebServiceService;
 
 /**
  *
  * @author Yuval Segall
  */
-@WebServlet(name = "PropertiesServlet", urlPatterns = {"/PropertiesServlet"})
-public class PropertiesServlet extends HttpServlet {
+@WebServlet(name = "Configurations", urlPatterns = {"/Configurations"})
+public class Configurations extends HttpServlet {
 
-    private RouletteWebService service;
+    private static RouletteWebServiceService service = null;
+    private static RouletteWebService gameWebService = null;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,18 +36,19 @@ public class PropertiesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PropertiesServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PropertiesServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            URL url = new URL("http://" + request.getParameter("ip").trim() + ":" + request.getParameter("port").trim() + "/RouletteServer/RouletteWebServiceService");
+            service = new RouletteWebServiceService(url);
+            gameWebService = service.getRouletteWebServicePort();
+            if (gameWebService == null) {
+                response.setStatus(404);
+                response.setHeader("exception", "Server not found");
+            }
+            getServletContext().setAttribute("gameWebService", gameWebService);
+            response.setStatus(201);
+        } catch (Exception ex) {
+            response.setStatus(500);
+            response.setHeader("exception", ex.getMessage());
         }
     }
 
