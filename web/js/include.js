@@ -35,9 +35,9 @@ function setSliders(){
 
 function gameStartClicked(){
     $.ajax({
-        data: "",
+        data: {'numOfComputerPlayers':'1','numOfHumanPlayers':'1','initialSumOfMoney':'10', 'maxWages':'1', 'minWages':'0', 'gameName':'aaa', 'rouletteType':'AMERICAN'},
         url: MAIN_URL+'CreateGame',
-        timeout: 5000,
+        timeout: 500000,
         error: function() {
             alert("Failed to get ajax response");
         },
