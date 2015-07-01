@@ -21,11 +21,14 @@
 		  <li role="presentation"><a href="#">Join Game</a></li>
 		</ul>
 	</div>
-	<div id='main'>
+	<div id='createGame'>
 		<div class='formBack'>
 			<div class='row'>
-				<div class='col-xs-3 myCol'>
-					<input type="text" class="form-control" placeholder="Game Name" required='yes'>
+				<div id='gameNameDiv' class='col-xs-3 myCol'>
+					<input id='gameName' type="text" class="form-control" placeholder="Game Name">
+				</div>
+				<div class="col-xs-3 myCol">
+					<div id='errorMessage' class="alert-danger" role="alert"></div>
 				</div>
 			</div>
 			<div class='row'>
@@ -38,7 +41,7 @@
 			</div>
 			<div class='row'>
 				<div class='col-xs-2 myCol'>
-					<label>Min Bets:</label>
+					<label>Min Wages:</label>
 				</div>
 				<div class='col-xs-3 myCol'>
 					<div class='row'>
@@ -46,7 +49,7 @@
 							<b>0</b>
 						</div>
 						<div class='col-xs-8'>	
-							<input id="minBets" data-slider-id='minBetsSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>
+							<input id="minWages" data-slider-id='minBetsSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>
 						</div>
 						<div class='col-xs-2'>
 							<b>1</b>
@@ -56,7 +59,7 @@
 			</div>
 			<div class='row'>
 				<div class='col-xs-2 myCol'>
-					<label>Max Bets:</label>
+					<label>Max Wages:</label>
 				</div>
 				<div class='col-xs-3 myCol'>
 					<div class='row'>
@@ -64,7 +67,7 @@
 							<b>1</b>
 						</div>
 						<div class='col-xs-8'>	
-							<input id="maxBets" data-slider-id='maxBetsSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="4"/>
+							<input id="maxWages" data-slider-id='maxBetsSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="4"/>
 						</div>
 						<div class='col-xs-2'>
 							<b>10</b>
@@ -126,10 +129,11 @@
 					</div>
 				</div>
 			</div>
-			<input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='gameStartClicked()'>
+			<input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='checkParams()'>
 		</div>
 	</div>
 	<div id='footer'>
+		<h3>Created By Dan Nir & Yuval Segall</h3>
 	</div>
 </body>	
 </html>

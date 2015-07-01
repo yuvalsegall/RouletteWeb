@@ -1,5 +1,7 @@
-#main{
-	/*padding-top:50px;*/
+#errorMessage{
+	display: none;
+	text-align: center;
+	height: 100% !important;
 }
 
 .formBack{
