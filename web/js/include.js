@@ -53,7 +53,7 @@ function setServer(){
 	$.ajax({
 	  type: "POST",
 	  url:  'Configurations',
-	  data: {'server': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+	  data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
 	  error: function(response){
 	  	showError(response.getResponseHeader('exception'));
 	  },
