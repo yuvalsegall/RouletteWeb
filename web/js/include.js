@@ -97,7 +97,6 @@ function createGame() {
             showError(response.getResponseHeader('exception'));
         },
         success: function (response, xhr) {
-            alert(response);
             replacePage('createGame', 'joinGame');
         }
     });
@@ -109,12 +108,13 @@ function getActiveGames(){
     targetList.empty();
         $.ajax({
         data: null,
+        dataType: 'json',
         url: 'GetWaitingGames',
         timeout: 5000,
         error: function (response) {
-            waitForLogin();
+            showError(response.getResponseHeader('exception'));
         },
-        success: function (response, xhr) {
+        success: function (response) {
             
         }
     });
