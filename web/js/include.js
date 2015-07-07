@@ -156,7 +156,7 @@ function setBoard(tableType){
     var buttonId = 0;
     var boardDiv = $('#board');
 
-    tableType ==='AMERICAN' ? boardDiv.addClass('american') : boardDiv.addClass('french');
+    tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var i=0 ; i < numOfOuterRows ; i++){
         var outerRow = $('<div></div>').addClass('col-xs-4');
         boardDiv.append(outerRow);
