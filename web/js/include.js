@@ -2,6 +2,7 @@ var MAIN_URL = 'http://10.0.0.3/RouletteWeb/';
 var MAX_PLAYERS = 6;
 var hasServer = false;
 var userID;
+var playerName;
 
 $(function () {
     setForm();
@@ -56,9 +57,10 @@ function setServer(){
 	  url:  'Configurations',
 	  data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
 	  error: function(response){
-	  	showError('Error Connectiong to server, try again');
+	  	showMessage('Error Connectiong to server, try again', true);
 	  },
 	  success: function(response){
+        $('#loginDiv').hide();
 	  	hasServer = true;
 	  	enableGame();
 	  },
@@ -78,14 +80,14 @@ function checkParams() {
     var playerSum = parseInt($('#humans').val()) + parseInt($('#computers').val());
 
     if ($('#gameName').val() === "")
-        showError('Game Name Cannot be Empty');
+        showMessage('Game Name Cannot be Empty', true);
     else if (playerSum >= MAX_PLAYERS)
-        showError('Max Players allowed = ' + MAX_PLAYERS);
+        showMessage('Max Players allowed = ' + MAX_PLAYERS, true);
     else
         createGame();
 }
 
-function showError(msg) {
+function showMessage(msg, isError) {
     $('#errorMessage').text(msg).show().fadeOut(2500);
 }
 
@@ -95,7 +97,7 @@ function createGame() {
         url: 'CreateGame',
         timeout: 5000,
         error: function (response) {
-            showError(response.getResponseHeader('exception'));
+            showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response, xhr) {
             getWaitingGames();
@@ -107,19 +109,19 @@ function createGame() {
 function getWaitingGames(){
     var targetList = $('#gamesList');
     targetList.empty();
-        $.ajax({
+    $.ajax({
         data: null,
         dataType: 'json',
         url: 'GetWaitingGames',
         timeout: 5000,
         error: function (response) {
-            showError(response.getResponseHeader('exception'));
+            showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response) {
             for(var i=0 ; i < response.length ; i++){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $('<a onClick="joinGame("'+ response[i] +'")"></a>');
+                var a = $('<a onClick=joinGame("'+ response[i] +'")></a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
@@ -130,21 +132,43 @@ function getWaitingGames(){
 
 function joinGame(gameName){
     if($('#userName').val() === ""){
-        showError('Name cannot be empty');
+        showMessage('Name cannot be empty', true);
         return;
     }
-        $.ajax({
+    $.ajax({
         data: {'gameName' : gameName, 'playerName' : $('#userName').val()},
         dataType: 'json',
         url: 'JoinGame',
         error: function (response) {
-            showError(response.getResponseHeader('exception'));
+            showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response) {
-            alert(response[0]);
-            userID = response[0];
+            userID = response;
+            playerName = $('#userName').val();
+            getGameDetails(gameName);
         }
     });    
+}
+
+function setBoard(tableType){
+    const numOfOuterRows = 3;
+    const numOfInnerRows = 12;
+    var buttonId = 0;
+    var boardDiv = $('#board');
+
+    tableType ==='AMERICAN' ? boardDiv.addClass('american') : boardDiv.addClass('french');
+    for(var i=0 ; i < numOfOuterRows ; i++){
+        var outerRow = $('<div></div>').addClass('col-xs-4');
+        boardDiv.append(outerRow);
+        var innerRow = $('<div></div>').addClass('row');
+        outerRow.append(innerRow);
+        for(vari=0 ; i < numOfInnerRows ; i++){
+            var col = $('<div></div>').addClass('col-xs-1');
+            innerRow.append(col);
+            var button = $('<button class="btn" onclick=buttonClicked("'+ (buttonId++) +'")></button>');
+            col.append(button);
+        }
+    }
 }
 
 function replacePage(source, target){

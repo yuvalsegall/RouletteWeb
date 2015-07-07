@@ -9,8 +9,19 @@
 	height: 40px;
 }
 
+/*#playGame,*/
 #joinGame{
     display: none;	
+}
+
+#american{
+    background-image: url("/img/americanTable.png");
+    width: 100%;
+}
+
+#french{
+    background-image: url("/img/frenchTable.png");
+    width: 100%;
 }
 
 .formBack{
@@ -47,6 +58,13 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
+.boardButton {
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
