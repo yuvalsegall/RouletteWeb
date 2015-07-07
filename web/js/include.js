@@ -165,8 +165,8 @@ function setBoard(tableType){
         for(var j=0 ; j < numOfInnerRows ; j++){
             var col = $('<div></div>').addClass('col-xs-1');
             innerRow.append(col);
-            var button = $('<button class="btn" onclick=buttonClicked("'+ buttonId +'")></button>');
-            button.html(buttonId++);
+            var button = $('<button class="btn" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+            buttonId++;
             col.append(button);
         }
     }
