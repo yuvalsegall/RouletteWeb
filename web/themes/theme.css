@@ -16,16 +16,17 @@
 
 .american{
     background-image: url("/RouletteWeb/img/americanTable.png");
-    background-size:100%;
+    background-width:100%;
     background-color: green;
-    height: 249px;
+    background-height: 249px;
+
 }
 
 .french{
     background-image: url("/RouletteWeb/img/frenchTable.png");
-    background-size:100%;
+    background-width:100%;
     background-color: green;
-    min-height: 249px;
+    background-height: 249px;
 }
 
 .formBack{
