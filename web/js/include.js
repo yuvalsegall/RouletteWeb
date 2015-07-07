@@ -104,7 +104,6 @@ function createGame() {
 }
 
 function getActiveGames(){
-    //<li class="list-group-item"><a>item</a></li>
     var targetList = $('#gamesList');
     targetList.empty();
         $.ajax({
@@ -119,8 +118,11 @@ function getActiveGames(){
             alert(response);
             $.each(response.d, function(key, value) {
                 var li = $('<li></li>');
+                li.addClass("list-group-item");
                 var a = $('<a></a>');
+                li.appendChild(a);
                 a.innerHTML = value;
+                targetList.appendChild(li);
             });
         }
     });
