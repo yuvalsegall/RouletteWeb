@@ -103,6 +103,23 @@ function createGame() {
     });
 }
 
+function getActiveGames(){
+    //<li class="list-group-item"><a>item</a></li>
+    var targetList = $('#gamesList');
+    targetList.empty();
+        $.ajax({
+        data: null,
+        url: 'GetWaitingGames',
+        timeout: 5000,
+        error: function (response) {
+            waitForLogin();
+        },
+        success: function (response, xhr) {
+            
+        }
+    });
+}
+
 $(document).on('change', '#XMLFileChooser', function(e){
   $('#fileNameField').val($('#XMLFileChooser').val());
   $("#uploadFile").prop('disabled', false);
