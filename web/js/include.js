@@ -81,7 +81,7 @@ function checkParams() {
 
     if ($('#gameName').val() === "")
         showMessage('Game Name Cannot be Empty', true);
-    else if (playerSum >= MAX_PLAYERS)
+    else if (playerSum > MAX_PLAYERS)
         showMessage('Max Players allowed = ' + MAX_PLAYERS, true);
     else
         createGame();
