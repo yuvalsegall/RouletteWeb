@@ -9,7 +9,7 @@
 	height: 40px;
 }
 
-/*#playGame,*/
+#playGame,
 #joinGame{
     display: none;	
 }
