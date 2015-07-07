@@ -116,14 +116,14 @@ function getActiveGames(){
         },
         success: function (response) {
             alert(response);
-            $.each(response.d, function(key, value) {
+            for(var i=0 ; i < response.length ; i++){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
                 var a = $('<a></a>');
                 li.appendChild(a);
-                a.innerHTML = value;
+                a.innerHTML = response[i];
                 targetList.appendChild(li);
-            });
+            };
         }
     });
 }
