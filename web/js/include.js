@@ -120,9 +120,9 @@ function getActiveGames(){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
                 var a = $('<a></a>');
-                li.appendChild(a);
+                li.append(a);
                 a.innerHTML = response[i];
-                targetList.appendChild(li);
+                targetList.append(li);
             };
         }
     });
