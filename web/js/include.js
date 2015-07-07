@@ -151,8 +151,8 @@ function joinGame(gameName){
 }
 
 function setBoard(tableType){
-    const numOfOuterRows = 3;
-    const numOfInnerRows = 12;
+    var numOfOuterRows = 3;
+    var numOfInnerRows = 12;
     var buttonId = 0;
     var boardDiv = $('#board');
 
