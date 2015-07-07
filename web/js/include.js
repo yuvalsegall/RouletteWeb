@@ -1,6 +1,7 @@
 var MAIN_URL = 'http://10.0.0.3/RouletteWeb/';
 var MAX_PLAYERS = 6;
 var hasServer = false;
+var userID;
 
 $(function () {
     setForm();
@@ -115,11 +116,10 @@ function getActiveGames(){
             showError(response.getResponseHeader('exception'));
         },
         success: function (response) {
-            alert(response);
             for(var i=0 ; i < response.length ; i++){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $('<a></a>');
+                var a = $('<a>onClick="joinGame('+ response[i] +')"</a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
@@ -128,13 +128,32 @@ function getActiveGames(){
     });
 }
 
+function joinGame(gameName){
+    if($('#userName').val() === ""){
+        showError('Name cannot be empty');
+        return;
+    }
+        $.ajax({
+        data: {'gameName' : gameName, 'playerName' : $('#userName').val()},
+        dataType: 'json',
+        url: 'JoinGame',
+        error: function (response) {
+            showError(response.getResponseHeader('exception'));
+        },
+        success: function (response) {
+            alert(response[0]);
+            userID = response[0];
+        }
+    });    
+}
+
 $(document).on('change', '#XMLFileChooser', function(e){
   $('#fileNameField').val($('#XMLFileChooser').val().substring($('#XMLFileChooser').val().lastIndexOf("\\")+1));
   $("#uploadFile").prop('disabled', false);
 });
 
 function loadGameFromXML(){
-    
+
 }
 
 function replacePage(source, target){
