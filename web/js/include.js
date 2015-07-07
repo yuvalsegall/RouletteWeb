@@ -1,4 +1,4 @@
-var MAIN_URL = 'http://gsy.no-ip.org/RouletteWeb/';
+var MAIN_URL = 'http://10.0.0.3/RouletteWeb/';
 var MAX_PLAYERS = 6;
 var hasServer = false;
 
