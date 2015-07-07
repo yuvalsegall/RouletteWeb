@@ -1,7 +1,7 @@
 var MAIN_URL = 'http://10.0.0.3/RouletteWeb/';
 var MAX_PLAYERS = 6;
 var hasServer = false;
-var userID;
+var playerID;
 var playerName;
 
 $(function () {
@@ -143,7 +143,7 @@ function joinGame(gameName){
             showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response) {
-            userID = response;
+            playerID = response;
             playerName = $('#userName').val();
             getGameDetails(gameName);
         }
