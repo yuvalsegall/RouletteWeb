@@ -14,12 +14,12 @@
     display: none;	
 }
 
-#american{
+.american{
     background-image: url("/img/americanTable.png");
     width: 100%;
 }
 
-#french{
+.french{
     background-image: url("/img/frenchTable.png");
     width: 100%;
 }
