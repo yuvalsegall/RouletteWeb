@@ -17,12 +17,14 @@
 .american{
     background-image: url("/RouletteWeb/img/americanTable.png");
     background-size:100%;
+    background-color: green;
     height: 249px;
 }
 
 .french{
     background-image: url("/RouletteWeb/img/frenchTable.png");
     background-size:100%;
+    background-color: green;
     min-height: 249px;
 }
 
@@ -62,9 +64,11 @@ body {
 }
 
 .boardButton {
-    background: transparent;
+    /*background: transparent;*/
     border: none !important;
     font-size:0;
+    width: 100%;
+    height: 100%;
 }
 
 .footer {

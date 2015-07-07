@@ -151,19 +151,19 @@ function joinGame(gameName){
 }
 
 function setBoard(tableType){
-    var numOfOuterRows = 3;
-    var numOfInnerRows = 12;
+    var numOfOuterRows = 6;
+    var numOfInnerRows = 6;
     var buttonId = 0;
     var boardDiv = $('#board');
 
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var i=0 ; i < numOfOuterRows ; i++){
-        var outerRow = $('<div></div>').addClass('col-xs-4');
+        var outerRow = $('<div></div>').addClass('col-xs-2');
         boardDiv.append(outerRow);
         var innerRow = $('<div></div>').addClass('row');
         outerRow.append(innerRow);
         for(var j=0 ; j < numOfInnerRows ; j++){
-            var col = $('<div></div>').addClass('col-xs-1');
+            var col = $('<div></div>').addClass('col-xs-2');
             innerRow.append(col);
             var button = $('<button class="btn" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
             buttonId++;
