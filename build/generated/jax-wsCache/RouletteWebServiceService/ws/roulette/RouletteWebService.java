@@ -58,8 +58,8 @@ public interface RouletteWebService {
      * @param name
      * @param rouletteType
      * @param computerizedPlayers
-     * @throws InvalidParameters_Exception
      * @throws DuplicateGameName_Exception
+     * @throws InvalidParameters_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "createGame", targetNamespace = "http://roulette.ws/", className = "ws.roulette.CreateGame")
@@ -124,8 +124,8 @@ public interface RouletteWebService {
      * @param playerName
      * @return
      *     returns int
-     * @throws InvalidParameters_Exception
      * @throws GameDoesNotExists_Exception
+     * @throws InvalidParameters_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -148,8 +148,8 @@ public interface RouletteWebService {
      * @param playerId
      * @return
      *     returns ws.roulette.PlayerDetails
-     * @throws InvalidParameters_Exception
      * @throws GameDoesNotExists_Exception
+     * @throws InvalidParameters_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -230,9 +230,9 @@ public interface RouletteWebService {
      * @param xmlData
      * @return
      *     returns java.lang.String
+     * @throws DuplicateGameName_Exception
      * @throws InvalidParameters_Exception
      * @throws InvalidXML_Exception
-     * @throws DuplicateGameName_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
