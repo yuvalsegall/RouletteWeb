@@ -97,6 +97,7 @@ function createGame() {
             showError(response.getResponseHeader('exception'));
         },
         success: function (response, xhr) {
+            getActiveGames();
             replacePage('createGame', 'joinGame');
         }
     });
@@ -115,7 +116,12 @@ function getActiveGames(){
             showError(response.getResponseHeader('exception'));
         },
         success: function (response) {
-            
+            alert(response);
+            $.each(response.d, function(key, value) {
+                var li = $('<li></li>');
+                var a = $('<a></a>');
+                a.innerHTML = value;
+            });
         }
     });
 }
