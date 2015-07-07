@@ -162,7 +162,7 @@ function setBoard(tableType){
         boardDiv.append(outerRow);
         var innerRow = $('<div></div>').addClass('row');
         outerRow.append(innerRow);
-        for(vari=0 ; i < numOfInnerRows ; i++){
+        for(var j=0 ; j < numOfInnerRows ; j++){
             var col = $('<div></div>').addClass('col-xs-1');
             innerRow.append(col);
             var button = $('<button class="btn" onclick=buttonClicked("'+ (buttonId++) +'")></button>');
