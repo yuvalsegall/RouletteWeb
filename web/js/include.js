@@ -98,13 +98,13 @@ function createGame() {
             showError(response.getResponseHeader('exception'));
         },
         success: function (response, xhr) {
-            getActiveGames();
+            getWaitingGames();
             replacePage('createGame', 'joinGame');
         }
     });
 }
 
-function getActiveGames(){
+function getWaitingGames(){
     var targetList = $('#gamesList');
     targetList.empty();
         $.ajax({
