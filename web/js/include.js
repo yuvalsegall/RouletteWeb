@@ -3,6 +3,7 @@ var MAX_PLAYERS = 6;
 var hasServer = false;
 var playerID;
 var playerName;
+var gameName;
 
 $(function () {
     setForm();
@@ -121,7 +122,7 @@ function getWaitingGames(){
             for(var i=0 ; i < response.length ; i++){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $("<a onClick=joinGame('"+ response[i] +"')></a>");
+                var a = $('<a onClick=joinGame("'+ response[i] +'")></a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
@@ -130,13 +131,13 @@ function getWaitingGames(){
     });
 }
 
-function joinGame(gameName){
+function joinGame(gameToJoin){
     if($('#userName').val() === ""){
         showMessage('Name cannot be empty', true);
         return;
     }
     $.ajax({
-        data: {'gameName' : gameName, 'playerName' : $('#userName').val()},
+        data: {'gameName' : gameToJoin, 'playerName' : $('#userName').val()},
         dataType: 'json',
         url: 'JoinGame',
         error: function (response) {
@@ -145,6 +146,7 @@ function joinGame(gameName){
         success: function (response) {
             playerID = response;
             playerName = $('#userName').val();
+            gameName = gameToJoin;
             getGameDetails(gameName);
         }
     });    

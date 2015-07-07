@@ -15,18 +15,18 @@
 }
 
 .american{
-    background-image: url("/RouletteWeb/img/americanTable.png");
-    background-size:100%;
+    /*background-image: url("/RouletteWeb/img/americanTable.png");*/
+    width:100%;
     background-color: green;
-    max-height: 249px !important;
+    min-height: 200px;
 
 }
 
 .french{
-    background-image: url("/RouletteWeb/img/frenchTable.png");
-    background-size:100%;
+    /*background-image: url("/RouletteWeb/img/frenchTable.png");*/
+    width:100%;
     background-color: green;
-    max-height: 249px !important;
+    min-height: 200px;
 }
 
 .formBack{
