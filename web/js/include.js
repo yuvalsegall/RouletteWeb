@@ -119,7 +119,7 @@ function getWaitingGames(){
             for(var i=0 ; i < response.length ; i++){
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $('<a>onClick="joinGame('+ response[i] +')"</a>');
+                var a = $('<a onClick="joinGame('+ response[i] +')"></a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
