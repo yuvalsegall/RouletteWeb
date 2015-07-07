@@ -121,7 +121,7 @@ function getActiveGames(){
                 li.addClass("list-group-item");
                 var a = $('<a></a>');
                 li.append(a);
-                a.innerHTML = response[i];
+                a.html(response[i]);
                 targetList.append(li);
             };
         }
@@ -129,11 +129,12 @@ function getActiveGames(){
 }
 
 $(document).on('change', '#XMLFileChooser', function(e){
-  $('#fileNameField').val($('#XMLFileChooser').val());
+  $('#fileNameField').val($('#XMLFileChooser').val().substring($('#XMLFileChooser').val().lastIndexOf("\\")+1));
   $("#uploadFile").prop('disabled', false);
 });
 
 function loadGameFromXML(){
+    
 }
 
 function replacePage(source, target){
