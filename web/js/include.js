@@ -147,15 +147,6 @@ function joinGame(gameName){
     });    
 }
 
-$(document).on('change', '#XMLFileChooser', function(e){
-  $('#fileNameField').val($('#XMLFileChooser').val().substring($('#XMLFileChooser').val().lastIndexOf("\\")+1));
-  $("#uploadFile").prop('disabled', false);
-});
-
-function loadGameFromXML(){
-
-}
-
 function replacePage(source, target){
 	$('#'+source).fadeOut();
 	$('#'+target).fadeIn();
