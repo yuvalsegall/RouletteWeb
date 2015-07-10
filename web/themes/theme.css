@@ -202,8 +202,11 @@ body {
 .frenchRoulette{
     background-image: url("/RouletteWeb/img/frenchRoulette.png");
 }
-
+.buttonPanel{
+    float:right;
+    width: 25%;
+}
 #wheel{
-    height: 300px;
-    width: 300px;
+    max-height: 300px;
+    max-width: 300px;
 }
