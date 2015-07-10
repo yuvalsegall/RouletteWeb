@@ -154,36 +154,8 @@ function setBoard(tableType){
 }
 
 function createTableButton(type, numbers){
-    return $('<a class="tableButton blackButton" onclick=makeBet('type'+','+'+ numbers +')></a>');
+    return $('<a class="tableButton blackButton" onclick=makeBet(' + type + ',' + numbers + ')></a>');
 }
-
-// function setBoard(tableType){
-//     var numOfOuterCols = 6;
-//     var numOfInnerCols = 6;
-//     var numOfRows = 8;
-//     var buttonId = 0;
-//     $('#board').append('<div id=tableDiv><div>');
-//     var boardDiv = $('#tableDiv');
-
-//     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
-//     for(var k=0 ; k < numOfRows ; k++){
-//         var row = $('<div></div>').addClass('row');
-//         boardDiv.append(row);
-//         for(var i=0 ; i < numOfOuterCols ; i++){
-//             var outerRow = $('<div></div>').addClass('col-xs-2');
-//             row.append(outerRow);
-//             var innerRow = $('<div></div>').addClass('row');
-//             outerRow.append(innerRow);
-//             for(var j=0 ; j < numOfInnerCols ; j++){
-//                 var col = $('<div></div>').addClass('col-xs-2');
-//                 innerRow.append(col);
-//                 var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
-//                 buttonId++;
-//                 col.append(button);
-//             }
-//         }
-//     }
-// }
 
 function buttonClicked(buttonID){
 
