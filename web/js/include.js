@@ -93,7 +93,7 @@ function showMessage(msg, isError) {
 }
 
 function setBoard(tableType){
-    var numOfCols = 28;
+    var numOfCols = 26;
     var numOfRows = 8;
     var buttonId = 0;
     $('#board').append('<div id=tableDiv></div>');
