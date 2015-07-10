@@ -114,9 +114,16 @@ function setBoard(tableType){
             else
                 var cell = $('<td></td>').addClass('midTd');
             row.append(cell);
-            var button = createTableButon(buttonId);
+            var button;
+            if(k == 0){
+                var firstNumber = 3;
+                if(i > 0 && i % 2 == 0){
+                    firstNumber = 3 * i / 2;
+                    button = createTableButton('STREET',{firstNumber, firstNumber-1, firstNumber-2});
+                }
+                cell.append(button);
+            }
             buttonId++;
-            cell.append(button);
         }
     }
     $('#board').append('<div id=secondTable></div>');
@@ -138,15 +145,15 @@ function setBoard(tableType){
             var cell = $('<td></td>');
             k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
             row.append(cell);
-            var button = createTableButon(buttonId);
+            var button = createTableButton();
             buttonId++;
             cell.append(button);
         }
     }
 }
 
-function createTableButon(buttonId){
-    return $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
+function createTableButton(type, numbers){
+    return $('<a class="tableButton blackButton" onclick=makeBet('type'+','+'+ numbers +')></a>');
 }
 
 // function setBoard(tableType){
