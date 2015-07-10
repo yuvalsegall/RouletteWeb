@@ -158,7 +158,7 @@ function setBoard(tableType){
 }
 
 function createTableButton(type, numbers){
-    return $('<a href="#" class="tableButton" onclick=makeBet()></a>');
+    return $('<button href="#" class="tableButton" onclick=makeBet()></button>');
 }
 
 function buttonClicked(buttonID){
