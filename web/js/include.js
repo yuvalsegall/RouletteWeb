@@ -7,7 +7,7 @@ var gameName;
 var betNumbers;
 var betType;
 var COLUMN_1 = [3,6,9,12,15,18,21,24,27,30,33,36];
-var COLUMN_2 = [2,5,8,11,14,17,20,,23,26,29,32,35];
+var COLUMN_2 = [2,5,8,11,14,17,20,23,26,29,32,35];
 var COLUMN_3 = [1,4,7,10,13,16,19,22,25,28,31,34];
 
 $(function () {
@@ -132,7 +132,7 @@ function setBoard(tableType){
             }
             if(k === 1){
                 var firstNumber = 3;
-                if(i === 0 || tableType ==='AMERICAN'){
+                if(i === 0 && tableType === 'AMERICAN'){
                     numbers = [37];
                     button = createTableButton('STRAIGHT',numbers);
                     cell.append(button);
