@@ -15,7 +15,7 @@
     text-align: center;
     height: 249px;
     padding-left: 60px;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
 }
 
 #secondTable{
@@ -32,36 +32,10 @@
 }
 
 .table{
-    width: 714px;
+    width: 730px;
     text-align: center;
 }
 
-.allRows{
-    width: 714px;
-    height: 21px;
-}
-
-.firstRow{
-    width: 714px;
-    height: 25px;
-}
-
-.firstAction{
-    margin-left:49px;
-    height: 44px;
-}
-
-.firstActionTD{
-    width:248px;
-    border: 0px !important;
-    padding: 0px !important;
-}
-
-.secondActionTD{
-    width:124px;
-    border: 0px !important;
-    padding: 0px !important;    
-}
 
 .firstTd{
     width:45px;
@@ -80,6 +54,33 @@
     width:26px !important;
     border: 0px !important;
     padding: 0px !important;
+}
+
+.allRows{
+/*    width: 714px;
+*/    height: 21px;
+}
+
+.firstRow{
+/*    width: 714px;
+*/    height: 25px;
+}
+
+.firstAction{
+    margin-left:49px;
+    height: 44px;
+}
+
+.firstActionTD{
+    width:248px;
+    border: 0px !important;
+    padding: 0px !important;
+}
+
+.secondActionTD{
+    width:124px;
+    border: 0px !important;
+    padding: 0px !important;    
 }
 
 .tableButton{

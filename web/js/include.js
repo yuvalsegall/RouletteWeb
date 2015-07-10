@@ -112,8 +112,10 @@ function setBoard(tableType){
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
             var cell = $('<td></td>');
-            if(i === 0 || i === numOfCols-1)
+            if(i === 0)
                 cell.addClass('firstTd');
+            else if(i === numOfCols-1)
+                cell.addClass('lastTd');
             else
                 cell.addClass('midTd');
             row.append(cell);
