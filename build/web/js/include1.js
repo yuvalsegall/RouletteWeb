@@ -4,6 +4,7 @@ var eventsInterval;
 var playersDetails;
 var playerDetails;
 var finishBettingB;
+var currentPage = "createGame";
 
 $(document).on('change', '#XMLFileChooser',
         function (e) {
@@ -19,13 +20,12 @@ function loadGameFromXML() {
         reader.onload = function (e) {
             $.ajax({
                 data: {"xmlData": e.target.result},
-                url: 'CreateGameFromXML',
-                error: function (response) {
+                url: 'CreateGameFromXML', error: function (response) {
                     showMessage(response.getResponseHeader('exception'), true);
                 },
                 success: function (response, xhr) {
                     getWaitingGames();
-                    replacePage('createGame', 'joinGame');
+                    replacePage('joinGame');
                 }
             });
         };
@@ -48,7 +48,7 @@ function getGameDetails(gameName) {
             eventsInterval = setInterval(function () {
                 getEvents();
             }, 1000);
-            replacePage('joinGame', 'playGame');
+            replacePage('playGame');
         }
     });
 }
@@ -87,8 +87,7 @@ function getPlayerDetails() {
         },
         success: function (response, xhr) {
             playerDetails = response;
-        }
-    });
+        }});
 }
 
 function getEvents() {
@@ -105,14 +104,13 @@ function getEvents() {
         }
     });
 }
-
 function checkForServerEvents() {
     events.forEach(function (event) {
         switch (event.type) {
             case "GAME_OVER":
                 showMessage("The game has ended.", true);
                 clearInterval(eventsInterval);
-                replacePage('playGame', 'createGame');
+                replacePage('createGame');
                 break;
             case "GAME_START":
                 addStringToFeed("The Game has Started");
@@ -207,10 +205,107 @@ function resign() {
 }
 
 function setPlayerResigned(name) {
-    $("#player" + name).getName().getStyleClass().remove("themeLabel");
-    $("#player" + name).getName().getStyleClass().remove("themeLabel");
+    $("#player" + name).addClass("playerResigned");
 }
 
 function  spinRoulette(position) {
     addStringToFeed("Ball on: " + position);
+}
+
+function Button(key, value) {
+    this.key = key;
+    this.value = value;
+}
+
+Button.prototype.getKey = function () {
+    return this.key;
+};
+
+Button.prototype.getValue = function () {
+    return this.value;
+};
+
+Button.prototype.setKey = function (key) {
+    this.key = key;
+};
+
+Button.prototype.setValue = function (value) {
+    this.value = value;
+};
+
+function getWaitingGames() {
+    var targetList = $('#gamesList');
+    targetList.empty();
+    $.ajax({
+        data: null,
+        dataType: 'json',
+        url: 'GetWaitingGames',
+        timeout: 5000,
+        error: function (response) {
+            showMessage(response.getResponseHeader('exception'), true);
+        },
+        success: function (response) {
+            for (var i = 0; i < response.length; i++) {
+                var li = $('<li></li>');
+                li.addClass("list-group-item");
+                var a = $('<a onClick=joinGame("' + encodeURI(response[i]) + '")></a>');
+                li.append(a);
+                a.html(response[i]);
+                targetList.append(li);
+            }
+            ;
+        }
+    });
+    $(".menu").removeClass("active");
+    $("#menuJoinGame").addClass("active");
+    replacePage('joinGame');
+}
+
+function getCreateGame() {
+    $(".menu").removeClass("active");
+    $("#menuCreateGame").addClass("active");
+    replacePage('createGame');
+}
+
+function joinGame(gameToJoin) {
+    gameToJoin = decodeURI(gameToJoin);
+    if ($('#userName').val() === "") {
+        showMessage('Name cannot be empty', true);
+        return;
+    }
+    $.ajax({
+        data: {'gameName': gameToJoin, 'playerName': $('#userName').val()},
+        dataType: 'json',
+        url: 'JoinGame',
+        error: function (response) {
+            showMessage(response.getResponseHeader('exception'), true);
+        },
+        success: function (response) {
+            playerID = response;
+            playerName = $('#userName').val();
+            gameName = gameToJoin;
+            getGameDetails(gameName);
+        }
+    });
+}
+
+function replacePage(target) {
+    $('#' + currentPage).fadeOut();
+    $('#' + target).fadeIn();
+    target = currentPage;
+}
+
+function createGame() {
+    $.ajax({
+        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computers').val(), 'humanPlayers': $('#humans').val(), 'minWages': $('#minWages').val(), 'maxWages': $('#maxWages').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmount').val()},
+        url: 'CreateGame',
+        timeout: 5000,
+        error: function (response) {
+            showMessage(response.getResponseHeader('exception'), true);
+        },
+        success: function (response, xhr) {
+            getWaitingGames();
+            replacePage('createGame', 'joinGame');
+        }
+    });
 }
