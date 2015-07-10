@@ -124,7 +124,7 @@ function setBoard(tableType){
         k == 0 ? row.addClass('firstActionRows') : row.addClass('lastActionRows');
         table.append(row);
         for(var i=0 ; i < numOfActionCols ; i++){
-            if(k == 0 || i % 2 == 1)
+            if(k == 0 && i % 2 == 1)
                 continue;
             var cell = $('<td></td>');
             k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
