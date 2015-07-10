@@ -1,8 +1,9 @@
-/* global amount */
-
 var lastEventId = 0;
 var events;
 var eventsInterval;
+var playersDetails;
+var playerDetails;
+var finishBettingB;
 
 $(document).on('change', '#XMLFileChooser',
         function (e) {
@@ -10,6 +11,7 @@ $(document).on('change', '#XMLFileChooser',
             $("#uploadFile").prop('disabled', false);
         }
 );
+
 function loadGameFromXML() {
     var file = $('#XMLFileChooser').get(0).files[0];
     if (file) {
@@ -32,6 +34,7 @@ function loadGameFromXML() {
         showMessage("Failed to load file", true);
     }
 }
+
 function getGameDetails(gameName) {
     $.ajax({
         data: {"gameName": gameName},
@@ -50,7 +53,6 @@ function getGameDetails(gameName) {
     });
 }
 
-var playersDetails;
 function getPlayersDetails() {
     $.ajax({
         data: {"gameName": gameName},
@@ -75,7 +77,7 @@ function buildPlayersList() {
         $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
     });
 }
-var playerDetails;
+
 function getPlayerDetails() {
     $.ajax({
         data: {"playerID": playerID},
@@ -88,7 +90,6 @@ function getPlayerDetails() {
         }
     });
 }
-
 
 function getEvents() {
     lastEventId = typeof events === 'undefined' || events.length === 0 ? lastEventId : events[events.length - 1].id;
@@ -105,7 +106,6 @@ function getEvents() {
     });
 }
 
-
 function checkForServerEvents() {
     events.forEach(function (event) {
         switch (event.type) {
@@ -115,22 +115,20 @@ function checkForServerEvents() {
                 replacePage('playGame', 'createGame');
                 break;
             case "GAME_START":
-                //                init();
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
-//                spinRoulette(event.getWinningNumber());
-                //                numOfBets.set(0);
+                spinRoulette(event.getWinningNumber());
                 break;
             case "RESULTS_SCORES":
-                //                setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) + event.amount);
+                setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) + event.amount);
                 addStringToFeed(event.playerName + " won " + event.amount + "$");
                 break;
             case "PLAYER_RESIGNED":
                 if (isMyEvent(event.playerName)) {
                     showMessage("You timed out", true);
                 } else {
-                    //                    setPlayerResigned(event.playerName);
+                    setPlayerResigned(event.playerName);
                     addStringToFeed(event.playerName + " has resigned");
                 }
                 break;
@@ -152,11 +150,11 @@ function checkForServerEvents() {
 }
 
 function setPlayerMoney(name, money) {
-    $("#player" + name + "money").val(money);
+    $("#player" + name + "money").html(money);
 }
 
 function getPlayerMoney(name) {
-    $("#player" + name + "money").val();
+    $("#player" + name + "money").html();
 }
 
 function isMyEvent(eventPlayerName) {
@@ -182,7 +180,6 @@ function makeBet(playerID, type, betMoney, numbers) {
     });
 }
 
-var finishBettingB;
 function finishBetting(playerID) {
     $.ajax({
         data: {"playerID": playerID},
@@ -207,4 +204,13 @@ function resign() {
             clearInterval(eventsInterval);
         }
     });
+}
+
+function setPlayerResigned(name) {
+    $("#player" + name).getName().getStyleClass().remove("themeLabel");
+    $("#player" + name).getName().getStyleClass().remove("themeLabel");
+}
+
+function  spinRoulette(position) {
+    addStringToFeed("Ball on: " + position);
 }

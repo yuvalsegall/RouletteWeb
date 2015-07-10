@@ -124,8 +124,8 @@ public interface RouletteWebService {
      * @param playerName
      * @return
      *     returns int
-     * @throws GameDoesNotExists_Exception
      * @throws InvalidParameters_Exception
+     * @throws GameDoesNotExists_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -230,9 +230,9 @@ public interface RouletteWebService {
      * @param xmlData
      * @return
      *     returns java.lang.String
+     * @throws InvalidXML_Exception
      * @throws DuplicateGameName_Exception
      * @throws InvalidParameters_Exception
-     * @throws InvalidXML_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
