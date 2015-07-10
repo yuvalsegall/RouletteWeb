@@ -18,10 +18,18 @@
     width:810px;
     background-color: green;
     text-align: center;
+    height: 249px;
 }
 
+.myRow{
+    width: 810px;
+}
+
+.myTd{
+    width: 25px;
+}
 .table{
-    width:810px;
+    width:inherit;
     text-align: center;
 }
 
@@ -40,17 +48,10 @@
 
 .american{
     background-image: url("/RouletteWeb/img/americanTable.png");
-    width:810px;
-    background-color: green;
-    height: 249px;
-
 }
 
 .french{
     background-image: url("/RouletteWeb/img/frenchTable.png");
-    width:810px;
-    background-color: green;
-    height: 249px;
 }
 
 .formBack{
@@ -133,4 +134,3 @@ body {
     display: block;
     margin: 20px 0;
 }
-

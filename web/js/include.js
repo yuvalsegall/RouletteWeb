@@ -107,44 +107,23 @@ function createGame() {
     });
 }
 
-function joinGame(gameToJoin){
-    if($('#userName').val() === ""){
-        showMessage('Name cannot be empty', true);
-        return;
-    }
-    $.ajax({
-        data: {'gameName' : gameToJoin, 'playerName' : $('#userName').val()},
-        dataType: 'json',
-        url: 'JoinGame',
-        error: function (response) {
-            showMessage(response.getResponseHeader('exception'), true);
-        },
-        success: function (response) {
-            playerID = response;
-            playerName = $('#userName').val();
-            gameName = gameToJoin;
-            getGameDetails(gameName);
-        }
-    });    
-}
-
 function setBoard(tableType){
     var numOfCols = 27;
     var numOfRows = 8;
     var buttonId = 0;
-    $('#board').append('<div id=tableDiv><div>');
+    $('#board').append('<div id=tableDiv></div>');
     var boardDiv = $('#tableDiv');
     var table = $('<table></table>').addClass('table');
 
     boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
-        var row = $('<tr></tr>');
+        var row = $('<tr></tr>').addClass('myRow');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
-            var cell = $('<td></td>');
+            var cell = $('<td></td>').addClass('myTd');
             row.append(cell);
-            var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+            var button = $('<a class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
             buttonId++;
             cell.append(button);
         }
