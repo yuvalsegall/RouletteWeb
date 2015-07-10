@@ -55,20 +55,20 @@ function checkServerStatus() {
 }
 
 function setServer(){
-	$.ajax({
-	  type: "POST",
-	  url:  'Configurations',
-	  data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
-	  error: function(response){
-	  	showMessage('Error Connectiong to server, try again', true);
-	  },
-	  success: function(response){
+    $.ajax({
+      type: "POST",
+      url:  'Configurations',
+      data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+      error: function(response){
+        showMessage('Error Connectiong to server, try again', true);
+      },
+      success: function(response){
         $('#loginDiv').hide();
-	  	hasServer = true;
-	  	enableGame();
-	  },
-	  dataType: null
-	});
+        hasServer = true;
+        enableGame();
+      },
+      dataType: null
+    });
 }
 
 function waitForLogin() {

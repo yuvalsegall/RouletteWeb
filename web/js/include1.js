@@ -73,9 +73,6 @@ function getPlayersDetails(listId) {
         },
         success: function (response, xhr) {
             playersDetails = response;
-            playersDetails = playersDetails.filter(function (player) {
-                return player.id !== 0;
-            });
             $("#" + listId).empty();
             playersDetails.forEach(function (player) {
                 if (listId === "playersList") {
@@ -84,21 +81,9 @@ function getPlayersDetails(listId) {
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
                 }
                 else {
-                    var targetList = $('#playersList');
-                    targetList.empty();
-                    for (var i = 0; i < response.length; i++) {
-                        var li = $('<li></li>');
-                        li.addClass("list-group-item");
-                        var a = $('<a onClick=joinGame("' + encodeURI(response[i]) + '")></a>');
-                        li.append(a);
-                        a.html(response[i]);
-                        targetList.append(li);
-                    }
+                    if (player.type === 'HUMAN')
+                        $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
                 }
-                $("#" + listId).append($("<li></li>").addClass("list-group-item").attr("id", "player" + player.name));
-                $("#player" + player.name).append($("<span></span>").addClass("playerName").html(player.name));
-                $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
-            }
             });
         }
     });
@@ -136,13 +121,15 @@ function checkForServerEvents() {
             case "GAME_OVER":
                 showMessage("The game has ended.", true);
                 clearInterval(eventsInterval);
-                replacePage('createGame');
+                replacePage('createNewGame');
                 break;
             case "GAME_START":
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
-                spinRoulette(event.getWinningNumber());
+                $("#wheel").show();
+                addStringToFeed("Ball on: " + event.winningNumber);
+                spinRoulette();
                 break;
             case "RESULTS_SCORES":
                 setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) + event.amount);
@@ -232,6 +219,7 @@ function resign() {
         },
         success: function (response, xhr) {
             clearInterval(eventsInterval);
+            replacePage("createNewGame");
         }
     });
 }
@@ -240,14 +228,15 @@ function setPlayerResigned(name) {
     $("#player" + name).addClass("playerResigned");
 }
 
-function spinRoulette(position) {
-    addStringToFeed("Ball on: " + position);
+function spinRoulette() {
     document.getElementById("wheel").style.transform = "rotate(" + degrees + "deg)";
     degrees--;
     if (degrees > 0)
         setTimeout('spinWheel()', 20);
-    else
+    else {
+        $("#wheel").hide();
         degrees = 270;
+    }
 }
 
 function getWaitingGames() {
@@ -287,26 +276,28 @@ function getCreateNewGame() {
 function getCreateXMLGame() {
     $(".menu").removeClass("active");
     $("#menuCreateXMLGame").addClass("active");
+    $("#XMLplayersList").empty();
     replacePage('createXMLGame');
 }
 
-function joinGame(gameToJoin, ) {
-    var playerName;
-    //XML Game
-    if (gameToJoin === '') {
-        gameToJoin = gameName;
+function joinGame(gameToJoin) {
+    gameName = decodeURI(gameToJoin);
+    if ($('#userName').val() === "") {
+        showMessage('Name cannot be empty', true);
+        return;
     }
-    else {
-        gameToJoin = decodeURI(gameToJoin);
-        if ($('#userName').val() === "") {
-            showMessage('Name cannot be empty', true);
-            return;
-        }
-        playerName = $('#userName').val();
-    }
+    playerName = $('#userName').val();
+    joinPlayerToGame();
 
+}
+function joinXMLGame(playerNameToJoin) {
+    playerName = playerNameToJoin;
+    joinPlayerToGame();
+}
+
+function joinPlayerToGame(gameToJoin) {
     $.ajax({
-        data: {'gameName': gameToJoin, 'playerName': playerName},
+        data: {'gameName': gameName, 'playerName': playerName},
         dataType: 'json',
         url: 'JoinGame',
         error: function (response) {
@@ -314,8 +305,6 @@ function joinGame(gameToJoin, ) {
         },
         success: function (response) {
             playerID = response;
-            playerName = $('#userName').val();
-            gameName = gameToJoin;
             startGame(gameName);
         }
     });
