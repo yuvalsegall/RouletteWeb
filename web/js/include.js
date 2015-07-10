@@ -106,18 +106,18 @@ function setBoard(tableType){
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
         var row = $('<tr></tr>')
-        k == 0 ? row.addClass('firstRow') : row.addClass('allRows');
+        k === 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
-            if(i == 0 || i == numOfCols-1)
+            if(i === 0 || i === numOfCols-1)
                 var cell = $('<td></td>').addClass('firstTd');
             else
                 var cell = $('<td></td>').addClass('midTd');
             row.append(cell);
             var button;
-            if(k == 0){
+            if(k === 0){
                 var firstNumber = 3;
-                if(i > 0 && i % 2 == 0){
+                if(i > 0 && i % 2 === 0){
                     firstNumber = 3 * i / 2;
                     var numbers = [firstNumber, firstNumber-1, firstNumber-2];
                     button = createTableButton('STREET',numbers);
@@ -132,7 +132,7 @@ function setBoard(tableType){
     boardDiv = $('#secondTable');
     boardDiv.append(table);
     for(var k=0 ; k < numOfActionRows ; k++){
-        if(k==1){
+        if(k === 1){
             $('#board').append('<div id=thirdTable></div>');
             table = $('<table></table>');
             boardDiv = $('#thirdTable');
@@ -141,10 +141,10 @@ function setBoard(tableType){
         var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for(var i=0 ; i < numOfActionCols ; i++){
-            if(k == 0 && i % 2 == 1)
+            if(k === 0 && i % 2 === 1)
                 continue;
             var cell = $('<td></td>');
-            k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
+            k === 0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
             row.append(cell);
             var button = createTableButton();
             buttonId++;
