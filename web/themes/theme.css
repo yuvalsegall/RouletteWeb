@@ -23,14 +23,28 @@
 
 .myRow{
     width: 810px;
+    height: 20px;
 }
 
 .myTd{
     width: 30px;
+    border: 0px;
 }
+
+.firstTd{
+    width:50px;
+    border: 0px;
+}
+
+.midTd{
+    width:20px;
+    border: 0px;
+}
+
 .table{
     width: 810px;
     text-align: center;
+    margin-left: 60px;
 }
 
 .tableButton{
@@ -40,6 +54,7 @@
 
 .blackButton{
     background-color: black;
+    color: black;
 }
 
 .redButton{

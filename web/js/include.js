@@ -121,7 +121,10 @@ function setBoard(tableType){
         var row = $('<tr></tr>').addClass('myRow');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
-            var cell = $('<td></td>').addClass('myTd');
+            if(i==0)
+                var cell = $('<td></td>').addClass('firstTd');
+            else
+                var cell = $('<td></td>').addClass('midTd');
             row.append(cell);
             var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
             buttonId++;
