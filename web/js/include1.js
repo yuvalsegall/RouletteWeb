@@ -127,7 +127,7 @@ function checkForServerEvents() {
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
-                $("#wheel").show();
+                $("#wheel").fadeIn();
                 addStringToFeed("Ball on: " + event.winningNumber);
                 spinRoulette();
                 break;
@@ -177,12 +177,12 @@ function addStringToFeed(str) {
 //    $("#eventsList").scrollTo($("#eventslist").size() - 1);
 }
 
-function makeBet() {
+function makeBet(type,numbers) {
     if (betAmount <= 0)
         showMessage("Choose amount to bet on", true);
     else
         $.ajax({
-            data: {"playerID": playerID, "type": betType, "betMoney": betAmount, "numbers": betNumbers},
+            data: {"playerID": playerID, "type": type, "betMoney": betAmount, "numbers": numbers},
             url: 'MakeBet',
             error: function (response) {
                 showMessage(response.getResponseHeader('exception'), true);
@@ -232,9 +232,9 @@ function spinRoulette() {
     document.getElementById("wheel").style.transform = "rotate(" + degrees + "deg)";
     degrees--;
     if (degrees > 0)
-        setTimeout('spinWheel()', 20);
+        setTimeout('spinRoulette()', 20);
     else {
-        $("#wheel").hide();
+        $("#wheel").fadeOut();
         degrees = 270;
     }
 }
@@ -356,4 +356,8 @@ function addChipToAmount(amount) {
         betAmount += amount;
         $("#betAmount").html(betAmount);
     }
+}
+
+function createTableButton(type, numbers){
+    return $('<button href="#" class="tableButton" onclick=makeBet.apply("+this+",'+numbers+','+type+')></button>');
 }

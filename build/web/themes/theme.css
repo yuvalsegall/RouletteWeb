@@ -33,7 +33,7 @@
 }
 
 .table{
-    width: 730px;
+    width: 750px;
     text-align: center;
 }
 
@@ -48,7 +48,7 @@
     width:45px;
     border: 0px !important;
     padding: 0px !important;
-    margin-left: 16px;
+    margin-right: 36px;
 }
 
 .midTd{
@@ -214,9 +214,19 @@ body {
 }
 .bottomPanel{
     float:left;
-    width: 25%;
+    width: 33%;
+    height: 400px;
 }
+#centerPoint {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
 #wheel{
+    display: none;
     height: 300px;
-    max-width: 300px;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
 }

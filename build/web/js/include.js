@@ -55,20 +55,20 @@ function checkServerStatus() {
 }
 
 function setServer(){
-	$.ajax({
-	  type: "POST",
-	  url:  'Configurations',
-	  data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
-	  error: function(response){
-	  	showMessage('Error Connectiong to server, try again', true);
-	  },
-	  success: function(response){
+    $.ajax({
+      type: "POST",
+      url:  'Configurations',
+      data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+      error: function(response){
+        showMessage('Error Connectiong to server, try again', true);
+      },
+      success: function(response){
         $('#loginDiv').hide();
-	  	hasServer = true;
-	  	enableGame();
-	  },
-	  dataType: null
-	});
+        hasServer = true;
+        enableGame();
+      },
+      dataType: null
+    });
 }
 
 function waitForLogin() {
@@ -124,11 +124,10 @@ function setBoard(tableType){
                 var firstNumber = 3;
                 if(i > 0 && i % 2 === 0){
                     firstNumber = 3 * i / 2;
-                    betNumbers = [firstNumber, firstNumber-1, firstNumber-2];
-                    betType = 'STREET';
-                    button = createTableButton();
+                    numbers = [firstNumber, firstNumber-1, firstNumber-2];
+                    button = createTableButton('STREET',numbers);
+                    cell.append(button);
                 }
-                cell.append(button);
             }
             buttonId++;
         }
@@ -157,10 +156,6 @@ function setBoard(tableType){
             cell.append(button);
         }
     }
-}
-
-function createTableButton(type, numbers){
-    return $('<button href="#" class="tableButton" onclick=makeBet()></button>');
 }
 
 function buttonClicked(buttonID){

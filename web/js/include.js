@@ -117,16 +117,15 @@ function setBoard(tableType){
             else if(i === numOfCols-1)
                 cell.addClass('lastTd');
             else
-                cell.addClass('midTd'+i);
+                cell.addClass('midTd');
             row.append(cell);
             var button;
             if(k === 0){
                 var firstNumber = 3;
                 if(i > 0 && i % 2 === 0){
                     firstNumber = 3 * i / 2;
-                    betNumbers = [firstNumber, firstNumber-1, firstNumber-2];
-                    betType = 'STREET';
-                    button = createTableButton();
+                    numbers = [firstNumber, firstNumber-1, firstNumber-2];
+                    button = createTableButton('STREET',numbers);
                     cell.append(button);
                 }
             }
@@ -157,10 +156,6 @@ function setBoard(tableType){
             cell.append(button);
         }
     }
-}
-
-function createTableButton(type, numbers){
-    return $('<button href="#" class="tableButton" onclick=makeBet()></button>');
 }
 
 function buttonClicked(buttonID){
