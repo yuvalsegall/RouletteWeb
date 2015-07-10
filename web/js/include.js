@@ -153,31 +153,56 @@ function joinGame(gameToJoin){
 }
 
 function setBoard(tableType){
-    var numOfOuterCols = 6;
-    var numOfInnerCols = 6;
+    var numOfCols = 27;
     var numOfRows = 8;
     var buttonId = 0;
     $('#board').append('<div id=tableDiv><div>');
     var boardDiv = $('#tableDiv');
-
+    var table = $('<table></table>').addClass('table');
+    
+    boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
-        for(var i=0 ; i < numOfOuterCols ; i++){
-            var outerRow = $('<div></div>').addClass('col-xs-2');
-            boardDiv.append(outerRow);
-            var innerRow = $('<div></div>').addClass('row');
-            outerRow.append(innerRow);
-            for(var j=0 ; j < numOfInnerCols ; j++){
-                var col = $('<div></div>').addClass('col-xs-2');
-                innerRow.append(col);
-                var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
-                buttonId++;
-                col.append(button);
+        var row = $('<tr></tr>');
+        table.append(row);
+        for(var i=0 ; i < numOfCols ; i++){
+            var cell = $('<td></td>');
+            row.append(cell);
+            var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+            buttonId++;
+            cell.append(button);
             }
         }
-        // boardDiv.append('<br>');
     }
 }
+
+// function setBoard(tableType){
+//     var numOfOuterCols = 6;
+//     var numOfInnerCols = 6;
+//     var numOfRows = 8;
+//     var buttonId = 0;
+//     $('#board').append('<div id=tableDiv><div>');
+//     var boardDiv = $('#tableDiv');
+
+//     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
+//     for(var k=0 ; k < numOfRows ; k++){
+//         var row = $('<div></div>').addClass('row');
+//         boardDiv.append(row);
+//         for(var i=0 ; i < numOfOuterCols ; i++){
+//             var outerRow = $('<div></div>').addClass('col-xs-2');
+//             row.append(outerRow);
+//             var innerRow = $('<div></div>').addClass('row');
+//             outerRow.append(innerRow);
+//             for(var j=0 ; j < numOfInnerCols ; j++){
+//                 var col = $('<div></div>').addClass('col-xs-2');
+//                 innerRow.append(col);
+//                 var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+//                 buttonId++;
+//                 col.append(button);
+//             }
+//         }
+//     }
+// }
 
 function buttonClicked(buttonID){
 

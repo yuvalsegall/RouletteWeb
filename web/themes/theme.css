@@ -20,9 +20,14 @@
     text-align: center;
 }
 
+.table{
+    width:810px;
+    text-align: center;
+}
+
 .tableButton{
-    width: 21px;
-    height: 21px;
+    width: inherit;
+    min-height: 21px;
 }
 
 .blackButton{
