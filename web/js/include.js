@@ -103,7 +103,10 @@ function setBoard(tableType){
     boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
-        var row = $('<tr></tr>').addClass('myRow');
+        if(k==0)
+            var row = $('<tr></tr>').addClass('firstRow');
+        else
+            var row = $('<tr></tr>').addClass('allRows');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
             if(i == 0 || i == numOfCols-1)
