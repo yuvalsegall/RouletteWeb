@@ -117,7 +117,7 @@ function setBoard(tableType){
             else if(i === numOfCols-1)
                 cell.addClass('lastTd');
             else
-                cell.addClass('midTd');
+                cell.addClass('midTd'+i);
             row.append(cell);
             var button;
             if(k === 0){
@@ -127,8 +127,8 @@ function setBoard(tableType){
                     betNumbers = [firstNumber, firstNumber-1, firstNumber-2];
                     betType = 'STREET';
                     button = createTableButton();
+                    cell.append(button);
                 }
-                cell.append(button);
             }
             buttonId++;
         }

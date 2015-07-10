@@ -33,7 +33,7 @@
 }
 
 .table{
-    width: 730px;
+    width: 750px;
     text-align: center;
 }
 
@@ -48,7 +48,7 @@
     width:45px;
     border: 0px !important;
     padding: 0px !important;
-    margin-left: 16px;
+    margin-right: 36px;
 }
 
 .midTd{
