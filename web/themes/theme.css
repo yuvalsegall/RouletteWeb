@@ -202,8 +202,13 @@ body {
 .frenchRoulette{
     background-image: url("/RouletteWeb/img/frenchRoulette.png");
 }
+
+#gamePanel{
+    width:100%;
+    overflow: hidden;
+}
 .buttonPanel{
-    float:right;
+    float:left;
     width: 25%;
 }
 #wheel{
