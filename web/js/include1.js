@@ -177,7 +177,9 @@ function addStringToFeed(str) {
 //    $("#eventsList").scrollTo($("#eventslist").size() - 1);
 }
 
-function makeBet(type,numbers) {
+function makeBet(type) {
+    var numbers = Array.prototype.slice.call(arguments, 1);
+    numbers =  JSON.stringify(numbers);
     if (betAmount <= 0)
         showMessage("Choose amount to bet on", true);
     else
@@ -189,6 +191,7 @@ function makeBet(type,numbers) {
             },
             success: function (response, xhr) {
                 betAmount = 0;
+                $("#betAmount").html(betAmount);
                 hadBet = true;
             }
         });
@@ -331,6 +334,7 @@ function createGame() {
 }
 
 function yuval() {
+    playerID = 1111;
     $.ajax({
         data: {"gameName": "yuval"},
         url: 'GetGameDetails',
@@ -358,6 +362,6 @@ function addChipToAmount(amount) {
     }
 }
 
-function createTableButton(type, numbers){
-    return $('<button href="#" class="tableButton" onclick=makeBet.apply("+this+",'+numbers+','+type+')></button>');
+function createTableButton(type, numbers) {
+    return $('<button href="#" class="tableButton" onclick=makeBet("' + type + '",' + numbers + ')></button>');
 }
