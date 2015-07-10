@@ -145,12 +145,12 @@ function setBoard(tableType){
                     cell.append(button);                    
                 }
                 else if(i % 2 === 0){
-                    numbers = [firstNumber*(i/2)];
+                    numbers = [firstNumber*parseInt((i/2))];
                     button = createTableButton('STRAIGHT',numbers);
                     cell.append(button);
                 }
                 else{
-                    var first = firstNumber*(i/2);
+                    var first = firstNumber*parseInt((i/2));
                     numbers = [first, first+3];
                     button = createTableButton('SPLIT',numbers);
                     cell.append(button);
@@ -159,14 +159,18 @@ function setBoard(tableType){
             if(k === 2){
                 var firstNumber = 3;
                 if(i === 0){
-                    numbers = [37];
+                    tableType === 'AMERICAN' ? numbers = [37] : numbers = [0];
                     button = createTableButton('STRAIGHT',numbers);
                     cell.append(button);
                 }
-                else if(i === 2){
-                    numbers = [2, 3, 37];
-                    button = createTableButton('BASKET',numbers);
-                    cell.append(button);
+                else if(i === 1){
+                    if(tableType === 'AMERICAN'){
+                        numbers = [2, 3, 37];
+                        button = createTableButton('BASKET',numbers);
+                        cell.append(button);
+                    }else{
+                        continue;
+                    }
                 }
                 else if(i === 25 || i === 26)
                     continue;
@@ -177,8 +181,8 @@ function setBoard(tableType){
                     cell.append(button);
                 }
                 else{
-                    var first = firstNumber * (i / 2);
-                    var second = firstNumber * (i / 2) + 3;
+                    var first = firstNumber * parseInt((i / 2));
+                    var second = firstNumber * parseInt((i / 2)) + 3;
                     numbers = [first, first - 1, second, second - 1];
                     button = createTableButton('CORNER',numbers);
                     cell.append(button);
@@ -186,7 +190,12 @@ function setBoard(tableType){
             }
             if(k === 3){
                 var firstNumber = 3;
-                if(i === 0 || i === 25)
+                if(i === 0 && tableType === 'FRENCH'){
+                    numbers = [0];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button); 
+                }
+                else if(i === 0 || i === 25)
                     continue;
                 else if(i === 1){
                     numbers = [0, 2, 37];
@@ -199,14 +208,45 @@ function setBoard(tableType){
                     cell.append(button);                    
                 }
                 else if(i % 2 === 0){
-                    numbers = [firstNumber*(i/2)-1];
+                    numbers = [firstNumber*parseInt((i/2))-1];
                     button = createTableButton('STRAIGHT',numbers);
                     cell.append(button);                }
                 else{
-                    var first = firstNumber*(i/2)-1;
+                    var first = firstNumber*parseInt((i/2))-1;
                     numbers = [first, first + 3];
                     button = createTableButton('STRAIGHT',numbers);
                     cell.append(button);  
+                }
+            }
+            if(k === 4){
+                var firstNumber = 3;
+                if(i === 0){
+                    tableType === 'AMERICAN' ? numbers = [37] : numbers = [0];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);
+                }
+                else if(i === 1){
+                    if(tableType === 'AMERICAN'){
+                        numbers = [0, 1, 2];
+                        button = createTableButton('BASKET',numbers);
+                        cell.append(button);
+                    }else
+                        continue;
+                }
+                else if(i === 25 || i === 26)
+                    continue;
+                else if(i % 2 === 0){
+                    var first = firstNumber * (i / 2) - 1;
+                    numbers = [first, first - 1];
+                    button = createTableButton('SPLIT',numbers);
+                    cell.append(button);
+                }
+                else{
+                    var first = firstNumber * parseInt((i / 2)) - 1;
+                    var second = firstNumber * parseInt((i / 2)) + 2;
+                    numbers = [first, first - 1, second, second - 1];
+                    button = createTableButton('CORNER',numbers);
+                    cell.append(button);
                 }
             }
         }
