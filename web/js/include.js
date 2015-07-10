@@ -114,7 +114,7 @@ function setBoard(tableType){
             else
                 var cell = $('<td></td>').addClass('midTd');
             row.append(cell);
-            var button = createTableButon();
+            var button = createTableButon(buttonId);
             buttonId++;
             cell.append(button);
         }
@@ -138,14 +138,14 @@ function setBoard(tableType){
             var cell = $('<td></td>');
             k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
             row.append(cell);
-            var button = createTableButon();
+            var button = createTableButon(buttonId);
             buttonId++;
             cell.append(button);
         }
     }
 }
 
-function createTableButon(){
+function createTableButon(buttonId){
     return $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
 }
 
