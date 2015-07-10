@@ -156,10 +156,57 @@ function setBoard(tableType){
                     cell.append(button);
                 }
             }
-            if(k===2){
-                var firstNumber = 2;
-                if(i===0){
-
+            if(k === 2){
+                var firstNumber = 3;
+                if(i === 0){
+                    numbers = [37];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);
+                }
+                else if(i === 2){
+                    numbers = [2, 3, 37];
+                    button = createTableButton('BASKET',numbers);
+                    cell.append(button);
+                }
+                else if(i === 25 || i === 26)
+                    continue;
+                else if(i % 2 === 0){
+                    var first = firstNumber * (i / 2);
+                    numbers = [first, first - 1];
+                    button = createTableButton('SPLIT',numbers);
+                    cell.append(button);
+                }
+                else{
+                    var first = firstNumber * (i / 2);
+                    var second = firstNumber * (i / 2) + 3;
+                    numbers = [first, first - 1, second, second - 1];
+                    button = createTableButton('CORNER',numbers);
+                    cell.append(button);
+                }
+            }
+            if(k === 3){
+                var firstNumber = 3;
+                if(i === 0 || i === 25)
+                    continue;
+                else if(i === 1){
+                    numbers = [0, 2, 37];
+                    button = createTableButton('BASKET',numbers);
+                    cell.append(button);
+                }
+                else if(i === 26){
+                    numbers = COLUMN_2;
+                    button = createTableButton('COLUMN_2',numbers);
+                    cell.append(button);                    
+                }
+                else if(i % 2 === 0){
+                    numbers = [firstNumber*(i/2)-1];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);                }
+                else{
+                    var first = firstNumber*(i/2)-1;
+                    numbers = [first, first + 3];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);  
                 }
             }
         }
