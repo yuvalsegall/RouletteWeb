@@ -105,7 +105,7 @@ function setBoard(tableType){
     boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
-        var row = $('<tr></tr>')
+        var row = $('<tr></tr>');
         k === 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
@@ -154,7 +154,7 @@ function setBoard(tableType){
 }
 
 function createTableButton(type, numbers){
-    return $('<a class="tableButton blackButton" onclick=makeBet(' + type + ',' + numbers + ')></a>');
+    return $('<a href="#" class="tableButton" onclick=makeBet("' + type + ',' + numbers + '")></a>');
 }
 
 function buttonClicked(buttonID){

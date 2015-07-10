@@ -84,12 +84,8 @@
 
 .tableButton{
     width: 100%;
-    /*height: 25px;*/
-}
-
-.blackButton{
-    background-color: black;
-    color: black;
+    height: 100%;
+    cursor: hand;
 }
 
 .redButton{
