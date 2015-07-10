@@ -108,7 +108,7 @@ function createGame() {
 }
 
 function setBoard(tableType){
-    var numOfCols = 27;
+    var numOfCols = 26;
     var numOfRows = 8;
     var buttonId = 0;
     $('#board').append('<div id=tableDiv></div>');
@@ -121,7 +121,7 @@ function setBoard(tableType){
         var row = $('<tr></tr>').addClass('myRow');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
-            if(i==0)
+            if(i == 0 || i == numOfCols-1)
                 var cell = $('<td></td>').addClass('firstTd');
             else
                 var cell = $('<td></td>').addClass('midTd');
