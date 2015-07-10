@@ -1,13 +1,13 @@
-var lastEventId = 0;
+var lastEventId;
 var events;
 var eventsInterval;
 var playersDetails;
 var playerDetails;
 var currentPage;
-var degrees = 270;
-var betAmount = 0;
+var degrees;
+var betAmount;
 var mustBet;
-var hadBet = false;
+var hadBet;
 
 $(document).on('change', '#XMLFileChooser',
         function (e) {
@@ -17,7 +17,34 @@ $(document).on('change', '#XMLFileChooser',
 );
 
 function init() {
-    replacePage('createNewGame');
+    lastEventId = null;
+    events = null;
+    eventsInterval = null;
+    playersDetails = null;
+    playerDetails = null;
+    currentPage = null;
+    degrees = 270;
+    betAmount = 0;
+    mustBet = null;
+    hadBet = false;
+    $("#serverAddress").val("localhost");
+    $("#serverPort").val("80");
+    $("#XMLFileChooser").val("");
+    $("#gameName").val("");
+    $('#fileNameField').val(" ");
+    $("#uploadFile").prop('disabled', true);
+    $("#minWages").attr("data-slider-value", "0");
+    $("#maxWages").attr("data-slider-value", "4");
+    $("#initialAmount").attr("data-slider-value", "30");
+    $("#humans").attr("data", "value: '6'");
+    $("#computers").val("6");
+    $("#computers").slider({
+        'value': '6'
+    });
+    $("#gameName").val("");
+    $("#XMLFileChooser").val("");
+    $("#gameName").val("");
+    setForm();
 }
 
 function loadGameFromXML() {
@@ -32,8 +59,6 @@ function loadGameFromXML() {
                 },
                 success: function (response, xhr) {
                     gameName = response;
-                    $('#fileNameField').val(" ");
-                    $("#uploadFile").prop('disabled', true);
                     getPlayersDetails("XMLplayersList");
                 }
             });
@@ -124,6 +149,7 @@ function checkForServerEvents() {
                 replacePage('createNewGame');
                 break;
             case "GAME_START":
+                getPlayersDetails("playersList");
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
@@ -132,7 +158,7 @@ function checkForServerEvents() {
                 spinRoulette();
                 break;
             case "RESULTS_SCORES":
-                setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) + event.amount);
+                setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) + parseInt(event.amount));
                 addStringToFeed(event.playerName + " won " + event.amount + "$");
                 break;
             case "PLAYER_RESIGNED":
@@ -144,7 +170,7 @@ function checkForServerEvents() {
                 }
                 break;
             case "PLAYER_BET":
-                setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) - event.amount);
+                setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) - parseInt(event.amount));
                 if (!isMyEvent(event.playerName)) {
                     addStringToFeed(event.playerName + " bet " + event.amount + "$ on " + event.betType);
                 }
@@ -179,7 +205,7 @@ function addStringToFeed(str) {
 
 function makeBet(type) {
     var numbers = Array.prototype.slice.call(arguments, 1);
-    numbers =  JSON.stringify(numbers);
+    numbers = JSON.stringify(numbers);
     if (betAmount <= 0)
         showMessage("Choose amount to bet on", true);
     else
@@ -265,21 +291,27 @@ function getWaitingGames() {
             ;
         }
     });
-    $(".menu").removeClass("active");
-    $("#menuJoinGame").addClass("active");
-    replacePage('joinGame');
 }
 
 function getCreateNewGame() {
     $(".menu").removeClass("active");
     $("#menuCreateNewGame").addClass("active");
+    init();
     replacePage('createNewGame');
+}
+
+function getJoinGame() {
+    $(".menu").removeClass("active");
+    $("#menuJoinGame").addClass("active");
+    init();
+    getWaitingGames();
+    replacePage('joinGame');
 }
 
 function getCreateXMLGame() {
     $(".menu").removeClass("active");
     $("#menuCreateXMLGame").addClass("active");
-    $("#XMLplayersList").empty();
+    init();
     replacePage('createXMLGame');
 }
 

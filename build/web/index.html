@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/include1.js"></script>
     <script type="text/javascript" src="js/include.js"></script>
 </head>
-<body onload="init()">
+<body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav" id='navMenuLinks'>
                     <li id="menuCreateNewGame" role="presentation" class="menu active"><a href="#" onClick="getCreateNewGame()" >Create New Game</a></li>
                     <li id="menuCreateXMLGame" role="presentation" class="menu"><a href="#" onClick="getCreateXMLGame()">Create Game From XML</a></li>
-                    <li id="menuJoinGame" role="presentation" class="menu" ><a href="#" onClick="getWaitingGames()">Join Game</a></li>
+                    <li id="menuJoinGame" role="presentation" class="menu" ><a href="#" onClick="getJoinGames()">Join Game</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div id='loginDiv' class="form-group">
@@ -195,7 +195,9 @@
             	<div id='board'></div>
             </div>
             <div id='gamePanel'>
-	            <div id='wheel' class='bottomPanel'></div>
+	            <div id='events' class='bottomPanel'>
+	                <ul id='eventsList' class='list-group-item'></ul>
+	            </div>
 	            <div id='chips' class='bottomPanel'>
 	                BetAmount: <span id="betAmount">0</span>
 	                <input type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
@@ -203,14 +205,14 @@
 	                <input type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
 	                <input type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
 	            </div>
-	            <div id='events' class='bottomPanel'>
-	                <ul id='eventsList' class='list-group-item'></ul>
-	            </div>
 	            <div id='players' class='bottomPanel'>
 	                <ul id='playersList' class='list-group-item'></ul>
 	            </div>
 	        </div>
         </div>
+        <div id='centerPoint'>
+    		<div id='wheel' class='bottomPanel'></div>
+    	</div>
     </div>
     <footer class="footer">
         <div class="container">
