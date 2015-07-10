@@ -1,12 +1,12 @@
 #errorMessage{
-	display: none;
-	text-align: center;
-	margin-right: 10%;
-	margin-left: 10%;
+    display: none;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 #errorMessageBox{
-	height: 40px;
+    height: 40px;
 }
 
 #tableDiv{
@@ -19,12 +19,17 @@
 }
 
 #secondTable{
-    width:810px;
-    background-color: green;
+    width:745px;
     text-align: center;
-    padding-left: 110px;
-    padding-right: 20px;
-    margin-top: -100px;
+    padding-left: 116px;
+    margin-top: -108px;
+}
+
+#thirdTable{
+    width:745px;
+    text-align: center;
+    padding-left: 116px;
+    margin-top: -64px;
 }
 
 .table{
@@ -44,17 +49,17 @@
 
 .firstAction{
     margin-left:49px;
-    height: 40px;
+    height: 44px;
 }
 
 .firstActionTD{
-    width:180px;
+    width:248px;
     border: 0px !important;
     padding: 0px !important;
 }
 
 .secondActionTD{
-    width:90px;
+    width:124px;
     border: 0px !important;
     padding: 0px !important;    
 }

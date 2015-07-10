@@ -114,16 +114,22 @@ function setBoard(tableType){
             else
                 var cell = $('<td></td>').addClass('midTd');
             row.append(cell);
-            var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
+            var button = createTableButon();
             buttonId++;
             cell.append(button);
         }
     }
     $('#board').append('<div id=secondTable></div>');
-    table = $('<table></table>').addClass('table');
+    table = $('<table></table>');
     boardDiv = $('#secondTable');
     boardDiv.append(table);
     for(var k=0 ; k < numOfActionRows ; k++){
+        if(k==1){
+            $('#board').append('<div id=thirdTable></div>');
+            table = $('<table></table>');
+            boardDiv = $('#thirdTable');
+            boardDiv.append(table);
+        }
         var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for(var i=0 ; i < numOfActionCols ; i++){
@@ -132,11 +138,15 @@ function setBoard(tableType){
             var cell = $('<td></td>');
             k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
             row.append(cell);
-            var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
+            var button = createTableButon();
             buttonId++;
             cell.append(button);
         }
     }
+}
+
+function createTableButon(){
+    return $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
 }
 
 // function setBoard(tableType){
