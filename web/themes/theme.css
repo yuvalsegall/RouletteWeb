@@ -34,7 +34,7 @@
 }
 
 .firstActionRows{
-    margin-top: 15px;
+    margin-top: 15px !important;
     margin-left:49px;
     height: 40px;
 }
