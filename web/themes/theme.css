@@ -18,6 +18,15 @@
     padding-right: 20px;
 }
 
+#secondTable{
+    width:810px;
+    background-color: green;
+    text-align: center;
+    padding-left: 110px;
+    padding-right: 20px;
+    margin-top: -100px;
+}
+
 .table{
     width: 714px;
     text-align: center;
@@ -33,15 +42,9 @@
     height: 25px;
 }
 
-.firstActionRows{
-    margin-top: 15px !important;
+.firstAction{
     margin-left:49px;
     height: 40px;
-}
-
-.lastActionRows{
-    height: 40px;
-    margin-left:49px;
 }
 
 .firstActionTD{

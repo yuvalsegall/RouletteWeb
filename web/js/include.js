@@ -119,9 +119,12 @@ function setBoard(tableType){
             cell.append(button);
         }
     }
+    $('#board').append('<div id=secondTable></div>');
+    table = $('<table></table>').addClass('table');
+    boardDiv = $('#secondTable');
+    boardDiv.append(table);
     for(var k=0 ; k < numOfActionRows ; k++){
-        var row = $('<tr></tr>');
-        k == 0 ? row.addClass('firstActionRows') : row.addClass('lastActionRows');
+        var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for(var i=0 ; i < numOfActionCols ; i++){
             if(k == 0 && i % 2 == 1)
