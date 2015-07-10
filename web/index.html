@@ -40,6 +40,7 @@
                         <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'>
                     </div>
                 </form>
+                <input type='button' class="btn" value='Resign' onClick='resign()'>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -190,8 +191,8 @@
     </div>
     <div id='playGame' class='pages'>
         <div class='formBack'>
-            <input type='button' class="btn" value='Resign' onClick='resign()'>
-            <div id='board' class='buttonPanel'></div>
+            
+            <div id='board'></div>
             <div id='gamePanel'>
 	            <div id='wheel' class='buttonPanel'></div>
 	            <div id='chips' class='buttonPanel'>
@@ -204,7 +205,7 @@
 	            <div id='events' class='buttonPanel'>
 	                <ul id='eventsList' class='list-group-item'></ul>
 	            </div>
-	            <div id='players'>
+	            <div id='players' class='buttonPanel'>
 	                <ul id='playersList' class='list-group-item'></ul>
 	            </div>
 	        </div>
