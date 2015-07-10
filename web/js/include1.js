@@ -84,21 +84,8 @@ function getPlayersDetails(listId) {
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
                 }
                 else {
-                    var targetList = $('#playersList');
-                    targetList.empty();
-                    for (var i = 0; i < response.length; i++) {
-                        var li = $('<li></li>');
-                        li.addClass("list-group-item");
-                        var a = $('<a onClick=joinGame("' + encodeURI(response[i]) + '")></a>');
-                        li.append(a);
-                        a.html(response[i]);
-                        targetList.append(li);
-                    }
+                    $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
                 }
-                $("#" + listId).append($("<li></li>").addClass("list-group-item").attr("id", "player" + player.name));
-                $("#player" + player.name).append($("<span></span>").addClass("playerName").html(player.name));
-                $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
-            }
             });
         }
     });
@@ -142,7 +129,7 @@ function checkForServerEvents() {
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
-                spinRoulette(event.getWinningNumber());
+                spinRoulette(event.winningNumber);
                 break;
             case "RESULTS_SCORES":
                 setPlayerMoney(event.playerName, getPlayerMoney(event.playerName) + event.amount);
@@ -290,23 +277,24 @@ function getCreateXMLGame() {
     replacePage('createXMLGame');
 }
 
-function joinGame(gameToJoin, ) {
-    var playerName;
-    //XML Game
-    if (gameToJoin === '') {
-        gameToJoin = gameName;
+function joinGame(gameToJoin) {
+    gameName = decodeURI(gameToJoin);
+    if ($('#userName').val() === "") {
+        showMessage('Name cannot be empty', true);
+        return;
     }
-    else {
-        gameToJoin = decodeURI(gameToJoin);
-        if ($('#userName').val() === "") {
-            showMessage('Name cannot be empty', true);
-            return;
-        }
-        playerName = $('#userName').val();
-    }
+    playerName = $('#userName').val();
+    joinPlayerToGame();
 
+}
+function joinXMLGame(playerNameToJoin) {
+    playerName = playerNameToJoin;
+    joinPlayerToGame();
+}
+
+function joinPlayerToGame(gameToJoin) {
     $.ajax({
-        data: {'gameName': gameToJoin, 'playerName': playerName},
+        data: {'gameName': gameName, 'playerName': playerName},
         dataType: 'json',
         url: 'JoinGame',
         error: function (response) {
@@ -314,8 +302,6 @@ function joinGame(gameToJoin, ) {
         },
         success: function (response) {
             playerID = response;
-            playerName = $('#userName').val();
-            gameName = gameToJoin;
             startGame(gameName);
         }
     });
