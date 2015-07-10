@@ -124,8 +124,8 @@ public interface RouletteWebService {
      * @param playerName
      * @return
      *     returns int
-     * @throws InvalidParameters_Exception
      * @throws GameDoesNotExists_Exception
+     * @throws InvalidParameters_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")

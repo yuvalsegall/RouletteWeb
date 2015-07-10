@@ -11,8 +11,9 @@
     <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
     <link rel="stylesheet" href="themes/theme.css" />
     <script type="text/javascript" src="js/include.js"></script>
+    <script type="text/javascript" src="js/include1.js"></script>
 </head>
-<body class='overallColoring'>
+<body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,36 +30,36 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav" id='navMenuLinks'>
 			  <li role="presentation" class="active"><a href="#">Create Game</a></li>
-			  <li role="presentation"><a href="#">Load from XML</a></li>
-			  <li role="presentation"><a href="#">Join Game</a></li>
+			  <li role="presentation"><a onClick="function(){getWaitingGames(); replacePage('createGame','joinGame');}">Join Game</a></li>
 			</ul>
 			<form class="navbar-form navbar-left">
 	        <div id='loginDiv' class="form-group">
 	          <input id='serverAddress' type="text" class="form-control" value="localhost">
 	          <input id='serverPort' type="text" class="form-control" value="80">
+	          <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'>
 	        </div>
-	        <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'></input>
 	      </form>
       	</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+	<div id='errorMessageBox'>
+		<div id='errorMessage' class="alert alert-danger" role="alert"></div>
+	</div>
 	<div id='createGame'>
-		<div id='errorMessageBox'>
-			<div id='errorMessage' class="alert alert-danger" role="alert"></div>
-		</div>
 		<div class='formBack'>
 			<h4>Load From XML</h4>
 			<div class='row'>
-				<div class='col-xs-1 myCol'>
-					<span class="btn btn-default btn-file">
-					    Browse <input type="file" id="XMLFileChooser">
-					</span>
+				<div class='col-xs-2 myCol'>
+					<!-- <span class="btn btn-default btn-file"> -->
+					    <!-- Browse  -->
+					    <input type="file" id="XMLFileChooser">
+					<!-- </span> -->
 				</div>
 				<div class='col-xs-3 myCol'>
-					<input id='fileNameField' type="text" class="form-control" disabled></input>
+					<input id='fileNameField' type="text" class="form-control" disabled>
 				</div>
 				<div class='col-xs-2 myCol'>
-					<input id='uploadFile' type="button" class='btn btn-default' value='Upload' onClick='loadGameFromXML()' disabled></input>
+					<input id='uploadFile' type="button" class='btn btn-default' value='Upload' onClick='loadGameFromXML()' disabled>
 				</div>
 			</div>
 			<h4>Create New Game</h4>
@@ -157,7 +158,7 @@
 							<b>0</b>
 						</div>
 						<div class='col-xs-8'>	
-							<input id="computers" data-slider-id='computersSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="2"/>
+							<input id="computers" data-slider-id='computersSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="0"/>
 						</div>
 						<div class='col-xs-2'>
 							<b>6</b>
@@ -169,7 +170,29 @@
 		</div>
 	</div>
 	<div id='joinGame'>
-		<h1>joinGame</h1>
+		<div class='formBack'>
+			<h1>joinGame</h1>
+			<input id='userName' type="text" class="form-control" placeholder="Choose Name">
+			<br>
+			<div id='gamesDiv'>
+				<ul class="list-group" id='gamesList'>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id='playGame'>
+		<div class='formBack'>
+			<input type='button' class="btn" value='Resign' onClick='resign()'>
+			<div id='board'></div>
+			<div id='wheel'></div>
+			<div id='actions'></div>
+			<div id='events'>
+				<ul id='eventsList' class='list-group-item'></ul>
+			</div>
+			<div id='players'>
+				<ul id='playersList' class='list-group-item'></ul>
+			</div>
+		</div>
 	</div>
     <footer class="footer">
         <div class="container">
