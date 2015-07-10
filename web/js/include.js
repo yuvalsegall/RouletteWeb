@@ -175,6 +175,7 @@ function setBoard(tableType){
             }
         }
         // boardDiv.append('<br>');
+        //dasd
     }
 }
 
