@@ -94,7 +94,9 @@ function showMessage(msg, isError) {
 
 function setBoard(tableType){
     var numOfCols = 26;
-    var numOfRows = 8;
+    var numOfRows = 6;
+    var numOfActionRows = 2;
+    var numOfActionCols = 6;
     var buttonId = 0;
     $('#board').append('<div id=tableDiv></div>');
     var boardDiv = $('#tableDiv');
@@ -103,16 +105,29 @@ function setBoard(tableType){
     boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
-        if(k==0)
-            var row = $('<tr></tr>').addClass('firstRow');
-        else
-            var row = $('<tr></tr>').addClass('allRows');
+        var row = $('<tr></tr>')
+        k == 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
             if(i == 0 || i == numOfCols-1)
                 var cell = $('<td></td>').addClass('firstTd');
             else
                 var cell = $('<td></td>').addClass('midTd');
+            row.append(cell);
+            var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
+            buttonId++;
+            cell.append(button);
+        }
+    }
+    for(var k=0 ; k < numOfActionRows ; k++){
+        var row = $('<tr></tr>');
+        k == 0 ? row.addClass('firstActionRows') : row.addClass('lastActionRows');
+        table.append(row);
+        for(var i=0 ; i < numOfActionCols ; i++){
+            if(k == 0 || i % 2 == 1)
+                continue;
+            var cell = $('<td></td>');
+            k==0 ? cell.addClass('firstActionTD') : cell.addClass('secondActionTD');
             row.append(cell);
             var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
             buttonId++;
