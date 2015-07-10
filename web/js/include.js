@@ -92,21 +92,6 @@ function showMessage(msg, isError) {
     $('#errorMessage').text(msg).show().fadeOut(2500);
 }
 
-function createGame() {
-    $.ajax({
-        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computers').val(), 'humanPlayers': $('#humans').val(), 'minWages': $('#minWages').val(), 'maxWages': $('#maxWages').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmount').val()},
-        url: 'CreateGame',
-        timeout: 5000,
-        error: function (response) {
-            showMessage(response.getResponseHeader('exception'), true);
-        },
-        success: function (response, xhr) {
-            getWaitingGames();
-            replacePage('createGame', 'joinGame');
-        }
-    });
-}
-
 function setBoard(tableType){
     var numOfCols = 28;
     var numOfRows = 8;
@@ -163,9 +148,4 @@ function setBoard(tableType){
 
 function buttonClicked(buttonID){
 
-}
-
-function replacePage(source, target){
-	$('#'+source).fadeOut();
-	$('#'+target).fadeIn();
 }
