@@ -23,9 +23,14 @@
     text-align: center;
 }
 
-.myRow{
+.allRows{
     width: 730px;
-    height: 30px;
+    height: 22px;
+}
+
+.firstRow{
+    width: 730px;
+    height: 25px;
 }
 
 .firstTd{
@@ -42,7 +47,7 @@
 
 .tableButton{
     width: 100%;
-    height: 20px;
+    /*height: 25px;*/
 }
 
 .blackButton{
