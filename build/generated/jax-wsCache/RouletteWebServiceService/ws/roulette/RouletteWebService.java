@@ -58,8 +58,8 @@ public interface RouletteWebService {
      * @param name
      * @param rouletteType
      * @param computerizedPlayers
-     * @throws DuplicateGameName_Exception
      * @throws InvalidParameters_Exception
+     * @throws DuplicateGameName_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "createGame", targetNamespace = "http://roulette.ws/", className = "ws.roulette.CreateGame")
@@ -231,8 +231,8 @@ public interface RouletteWebService {
      * @return
      *     returns java.lang.String
      * @throws InvalidXML_Exception
-     * @throws DuplicateGameName_Exception
      * @throws InvalidParameters_Exception
+     * @throws DuplicateGameName_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
