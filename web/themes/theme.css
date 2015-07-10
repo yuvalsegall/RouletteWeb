@@ -15,10 +15,22 @@
 }
 
 #tableDiv{
-    /*asfascd*/
     width:810px;
     background-color: green;
     text-align: center;
+}
+
+.tableButton{
+    width: 21px;
+    height: 21px;
+}
+
+.blackButton{
+    background-color: black;
+}
+
+.redButton{
+    background-color: red;
 }
 
 .american{

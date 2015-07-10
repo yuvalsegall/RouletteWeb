@@ -157,7 +157,8 @@ function setBoard(tableType){
     var numOfInnerCols = 6;
     var numOfRows = 8;
     var buttonId = 0;
-    var boardDiv = $('#board').append('<div id=tableDiv><div>');
+    $('#board').append('<div id=tableDiv><div>');
+    var boardDiv = $('#tableDiv');
 
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
@@ -169,13 +170,12 @@ function setBoard(tableType){
             for(var j=0 ; j < numOfInnerCols ; j++){
                 var col = $('<div></div>').addClass('col-xs-2');
                 innerRow.append(col);
-                var button = $('<button class="btn" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+                var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
                 buttonId++;
                 col.append(button);
             }
         }
         // boardDiv.append('<br>');
-        //dasd
     }
 }
 
