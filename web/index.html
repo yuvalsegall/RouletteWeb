@@ -195,7 +195,9 @@
             	<div id='board'></div>
             </div>
             <div id='gamePanel'>
-	            <div id='wheel' class='bottomPanel'></div>
+	            <div id='events' class='bottomPanel'>
+	                <ul id='eventsList' class='list-group-item'></ul>
+	            </div>
 	            <div id='chips' class='bottomPanel'>
 	                BetAmount: <span id="betAmount">0</span>
 	                <input type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
@@ -203,14 +205,14 @@
 	                <input type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
 	                <input type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
 	            </div>
-	            <div id='events' class='bottomPanel'>
-	                <ul id='eventsList' class='list-group-item'></ul>
-	            </div>
 	            <div id='players' class='bottomPanel'>
 	                <ul id='playersList' class='list-group-item'></ul>
 	            </div>
 	        </div>
         </div>
+    </div>
+    <div id='centePoint'>
+    	<div id='wheel' class='bottomPanel'></div>
     </div>
     <footer class="footer">
         <div class="container">

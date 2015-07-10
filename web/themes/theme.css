@@ -206,7 +206,7 @@ body {
 }
 #boardRapper{
     width:100%;
-    text-align: center;
+    /*text-align: center;*/
 }
 #gamePanel{
     width:100%;
@@ -214,9 +214,19 @@ body {
 }
 .bottomPanel{
     float:left;
-    width: 25%;
+    width: 33%;
+    height: 400px;
 }
+#centerPoint {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
 #wheel{
+    display: none;
     height: 300px;
-    max-width: 300px;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
 }
