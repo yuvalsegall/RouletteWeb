@@ -123,7 +123,7 @@ function setBoard(tableType){
         for(var i=0 ; i < numOfCols ; i++){
             var cell = $('<td></td>').addClass('myTd');
             row.append(cell);
-            var button = $('<a class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
+            var button = $('<a class="tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></a>');
             buttonId++;
             cell.append(button);
         }
