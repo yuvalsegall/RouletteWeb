@@ -107,30 +107,6 @@ function createGame() {
     });
 }
 
-function getWaitingGames(){
-    var targetList = $('#gamesList');
-    targetList.empty();
-    $.ajax({
-        data: null,
-        dataType: 'json',
-        url: 'GetWaitingGames',
-        timeout: 5000,
-        error: function (response) {
-            showMessage(response.getResponseHeader('exception'), true);
-        },
-        success: function (response) {
-            for(var i=0 ; i < response.length ; i++){
-                var li = $('<li></li>');
-                li.addClass("list-group-item");
-                var a = $('<a onClick=joinGame("'+ response[i] +'")></a>');
-                li.append(a);
-                a.html(response[i]);
-                targetList.append(li);
-            };
-        }
-    });
-}
-
 function joinGame(gameToJoin){
     if($('#userName').val() === ""){
         showMessage('Name cannot be empty', true);
@@ -159,7 +135,7 @@ function setBoard(tableType){
     $('#board').append('<div id=tableDiv><div>');
     var boardDiv = $('#tableDiv');
     var table = $('<table></table>').addClass('table');
-    
+
     boardDiv.append(table);
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for(var k=0 ; k < numOfRows ; k++){
