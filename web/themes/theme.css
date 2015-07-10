@@ -15,21 +15,21 @@
     text-align: center;
     height: 249px;
     padding-left: 60px;
-    padding-right: 56px;
+    padding-right: 36px;
 }
 
 .table{
-    width: 694px;
+    width: 714px;
     text-align: center;
 }
 
 .allRows{
-    width: 694px;
+    width: 714px;
     height: 22px;
 }
 
 .firstRow{
-    width: 730px;
+    width: 714px;
     height: 25px;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .midTd{
-    width:25px !important;
+    width:26px !important;
     border: 0px !important;
     padding: 0px !important;
 }
