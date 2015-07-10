@@ -119,7 +119,7 @@ function setBoard(tableType){
                 var firstNumber = 3;
                 if(i > 0 && i % 2 == 0){
                     firstNumber = 3 * i / 2;
-                    var numbers = {firstNumber, firstNumber-1, firstNumber-2};
+                    var numbers = [firstNumber, firstNumber-1, firstNumber-2];
                     button = createTableButton('STREET',numbers);
                 }
                 cell.append(button);
