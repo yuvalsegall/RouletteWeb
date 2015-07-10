@@ -4,6 +4,8 @@ var hasServer = false;
 var playerID;
 var playerName;
 var gameName;
+var betNumbers;
+var betType;
 
 $(function () {
     setForm();
@@ -120,8 +122,9 @@ function setBoard(tableType){
                 var firstNumber = 3;
                 if(i > 0 && i % 2 === 0){
                     firstNumber = 3 * i / 2;
-                    var numbers = [firstNumber, firstNumber-1, firstNumber-2];
-                    button = createTableButton('STREET',numbers);
+                    betNumbers = [firstNumber, firstNumber-1, firstNumber-2];
+                    betType = 'STREET';
+                    button = createTableButton();
                 }
                 cell.append(button);
             }
@@ -155,7 +158,7 @@ function setBoard(tableType){
 }
 
 function createTableButton(type, numbers){
-    return $('<a href="#" class="tableButton" onclick=makeBet("' + type + ',' + numbers + '")></a>');
+    return $('<a href="#" class="tableButton" onclick=makeBet()></a>');
 }
 
 function buttonClicked(buttonID){
