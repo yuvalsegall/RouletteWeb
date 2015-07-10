@@ -140,6 +140,7 @@ body {
 
 #board{
     width: 810px;
+    display: inline-block;
 }
 .boardButton {
     /*background: transparent;*/
@@ -202,12 +203,15 @@ body {
 .frenchRoulette{
     background-image: url("/RouletteWeb/img/frenchRoulette.png");
 }
-
+#boardRapper{
+    width:100%;
+    text-align: center;
+}
 #gamePanel{
     width:100%;
     overflow: hidden;
 }
-.buttonPanel{
+.bottomPanel{
     float:left;
     width: 25%;
 }
