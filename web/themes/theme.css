@@ -14,19 +14,25 @@
     display: none;	
 }
 
-.american{
-    /*background-image: url("/RouletteWeb/img/americanTable.png");*/
-    width:100%;
+#tableDiv{
+    width:810px;
     background-color: green;
-    min-height: 200px;
+    text-align: center;
+}
+
+.american{
+    background-image: url("/RouletteWeb/img/americanTable.png");
+    width:810px;
+    background-color: green;
+    height: 249px;
 
 }
 
 .french{
-    /*background-image: url("/RouletteWeb/img/frenchTable.png");*/
-    width:100%;
+    background-image: url("/RouletteWeb/img/frenchTable.png");
+    width:810px;
     background-color: green;
-    min-height: 200px;
+    height: 249px;
 }
 
 .formBack{

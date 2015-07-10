@@ -153,25 +153,33 @@ function joinGame(gameToJoin){
 }
 
 function setBoard(tableType){
-    var numOfOuterRows = 6;
-    var numOfInnerRows = 6;
+    var numOfOuterCols = 6;
+    var numOfInnerCols = 6;
+    var numOfRows = 8;
     var buttonId = 0;
-    var boardDiv = $('#board');
+    var boardDiv = $('#board').append('<div id=tableDiv><div>');
 
     tableType ==='AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
-    for(var i=0 ; i < numOfOuterRows ; i++){
-        var outerRow = $('<div></div>').addClass('col-xs-2');
-        boardDiv.append(outerRow);
-        var innerRow = $('<div></div>').addClass('row');
-        outerRow.append(innerRow);
-        for(var j=0 ; j < numOfInnerRows ; j++){
-            var col = $('<div></div>').addClass('col-xs-2');
-            innerRow.append(col);
-            var button = $('<button class="btn" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
-            buttonId++;
-            col.append(button);
+    for(var k=0 ; k < numOfRows ; k++){
+        for(var i=0 ; i < numOfOuterCols ; i++){
+            var outerRow = $('<div></div>').addClass('col-xs-2');
+            boardDiv.append(outerRow);
+            var innerRow = $('<div></div>').addClass('row');
+            outerRow.append(innerRow);
+            for(var j=0 ; j < numOfInnerCols ; j++){
+                var col = $('<div></div>').addClass('col-xs-2');
+                innerRow.append(col);
+                var button = $('<button class="btn" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
+                buttonId++;
+                col.append(button);
+            }
         }
+        // boardDiv.append('<br>');
     }
+}
+
+function buttonClicked(buttonID){
+
 }
 
 function replacePage(source, target){
