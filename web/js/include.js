@@ -6,6 +6,9 @@ var playerName;
 var gameName;
 var betNumbers;
 var betType;
+var COLUMN_1 = [3,6,9,12,15,18,21,24,27,30,33,36];
+var COLUMN_2 = [2,5,8,11,14,17,20,,23,26,29,32,35];
+var COLUMN_3 = [1,4,7,10,13,16,19,22,25,28,31,34];
 
 $(function () {
     setForm();
@@ -91,7 +94,7 @@ function checkParams() {
 }
 
 function showMessage(msg, isError) {
-    $('#errorMessage').text(msg).show().fadeOut(2500);
+    $('#errorMessage').text(msg).show().fadeOut(7000);
 }
 
 function setBoard(tableType){
@@ -127,7 +130,38 @@ function setBoard(tableType){
                     cell.append(button);
                 }
             }
-            buttonId++;
+            if(k === 1){
+                var firstNumber = 3;
+                if(i === 0 || tableType ==='AMERICAN'){
+                    numbers = [37];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);
+                }
+                else if(i === 1 || i === 25)
+                    continue;
+                else if(i === 26){
+                    numbers = COLUMN_1;
+                    button = createTableButton('COLUMN_1',numbers);
+                    cell.append(button);                    
+                }
+                else if(i % 2 === 0){
+                    numbers = [firstNumber*(i/2)];
+                    button = createTableButton('STRAIGHT',numbers);
+                    cell.append(button);
+                }
+                else{
+                    var first = firstNumber*(i/2);
+                    numbers = [first, first+3];
+                    button = createTableButton('SPLIT',numbers);
+                    cell.append(button);
+                }
+            }
+            if(k===2){
+                var firstNumber = 2;
+                if(i===0){
+
+                }
+            }
         }
     }
     $('#board').append('<div id=secondTable></div>');
