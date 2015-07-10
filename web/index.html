@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/include1.js"></script>
     <script type="text/javascript" src="js/include.js"></script>
 </head>
-<body>
+<body onload="init()">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" onClick="getCreateGame()">Roulette</a>
+                <a class="navbar-brand" href="#" onClick="yuval()">Roulette</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,7 +46,7 @@
     <div id='errorMessageBox'>
         <div id='errorMessage' class="alert alert-danger" role="alert"></div>
     </div>
-    <div id='createGame'>
+    <div id='createGame' class='pages'>
         <div class='formBack'>
             <h4>Load From XML</h4>
             <div class='row'>
@@ -170,7 +170,7 @@
             <input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='checkParams()'>
         </div>
     </div>
-    <div id='joinGame'>
+    <div id='joinGame' class='pages'>
         <div class='formBack'>
             <h1>joinGame</h1>
             <input id='userName' type="text" class="form-control" placeholder="Choose Name">
@@ -181,7 +181,7 @@
             </div>
         </div>
     </div>
-    <div id='playGame'>
+    <div id='playGame' class='pages'>
         <div class='formBack'>
             <input type='button' class="btn" value='Resign' onClick='resign()'>
             <div id='board'></div>

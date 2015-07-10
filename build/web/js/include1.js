@@ -4,7 +4,7 @@ var eventsInterval;
 var playersDetails;
 var playerDetails;
 var finishBettingB;
-var currentPage = "createGame";
+var currentPage;
 
 $(document).on('change', '#XMLFileChooser',
         function (e) {
@@ -12,6 +12,10 @@ $(document).on('change', '#XMLFileChooser',
             $("#uploadFile").prop('disabled', false);
         }
 );
+
+function init(){
+    replacePage('createGame');
+}
 
 function loadGameFromXML() {
     var file = $('#XMLFileChooser').get(0).files[0];
@@ -292,7 +296,7 @@ function joinGame(gameToJoin) {
 function replacePage(target) {
     $('#' + currentPage).fadeOut();
     $('#' + target).fadeIn();
-    target = currentPage;
+    currentPage = target;
 }
 
 function createGame() {
@@ -305,7 +309,20 @@ function createGame() {
         },
         success: function (response, xhr) {
             getWaitingGames();
-            replacePage('createGame', 'joinGame');
+        }
+    });
+}
+
+function yuval() {
+    $.ajax({
+        data: {"gameName": "yuval"},
+        url: 'GetGameDetails',
+        error: function (response) {
+            showMessage(response.getResponseHeader('exception'), true);
+        },
+        success: function (response, xhr) {
+            setBoard(response.rouletteType);
+            replacePage('playGame');
         }
     });
 }

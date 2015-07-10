@@ -1,3 +1,7 @@
 .playerResigned{
     color: gray;
 }
+
+.pages{
+    display: none;	
+}
