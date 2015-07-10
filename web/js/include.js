@@ -109,10 +109,11 @@ function setBoard(tableType){
         k === 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
         for(var i=0 ; i < numOfCols ; i++){
+            var cell = $('<td></td>');
             if(i === 0 || i === numOfCols-1)
-                var cell = $('<td></td>').addClass('firstTd');
+                cell.addClass('firstTd');
             else
-                var cell = $('<td></td>').addClass('midTd');
+                cell.addClass('midTd');
             row.append(cell);
             var button;
             if(k === 0){
