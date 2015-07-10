@@ -9,11 +9,6 @@
 	height: 40px;
 }
 
-/*#playGame,*/
-#joinGame{
-    display: none;	
-}
-
 #tableDiv{
     width:810px;
     background-color: green;
@@ -34,13 +29,13 @@
 }
 
 .firstTd{
-    width:50px;
+    width:45px;
     border: 0px !important;
     padding: 0px !important;
 }
 
 .midTd{
-    width:26.25px;
+    width:26.6px;
     border: 0px !important;
     padding: 0px !important;
 }
