@@ -147,7 +147,6 @@ function setBoard(tableType){
             var button = $('<button class="btn tableButton blackButton" value='+ buttonId +' onclick=buttonClicked("'+ buttonId +'")></button>');
             buttonId++;
             cell.append(button);
-            }
         }
     }
 }
