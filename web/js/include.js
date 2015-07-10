@@ -95,7 +95,7 @@ function showMessage(msg, isError) {
 }
 
 function setBoard(tableType){
-    var numOfCols = 26;
+    var numOfCols = 27;
     var numOfRows = 6;
     var numOfActionRows = 2;
     var numOfActionCols = 6;
@@ -114,15 +114,13 @@ function setBoard(tableType){
             var cell = $('<td></td>');
             if(i === 0)
                 cell.addClass('firstTd');
-            else if(i === numOfCols-1)
-                cell.addClass('lastTd');
             else
                 cell.addClass('midTd');
             row.append(cell);
             var button;
             if(k === 0){
                 var firstNumber = 3;
-                if(i > 0 && i % 2 === 0){
+                if(i > 0 && i % 2 === 0) %% i != numOfCols-1{
                     firstNumber = 3 * i / 2;
                     numbers = [firstNumber, firstNumber-1, firstNumber-2];
                     button = createTableButton('STREET',numbers);
