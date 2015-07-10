@@ -21,9 +21,16 @@
     height: 249px;
 }
 
+.table{
+    width: 810px;
+    text-align: center;
+    padding-left: 60px;
+    padding-right: 20px;
+}
+
 .myRow{
     width: 810px;
-    height: 20px;
+    height: 30px;
 }
 
 .firstTd{
@@ -33,16 +40,9 @@
 }
 
 .midTd{
-    width:25px;
+    width:26.25px;
     border: 0px !important;
     padding: 0px !important;
-}
-
-.table{
-    width: 810px;
-    text-align: center;
-    padding-left: 60px;
-    padding-right: 50px;
 }
 
 .tableButton{
