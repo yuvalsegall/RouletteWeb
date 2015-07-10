@@ -206,7 +206,7 @@ body {
 }
 #boardRapper{
     width:100%;
-    /*text-align: center;*/
+    text-align: center;
 }
 #gamePanel{
     width:100%;
