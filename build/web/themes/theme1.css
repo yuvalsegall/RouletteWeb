@@ -5,3 +5,16 @@
 .pages{
     display: none;	
 }
+
+.americanRoulette{
+    background-image: url("/RouletteWeb/img/americanRoulette.png");
+}
+
+.frenchRoulette{
+    background-image: url("/RouletteWeb/img/frenchRoulette.png");
+}
+
+#wheel{
+    height: 300px;
+    width: 300px;
+}

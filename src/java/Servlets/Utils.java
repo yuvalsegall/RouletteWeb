@@ -7,6 +7,7 @@ package Servlets;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ws.roulette.BetType;
 
 /**
  *
@@ -27,6 +28,16 @@ public class Utils {
                 try {
                     Integer.parseInt(request.getParameter(param));
                 } catch (NumberFormatException ex) {
+                    isAllGood = false;
+                    break;
+                }
+            }
+        }
+        if (isAllGood && clas.equals(BetType.class)) {
+            for (String param : params) {
+                try {
+                    BetType.fromValue(request.getParameter(param));
+                } catch (IllegalArgumentException ex) {
                     isAllGood = false;
                     break;
                 }

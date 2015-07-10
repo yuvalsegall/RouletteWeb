@@ -30,7 +30,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id='navMenuLinks'>
-                    <li id="menuCreateGame" role="presentation" class="menu active"><a href="#" onClick="getCreateGame()" >Create Game</a></li>
+                    <li id="menuCreateNewGame" role="presentation" class="menu active"><a href="#" onClick="getCreateNewGame()" >Create New Game</a></li>
+                    <li id="menuCreateXMLGame" role="presentation" class="menu"><a href="#" onClick="getCreateXMLGame()">Create Game From XML</a></li>
                     <li id="menuJoinGame" role="presentation" class="menu" ><a href="#" onClick="getWaitingGames()">Join Game</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
@@ -46,7 +47,7 @@
     <div id='errorMessageBox'>
         <div id='errorMessage' class="alert alert-danger" role="alert"></div>
     </div>
-    <div id='createGame' class='pages'>
+    <div id='createXMLGame' class='pages'>
         <div class='formBack'>
             <h4>Load From XML</h4>
             <div class='row'>
@@ -63,6 +64,13 @@
                     <input id='uploadFile' type="button" class='btn btn-default' value='Upload' onClick='loadGameFromXML()' disabled>
                 </div>
             </div>
+            <div id='playersDiv'>
+                <ul class="list-group" id='XMLplayersList'>
+                </ul>
+            </div>
+        </div>
+    </div><div id='createNewGame' class='pages'>
+        <div class='formBack'>
             <h4>Create New Game</h4>
             <div class='row'>
                 <div id='gameNameDiv' class='col-xs-3 myCol'>
@@ -187,6 +195,13 @@
             <div id='board'></div>
             <div id='wheel'></div>
             <div id='actions'></div>
+            <div id='chips'>
+                BetAmount: <span id="betAmount">0</span>
+                <input type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
+                <input type="image" src="/RouletteWeb/img/chip2.png" onClick='addChipToAmount(2)' alt='2'>
+                <input type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
+                <input type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
+            </div>
             <div id='events'>
                 <ul id='eventsList' class='list-group-item'></ul>
             </div>
