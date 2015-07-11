@@ -124,8 +124,10 @@
 #humansSlider,
 #computersSlider {
     width: 100%;
-}#computersSlider {
-    width: 100%;
+}
+
+.toggle.btn{
+    min-width: 100px;
 }
 
 #minWagesSlider .slider-selection,
