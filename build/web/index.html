@@ -183,7 +183,11 @@
     <div id='joinGame' class='pages'>
         <div class='formBack'>
             <h4>Join Game</h4>
-            <input id='userName' type="text" class="form-control" placeholder="Enter you name">
+            <div id='userNameDiv'>
+                <input id='userName' type="text" class="form-control" placeholder="Enter you name">
+                <br>
+                <input type="button" class="btn" value='Join' onClick='joinGame()'/>
+            </div>
             <div id='gamesDiv'>
                 <h5>Pick a game</h5>
                 <ul class="list-group" id='gamesList'>

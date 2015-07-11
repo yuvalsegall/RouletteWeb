@@ -35,8 +35,10 @@ function init() {
     $('#initialAmountSlider').slider({min: 10, max: 100, step: 5, value: 30});
     $('#humansSlider').slider({min: 0, max: 6, step: 1, value: 1});
     $('#computersSlider').slider({min: 0, max: 6, step: 1, value: 4});
-    $("#userName").hide().val("");
+    $("#userName").val("");
+    $("#userNameDiv").hide();
     $("#playersDiv").hide();
+    $("#gamesDiv").show();
     checkServerStatus();
 }
 
@@ -82,8 +84,9 @@ function startGame() {
 }
 
 function getPlayersDetails(listId, game) {
+    gameName = game;
     $.ajax({
-        data: {"gameName": game},
+        data: {"gameName": gameName},
         url: 'GetPlayersDetails',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
@@ -91,18 +94,25 @@ function getPlayersDetails(listId, game) {
         success: function (response, xhr) {
             playersDetails = response;
             $("#" + listId).empty();
-            playersDetails.forEach(function (player) {
-                if (listId === "playersList") {
+            if (listId === "playersList")
+                playersDetails.forEach(function (player) {
                     $("#" + listId).append($("<li></li>").addClass("list-group-item").attr("id", "player" + player.name));
                     $("#player" + player.name).append($("<span></span>").addClass("playerName").html(player.name));
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
-                }
-                else if (listId === "XMLplayersList"){
-                    if (player.type === 'HUMAN' && player.id === 0)
+                });
+            else if (listId === "XMLplayersList")
+                playersDetails.forEach(function (player) {
+                    if (player.type === 'HUMAN')
                         $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
-                }
-            });
-            if (playersDetails.)
+
+                });
+            if (playersDetails.filter(function (player) {
+                return player.type === 'HUMAN';
+            }).length === 0) {
+                $("#gamesDiv").fadeOut();
+                $("#userNameDiv").fadeIn();
+            } else
+                $("playersDiv").show();
         }
     });
 }
@@ -240,7 +250,7 @@ function resign() {
         },
         success: function (response, xhr) {
             clearInterval(eventsInterval);
-            replacePage("createNewGame");
+            getCreateNewGame();
         }
     });
 }
@@ -307,8 +317,7 @@ function getCreateXMLGame() {
     replacePage('createXMLGame');
 }
 
-function joinGame(gameToJoin) {
-    gameName = decodeURI(gameToJoin);
+function joinGame() {
     if ($('#userName').val() === "") {
         showMessage('Name cannot be empty', true);
         return;
@@ -316,6 +325,7 @@ function joinGame(gameToJoin) {
     playerName = $('#userName').val();
     joinPlayerToGame();
 }
+
 function joinXMLGame(playerNameToJoin) {
     playerName = playerNameToJoin;
     joinPlayerToGame();
