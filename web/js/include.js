@@ -111,7 +111,7 @@ function setBoard(tableType) {
     var numOfCols = 27;
     var numOfRows = 6;
     var numOfActionRows = 2;
-    var numOfActionCols = 6;
+    var numOfActionCols = 7;
     $('#board').empty();
     $('#board').append('<div id=tableDiv></div>');
     var boardDiv = $('#tableDiv');
@@ -323,7 +323,7 @@ function setBoard(tableType) {
         var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for (var i = 0; i < numOfActionCols; i++) {
-            if (k === 0 && i % 2 === 1)
+            if (k === 0 && i % 2 === 1 && i !== numOfActionCols - 1)
                 continue;
             var cell = $('<td></td>');
             if(k === 0){
@@ -338,6 +338,10 @@ function setBoard(tableType) {
                     numbers = null;
                     button = createTableButton('DERNIERE_DOUZAINE', numbers);
                 }
+            }else if(k === 0 && i === numOfActionCols - 1){
+                cell.attr('id', 'snakeTd');
+                numbers = null;
+                button = createTableButton('SNAKE', numbers);
             }else{
                 cell.addClass('secondActionTD');
                 if(i === 0){
