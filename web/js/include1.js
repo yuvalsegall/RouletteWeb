@@ -18,7 +18,7 @@ $(document).on('change', '#XMLFileChooser',
 
 function init() {
     lastEventId = 0;
-    events = null;
+    events = [];
     clearInterval(eventsInterval);
     eventsInterval = null;
     playersDetails = null;
@@ -78,14 +78,14 @@ function startGame() {
             getPlayersDetails("playersList", gameName);
             eventsInterval = setInterval(function () {
                 getEvents();
-            }, 1000);
+            }, 2000);
             getPlayGame();
         }
     });
 }
 
 function getPlayersDetails(listId, game) {
-    gameName = game;
+    gameName = decodeURI(game);
     $.ajax({
         data: {"gameName": gameName},
         url: 'GetPlayersDetails',
@@ -125,7 +125,7 @@ function getPlayerDetails() {
 }
 
 function getEvents() {
-    lastEventId = events === null || events === 'undefined' || events.length === 0 ? lastEventId : events[events.length - 1].id;
+    lastEventId = events.length === 0 ? lastEventId : events[events.length - 1].id;
     $.ajax({
         data: {"playerID": playerID, "eventID": lastEventId},
         url: 'GetEvents',
@@ -153,7 +153,7 @@ function checkForServerEvents() {
                 break;
             case "WINNING_NUMBER":
                 $("#wheel").fadeIn();
-                $("#ballPosition").html("Ball on: " + event.winningNumber);
+                $("#ballPosition").html(event.winningNumber);
                 spinRoulette();
                 break;
             case "RESULTS_SCORES":
@@ -163,7 +163,7 @@ function checkForServerEvents() {
                 }, 5000);
                 break;
             case "PLAYER_RESIGNED":
-                if (isMyEvent(event.playerName)) {
+                if (isMyEvent(event.playerName) && playerID !== null) {
                     showMessage("You timed out", true);
                 } else {
                     setPlayerResigned(event.playerName);
@@ -171,8 +171,8 @@ function checkForServerEvents() {
                 }
                 break;
             case "PLAYER_BET":
-                setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) - parseInt(event.amount));
                 if (!isMyEvent(event.playerName)) {
+                    setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) - parseInt(event.amount));
                     addStringToFeed(event.playerName + " bet " + event.amount + "$ on " + event.betType);
                 }
                 break;
@@ -203,8 +203,8 @@ function addStringToFeed(str) {
     $("#eventsList").prepend($("<li></li>").addClass("list-group-item").html(str));
 }
 
-function makeBet(type) {
-    var numbers = Array.prototype.slice.call(arguments, 1);
+function makeBet(id, type) {
+    var numbers = Array.prototype.slice.call(arguments, 2);
     numbers = JSON.stringify(numbers);
     if (betAmount <= 0)
         showMessage("Choose amount to bet on", true);
@@ -216,9 +216,12 @@ function makeBet(type) {
                 showMessage(response.getResponseHeader('exception'), true);
             },
             success: function (response, xhr) {
+                hadBet = true;
+                setPlayerMoney(playerName, parseInt(getPlayerMoney(playerName)) - parseInt(betAmount));
+                $("#" + id).addClass("tableButtonWithChip");
+                $("#" + id).attr("value", betAmount);
                 betAmount = 0;
                 $("#betAmount").html(betAmount);
-                hadBet = true;
             }
         });
 }
@@ -248,6 +251,7 @@ function resign() {
         },
         success: function (response, xhr) {
             clearInterval(eventsInterval);
+            playerID = null;
             getCreateNewGame();
         }
     });
@@ -265,6 +269,8 @@ function spinRoulette() {
     else {
         $("#wheel").fadeOut();
         degrees = 270;
+        $(".tableButtonWithChip").removeClass("tableButtonWithChip");
+        $(".tableButtonWithChip").attr("value", betAmount);
     }
 }
 
@@ -279,15 +285,21 @@ function getWaitingGames() {
             showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response) {
-            for (var i = 0; i < response.length; i++) {
-                var li = $('<li></li>');
-                li.addClass("list-group-item");
-                var a = $('<a href="#" class="list-group-item" onClick=getPlayersDetails("XMLplayersList","' + encodeURI(response[i]) + '")></a>');
-                li.append(a);
-                a.html(response[i]);
-                targetList.append(li);
+            if (response.length === 0) {
+                showMessage("No games to join", true);
+                getCreateNewGame();
             }
-            ;
+            else {
+                for (var i = 0; i < response.length; i++) {
+                    var li = $('<li></li>');
+                    li.addClass("list-group-item");
+                    var a = $('<a href="#" class="list-group-item" onClick=getPlayersDetails("XMLplayersList","' + encodeURI(response[i]) + '")></a>');
+                    li.append(a);
+                    a.html(response[i]);
+                    targetList.append(li);
+                }
+                replacePage('joinGame');
+            }
         }
     });
 }
@@ -304,7 +316,6 @@ function getJoinGames() {
     $("#menuJoinGame").addClass("active");
     init();
     getWaitingGames();
-    replacePage('joinGame');
 }
 
 function getCreateXMLGame() {
@@ -316,7 +327,7 @@ function getCreateXMLGame() {
 
 function getPlayGame() {
     $(".menu").removeClass("active");
-    showMessage("Waiting for the other players...",false,true);
+    showMessage("Waiting for the other players...", false, true);
     replacePage('playGame');
 }
 
@@ -364,10 +375,10 @@ function isXMLGame() {
 }
 
 function replacePage(target) {
-    $('#' + currentPage).fadeOut();
+    $('#' + currentPage).fadeOut("fast");
     setTimeout(function () {
-        $('#' + target).fadeIn();
-    }, 500);
+        $('#' + target).fadeIn("fast");
+    }, 300);
     currentPage = target;
 }
 
@@ -397,6 +408,23 @@ function addChipToAmount(amount) {
     }
 }
 
-function createTableButton(type, numbers) {
-    return $('<button href="#" class="tableButton" onclick=makeBet("' + type + '",' + numbers + ')></button>');
+function createTableButton(id, type, numbers) {
+    return $('<button href="#" class="tableButton" id="' + id + '" onclick=makeBet("' + id + '","' + type + '",' + numbers + ')></button>');
+}
+
+function showMessage(msg, isError, toHide) {
+    $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
+    $('#errorMessage').text(msg).fadeIn();
+    if (!toHide)
+        hideMessage(true);
+}
+
+function hideMessage(toWait) {
+    setTimeout(function () {
+        $('#errorMessage').fadeOut();
+        setTimeout(function () {
+            $('#errorMessage').removeClass("alert-danger");
+            $('#errorMessage').removeClass("alert-info");
+        }, 2000);
+    }, toWait ? 3000 : 0);
 }

@@ -10,7 +10,7 @@
     width: 400px;
     position: fixed;
     right: 30px;
-    top: 30px;
+    top: 70px;
 }
 
 #tableDiv{
@@ -99,7 +99,7 @@
 }
 
 .tableButtonWithChip{
-    background: url("/RouletteWeb/img/tableChip.png") no-repeat;
+    background: url("/RouletteWeb/img/tableChip.png") no-repeat !important;
 }
 
 .tableButton{

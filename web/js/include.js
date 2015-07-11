@@ -48,14 +48,15 @@ function checkServerStatus() {
     $.ajax({
         data: null,
         url: 'Configurations',
-        timeout: 5000,
         error: function (response) {
             waitForLogin();
             $('#loginDiv').show();
+            showMessage("Please connect to a server", true, true);
         },
         success: function (response, xhr) {
             hasServer = true;
             $('#loginDiv').hide();
+            hideMessage();
         }
     });
 }
@@ -66,12 +67,13 @@ function setServer() {
         url: 'Configurations',
         data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
         error: function (response) {
-            showMessage('Error Connectiong to server, try again', true);
+            showMessage('Error Connectiong to server, try again', true, true);
         },
         success: function (response) {
             $('#loginDiv').hide();
             hasServer = true;
             enableGame();
+            hideMessage();
         },
         dataType: null
     });
@@ -94,22 +96,6 @@ function checkParams() {
         showMessage('Max Players allowed = ' + MAX_PLAYERS, true);
     else
         createGame();
-}
-
-function showMessage(msg, isError, toHide) {
-    $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
-    $('#errorMessage').text(msg).fadeIn();
-    if (!toHide)
-        hideMessage();
-}
-
-function hideMessage() {
-    setTimeout(function () {
-        $('#errorMessage').fadeOut();
-        setTimeout(function () {
-            $('#errorMessage').removeClass(isError ? "alert-danger" : "alert-info");
-        }, 2000);
-    }, 3000);
 }
 
 function getButtonforFirstRow(buttonId, k, i){
