@@ -98,9 +98,13 @@
     outline: none;
 }
 
+.tableButtonWithChip{
+    background: url("/RouletteWeb/img/tableChip.png") no-repeat;
+}
+
 .tableButton{
     background: transparent;
-    border: 0px;
+    border: none;
     width: 100%;
     height: 100% !important;
     cursor: pointer;
@@ -212,6 +216,17 @@ body {
 .playerMoney{
     margin-left: 5px;
     font-weight: bold;
+}
+
+#ballDiv,
+#betAmount{
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+#ballDiv{
+    text-align: center;
+
 }
 
 .playerResigned{

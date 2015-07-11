@@ -144,20 +144,23 @@ function checkForServerEvents() {
             case "GAME_OVER":
                 showMessage("The game has ended.", true);
                 clearInterval(eventsInterval);
-                replacePage('createNewGame');
+                getCreateNewGame();
                 break;
             case "GAME_START":
                 getPlayersDetails("playersList", gameName);
+                hideMessage();
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
                 $("#wheel").fadeIn();
-                addStringToFeed("Ball on: " + event.winningNumber);
+                $("#ballPosition").html("Ball on: " + event.winningNumber);
                 spinRoulette();
                 break;
             case "RESULTS_SCORES":
-                setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) + parseInt(event.amount));
-                addStringToFeed(event.playerName + " won " + event.amount + "$");
+                setTimeout(function () {
+                    setPlayerMoney(event.playerName, parseInt(getPlayerMoney(event.playerName)) + parseInt(event.amount));
+                    addStringToFeed(event.playerName + " won " + event.amount + "$");
+                }, 5000);
                 break;
             case "PLAYER_RESIGNED":
                 if (isMyEvent(event.playerName)) {
@@ -313,6 +316,7 @@ function getCreateXMLGame() {
 
 function getPlayGame() {
     $(".menu").removeClass("active");
+    showMessage("Waiting for the other players...",false,true);
     replacePage('playGame');
 }
 
