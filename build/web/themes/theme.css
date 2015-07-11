@@ -43,6 +43,7 @@
 .table{
     width: 720px;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 #snakeTd{
@@ -61,6 +62,10 @@
     border: 0px !important;
     padding: 0px !important;
     margin-right: 36px;
+}
+
+
+.menu{
 }
 
 .midTd{
@@ -99,7 +104,7 @@
 }
 
 .tableButtonWithChip{
-    background: url("/RouletteWeb/img/tableChip.png") no-repeat !important;
+    background: url("/RouletteWeb/img/tableChip.png") no-repeat center !important;
 }
 
 .tableButton{
@@ -248,6 +253,19 @@ body {
 .frenchRoulette{
     background-image: url("/RouletteWeb/img/frenchRoulette.png");
 }
+
+.innerActionDiv{
+    margin-top: 15px;
+}
+
+#resignButton{
+    margin-top: 45px;
+}
+
+.betAmountDiv{
+    padding-top: 5px;
+}
+
 #boardRapper{
     width:100%;
     text-align: center;

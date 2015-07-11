@@ -111,7 +111,7 @@ function getButtonforFirstRow(buttonId, k, i){
         var first = 3 * parseInt(i / 2);
         var second = first + 3;
         numbers = [first, first - 1, first - 2, second, second - 1, second - 2];
-        return createTableButton(buttonId, 'SIX_LANE', numbers);
+        return createTableButton(buttonId, 'SIX_LINE', numbers);
     }
 }
 

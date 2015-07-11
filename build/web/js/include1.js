@@ -8,6 +8,7 @@ var degrees;
 var betAmount;
 var mustBet;
 var hadBet;
+var isMessageShow = false;
 
 $(document).on('change', '#XMLFileChooser',
         function (e) {
@@ -40,6 +41,7 @@ function init() {
     $("#gamesDiv").show();
     $("#userNameDiv").hide();
     $("#playersDiv").hide();
+    $("#eventsList").empty();
     checkServerStatus();
 }
 
@@ -107,7 +109,7 @@ function getPlayersDetails(listId, game) {
                         $("#XMLplayersList").append($("<li></li>").addClass("list-group-item").append($('<a href="#" class="list-group-item" onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
 
                 });
-            $("#gamesDiv").fadeOut();
+            $("#gamesDiv").fadeOut("fast");
             isXMLGame();
         }});
 }
@@ -204,42 +206,46 @@ function addStringToFeed(str) {
 }
 
 function makeBet(id, type) {
-    var numbers = Array.prototype.slice.call(arguments, 2);
-    numbers = JSON.stringify(numbers);
-    if (betAmount <= 0)
-        showMessage("Choose amount to bet on", true);
-    else
-        $.ajax({
-            data: {"playerID": playerID, "type": type, "betMoney": betAmount, "numbers": numbers},
-            url: 'MakeBet',
-            error: function (response) {
-                showMessage(response.getResponseHeader('exception'), true);
-            },
-            success: function (response, xhr) {
-                hadBet = true;
-                setPlayerMoney(playerName, parseInt(getPlayerMoney(playerName)) - parseInt(betAmount));
-                $("#" + id).addClass("tableButtonWithChip");
-                $("#" + id).attr("value", betAmount);
-                betAmount = 0;
-                $("#betAmount").html(betAmount);
-            }
-        });
+    if (!isMessageShow) {
+        var numbers = Array.prototype.slice.call(arguments, 2);
+        numbers = JSON.stringify(numbers);
+        if (betAmount <= 0)
+            showMessage("Choose amount to bet on", true);
+        else
+            $.ajax({
+                data: {"playerID": playerID, "type": type, "betMoney": betAmount, "numbers": numbers},
+                url: 'MakeBet',
+                error: function (response) {
+                    showMessage(response.getResponseHeader('exception'), true);
+                },
+                success: function (response, xhr) {
+                    hadBet = true;
+                    setPlayerMoney(playerName, parseInt(getPlayerMoney(playerName)) - parseInt(betAmount));
+                    $("#" + id).addClass("tableButtonWithChip");
+                    $("#" + id).attr("value", betAmount);
+                    betAmount = 0;
+                    $("#betAmount").html(betAmount);
+                }
+            });
+    }
 }
 
 function finishBetting() {
-    if (mustBet && !hadBet)
-        showMessage("You must place at least one bet", true);
-    else
-        $.ajax({
-            data: {"playerID": playerID},
-            url: 'FinishBetting',
-            error: function (response) {
-                showMessage(response.getResponseHeader('exception'), true);
-            },
-            success: function (response, xhr) {
-                hadBet = false;
-            }
-        });
+    if (!isMessageShow) {
+        if (mustBet && !hadBet)
+            showMessage("You must place at least one bet", true);
+        else
+            $.ajax({
+                data: {"playerID": playerID},
+                url: 'FinishBetting',
+                error: function (response) {
+                    showMessage(response.getResponseHeader('exception'), true);
+                },
+                success: function (response, xhr) {
+                    hadBet = false;
+                }
+            });
+    }
 }
 
 function resign() {
@@ -369,7 +375,7 @@ function isXMLGame() {
         success: function (response, xhr) {
             setTimeout(function () {
                 $(response.loadedFromXML ? "#playersDiv" : "#userNameDiv").fadeIn();
-            }, 500);
+            }, 300);
         }
     });
 }
@@ -413,18 +419,20 @@ function createTableButton(id, type, numbers) {
 }
 
 function showMessage(msg, isError, toHide) {
+    isMessageShow = true;
     $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
     $('#errorMessage').text(msg).fadeIn();
-    if (!toHide)
+    if (!toHide || toHide === undefined)
         hideMessage(true);
 }
 
 function hideMessage(toWait) {
+    isMessageShow = false;
     setTimeout(function () {
         $('#errorMessage').fadeOut();
         setTimeout(function () {
             $('#errorMessage').removeClass("alert-danger");
             $('#errorMessage').removeClass("alert-info");
         }, 2000);
-    }, toWait ? 3000 : 0);
+    }, toWait ? 7000 : 100);
 }
