@@ -42,11 +42,15 @@ public class MakeBet extends HttpServlet {
         if (!Utils.isParamsOk(request, response, Integer.class, "playerID", "betMoney") || !Utils.isParamsOk(request, response, BetType.class, "type") || !Utils.isParamsOk(request, response, int[].class, "numbers")) {
             return;
         }
-        String numbersString = request.getParameter("numbers").substring(1,request.getParameter("numbers").length()-1);
-        String[] numbers = numbersString.split(",");
-        List<Integer> numbersList = new ArrayList<>();
-        for (String number : numbers) {
-            numbersList.add(Integer.parseInt(number));
+        List<Integer> numbersList = null;
+        if (!request.getParameter("numbers").equals("[null]")) {
+
+            String numbersString = request.getParameter("numbers").substring(1, request.getParameter("numbers").length() - 1);
+            String[] numbers = numbersString.split(",");
+            numbersList = new ArrayList<>();
+            for (String number : numbers) {
+                numbersList.add(Integer.parseInt(number));
+            }
         }
         try {
             server.makeBet(Integer.valueOf(request.getParameter("betMoney")), BetType.fromValue(request.getParameter("type")), numbersList, Integer.valueOf(request.getParameter("playerID")));

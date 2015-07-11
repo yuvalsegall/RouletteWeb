@@ -17,7 +17,7 @@ $(document).on('change', '#XMLFileChooser',
 );
 
 function init() {
-    lastEventId = null;
+    lastEventId = 0;
     events = null;
     eventsInterval = null;
     playersDetails = null;
@@ -35,7 +35,8 @@ function init() {
     $('#initialAmountSlider').slider({min: 10, max: 100, step: 5, value: 30});
     $('#humansSlider').slider({min: 0, max: 6, step: 1, value: 1});
     $('#computersSlider').slider({min: 0, max: 6, step: 1, value: 4});
-    $("#userName").val("");
+    $("#userName").hide().val("");
+    $("#playersDiv").hide();
     checkServerStatus();
 }
 
@@ -60,7 +61,7 @@ function loadGameFromXML() {
     }
 }
 
-function startGame(gameName) {
+function startGame() {
     $.ajax({
         data: {"gameName": gameName},
         url: 'GetGameDetails',
@@ -71,7 +72,7 @@ function startGame(gameName) {
             setBoard(response.rouletteType);
             setWheel(response.rouletteType);
             mustBet = response.minWages === 1;
-            getPlayersDetails("playersList");
+            getPlayersDetails("playersList", gameName);
             eventsInterval = setInterval(function () {
                 getEvents();
             }, 1000);
@@ -80,9 +81,9 @@ function startGame(gameName) {
     });
 }
 
-function getPlayersDetails(listId) {
+function getPlayersDetails(listId, game) {
     $.ajax({
-        data: {"gameName": gameName},
+        data: {"gameName": game},
         url: 'GetPlayersDetails',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
@@ -96,11 +97,12 @@ function getPlayersDetails(listId) {
                     $("#player" + player.name).append($("<span></span>").addClass("playerName").html(player.name));
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
                 }
-                else {
+                else if (listId === "XMLplayersList"){
                     if (player.type === 'HUMAN' && player.id === 0)
                         $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
                 }
             });
+            if (playersDetails.)
         }
     });
 }
@@ -118,7 +120,7 @@ function getPlayerDetails() {
 }
 
 function getEvents() {
-    lastEventId = typeof events === 'undefined' || events.length === 0 || events === null ? lastEventId : events[events.length - 1].id;
+    lastEventId = events === null || events === 'undefined' || events.length === 0 ? lastEventId : events[events.length - 1].id;
     $.ajax({
         data: {"playerID": playerID, "eventID": lastEventId},
         url: 'GetEvents',
@@ -140,7 +142,7 @@ function checkForServerEvents() {
                 replacePage('createNewGame');
                 break;
             case "GAME_START":
-                getPlayersDetails("playersList");
+                getPlayersDetails("playersList", gameName);
                 addStringToFeed("The Game has Started");
                 break;
             case "WINNING_NUMBER":
@@ -273,7 +275,7 @@ function getWaitingGames() {
             for (var i = 0; i < response.length; i++) {
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $('<a onClick=joinGame("' + encodeURI(response[i]) + '")></a>');
+                var a = $('<a onClick=getPlayersDetails("XMLplayersList","' + encodeURI(response[i]) + '")></a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
@@ -319,7 +321,7 @@ function joinXMLGame(playerNameToJoin) {
     joinPlayerToGame();
 }
 
-function joinPlayerToGame(gameToJoin) {
+function joinPlayerToGame() {
     $.ajax({
         data: {'gameName': gameName, 'playerName': playerName},
         dataType: 'json',
@@ -329,7 +331,7 @@ function joinPlayerToGame(gameToJoin) {
         },
         success: function (response) {
             playerID = response;
-            startGame(gameName);
+            startGame();
         }
     });
 }
