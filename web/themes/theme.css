@@ -117,12 +117,14 @@
     margin-bottom: 5px;
 }
 
+.toggle.btn {
+  min-width: 100px;
+}
+
 #minWagesSlider,
 #maxWagesSlider,
 #humansSlider,
 #computersSlider {
-    width: 100%;
-}#computersSlider {
     width: 100%;
 }
 
