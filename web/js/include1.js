@@ -96,23 +96,23 @@ function getPlayersDetails(listId, game) {
             $("#" + listId).empty();
             if (listId === "playersList")
                 playersDetails.forEach(function (player) {
-                    $("#" + listId).append($("<li></li>").addClass("list-group-item").attr("id", "player" + player.name));
+                    $("#playersList").append($("<li></li>").addClass("list-group-item").attr("id", "player" + player.name));
                     $("#player" + player.name).append($("<span></span>").addClass("playerName").html(player.name));
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
                 });
             else if (listId === "XMLplayersList")
                 playersDetails.forEach(function (player) {
                     if (player.type === 'HUMAN')
-                        $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
+                        $("#XMLplayersList").append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
 
                 });
+            $("#gamesDiv").fadeOut();
             if (playersDetails.filter(function (player) {
                 return player.type === 'HUMAN';
-            }).length === 0) {
-                $("#gamesDiv").fadeOut();
+            }).length === 0)
                 $("#userNameDiv").fadeIn();
-            } else
-                $("playersDiv").show();
+            else
+                $("#playersDiv").fadeIn();
         }
     });
 }
@@ -354,7 +354,7 @@ function replacePage(target) {
 
 function createGame() {
     $.ajax({
-        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computersSlider').val(), 'humanPlayers': $('#humansSlider').val(), 'minWages': $('#minWagesSlider').val(), 'maxWages': $('#maxWagesSlider').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmountSlider').val()},
+        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computersSlider').val(), 'humanPlayers': $('#humansSlider').val(), 'minWages': $('#minWagesSlider').val(), 'maxWages': $('#maxWagesSlider').val(), 'rouletteType': $('#tableTypeIsFrench').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmountSlider').val()},
         url: 'CreateGame',
         timeout: 5000,
         error: function (response) {
