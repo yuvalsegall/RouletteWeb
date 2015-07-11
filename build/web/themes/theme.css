@@ -209,6 +209,11 @@ body {
     margin: 20px 0;
 }
 
+.playerMoney{
+    margin-left: 5px;
+    font-weight: bold;
+}
+
 .playerResigned{
     color: gray;
 }
