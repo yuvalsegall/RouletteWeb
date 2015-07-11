@@ -248,6 +248,15 @@ body {
 .frenchRoulette{
     background-image: url("/RouletteWeb/img/frenchRoulette.png");
 }
+
+.innerActionDiv{
+    margin-top: 5px;
+}
+
+.betAmountDiv{
+    padding-top: 5px;
+}
+
 #boardRapper{
     width:100%;
     text-align: center;
