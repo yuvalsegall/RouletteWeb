@@ -112,7 +112,7 @@ function hideMessage() {
     }, 3000);
 }
 
-function getButton(k, i){
+function getButtonforFirstRow(buttonId, k, i){
     var firstNumber = 3;
 
     if (i === 0 || i === 1 || i === 25 || i === 26)
@@ -156,7 +156,7 @@ function setBoard(tableType) {
             row.append(cell);
             var button;
             if (k === 0) {
-                button = getButton(k,i);
+                button = getButtonforFirstRow(buttonId, k, i);
                 if(button === null)
                     continue;
                 else
