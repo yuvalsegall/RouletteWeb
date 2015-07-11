@@ -23,7 +23,7 @@
 }
 
 #secondTable{
-    width:745px;
+    width:795px;
     text-align: center;
     padding-left: 116px;
     margin-top: -108px;
@@ -41,7 +41,11 @@
     text-align: center;
 }
 
-
+#snakeTd{
+    width:50px;
+    border: 0px !important;
+    padding: 0px !important; 
+}
 .firstTd{
     width:45px;
     border: 0px !important;
@@ -86,6 +90,10 @@
     padding: 0px !important;    
 }
 
+.chip{
+    outline: none;
+}
+
 .tableButton{
     background: transparent;
     border: 0px;
@@ -94,6 +102,7 @@
     cursor: pointer;
     min-width: 25px !important;
     padding: 0px;
+    outline: none;
 }
 
 .redButton{

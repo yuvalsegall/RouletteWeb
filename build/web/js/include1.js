@@ -78,7 +78,7 @@ function startGame() {
             eventsInterval = setInterval(function () {
                 getEvents();
             }, 1000);
-            replacePage('playGame');
+            getPlayGame();
         }
     });
 }
@@ -107,14 +107,12 @@ function getPlayersDetails(listId, game) {
 
                 });
             $("#gamesDiv").fadeOut();
-            if (playersDetails.filter(function (player) {
-                return player.type === 'HUMAN';
-            }).length === 0)
-                $("#userNameDiv").fadeIn();
-            else
-                $("#playersDiv").fadeIn();
-        }
-    });
+            setTimeout(function () {
+                $(playersDetails.filter(function (player) {
+                    return player.type === 'HUMAN';
+                }).length === 0 ? "#userNameDiv" : "#playersDiv").fadeIn();
+            }, 500);
+        }});
 }
 
 function getPlayerDetails() {
@@ -277,7 +275,6 @@ function getWaitingGames() {
         data: null,
         dataType: 'json',
         url: 'GetWaitingGames',
-        timeout: 5000,
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -317,6 +314,11 @@ function getCreateXMLGame() {
     replacePage('createXMLGame');
 }
 
+function getPlayGame() {
+    $(".menu").removeClass("active");
+    replacePage('playGame');
+}
+
 function joinGame() {
     if ($('#userName').val() === "") {
         showMessage('Name cannot be empty', true);
@@ -348,7 +350,9 @@ function joinPlayerToGame() {
 
 function replacePage(target) {
     $('#' + currentPage).fadeOut();
-    $('#' + target).fadeIn();
+    setTimeout(function () {
+        $('#' + target).fadeIn();
+    }, 500);
     currentPage = target;
 }
 
@@ -356,28 +360,11 @@ function createGame() {
     $.ajax({
         data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computersSlider').val(), 'humanPlayers': $('#humansSlider').val(), 'minWages': $('#minWagesSlider').val(), 'maxWages': $('#maxWagesSlider').val(), 'rouletteType': $('#tableTypeIsFrench').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmountSlider').val()},
         url: 'CreateGame',
-        timeout: 5000,
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response, xhr) {
             getJoinGames();
-        }
-    });
-}
-
-function yuval() {
-    playerID = 1111;
-    $.ajax({
-        data: {"gameName": "yuval"},
-        url: 'GetGameDetails',
-        error: function (response) {
-            showMessage(response.getResponseHeader('exception'), true);
-        },
-        success: function (response, xhr) {
-            setBoard(response.rouletteType);
-            setWheel(response.rouletteType);
-            replacePage('playGame');
         }
     });
 }

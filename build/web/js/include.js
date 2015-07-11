@@ -111,7 +111,7 @@ function setBoard(tableType) {
     var numOfCols = 27;
     var numOfRows = 6;
     var numOfActionRows = 2;
-    var numOfActionCols = 6;
+    var numOfActionCols = 7;
     $('#board').empty();
     $('#board').append('<div id=tableDiv></div>');
     var boardDiv = $('#tableDiv');
@@ -163,7 +163,7 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN1;
+                    numbers = null;
                     button = createTableButton('COLUMN1', numbers);
                     cell.append(button);
                 }
@@ -228,7 +228,7 @@ function setBoard(tableType) {
                     cell.append(button);
                 }
                 else if (i === 26) {
-                    numbers = COLUMN2;
+                    numbers = null;
                     button = createTableButton('COLUMN2', numbers);
                     cell.append(button);
                 }
@@ -291,7 +291,7 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN3;
+                    numbers = null;
                     button = createTableButton('COLUMN3', numbers);
                     cell.append(button);
                 }
@@ -323,10 +323,15 @@ function setBoard(tableType) {
         var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for (var i = 0; i < numOfActionCols; i++) {
-            if (k === 0 && i % 2 === 1)
+            if (k === 0 && i % 2 === 1 && i !== numOfActionCols - 1)
                 continue;
             var cell = $('<td></td>');
-            if(k === 0){
+            if(k === 0 && i === numOfActionCols - 1){
+                cell.attr('id', 'snakeTd');
+                numbers = null;
+                button = createTableButton('SNAKE', numbers);
+            }
+            else if(k === 0){
                 cell.addClass('firstActionTD');
                 if(i === 0){
                     numbers = null;
@@ -358,6 +363,8 @@ function setBoard(tableType) {
                 }else if(i === 5){
                     numbers = null;
                     button = createTableButton('PASSE', numbers);
+                }else{
+                    continue;
                 }
             }
             row.append(cell);
