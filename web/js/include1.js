@@ -104,7 +104,7 @@ function getPlayersDetails(listId, game) {
             else if (listId === "XMLplayersList")
                 playersDetails.forEach(function (player) {
                     if (player.type === 'HUMAN')
-                        $("#XMLplayersList").append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
+                        $("#XMLplayersList").append($("<li></li>").addClass("list-group-item").append($('<a href="#" class="list-group-item" onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
 
                 });
             $("#gamesDiv").fadeOut();
@@ -279,7 +279,7 @@ function getWaitingGames() {
             for (var i = 0; i < response.length; i++) {
                 var li = $('<li></li>');
                 li.addClass("list-group-item");
-                var a = $('<a onClick=getPlayersDetails("XMLplayersList","' + encodeURI(response[i]) + '")></a>');
+                var a = $('<a href="#" class="list-group-item" onClick=getPlayersDetails("XMLplayersList","' + encodeURI(response[i]) + '")></a>');
                 li.append(a);
                 a.html(response[i]);
                 targetList.append(li);
