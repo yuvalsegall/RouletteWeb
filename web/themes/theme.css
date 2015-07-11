@@ -8,6 +8,9 @@
 #errorMessageBox{
     height: 5px;
     width: 400px;
+    position: fixed;
+    right: 30px;
+    top: 30px;
 }
 
 #tableDiv{
@@ -221,7 +224,7 @@ body {
 .bottomPanel{
     float:left;
     width: 33%;
-    height: 400px;
+    height: 300px;
 }
 #centerPoint {
     top: 50%;
@@ -238,7 +241,6 @@ body {
 }
 
 .scrollable {
-    height: auto;
-    max-height: 200px;
+    height:280px;
     overflow-x: hidden;
 }

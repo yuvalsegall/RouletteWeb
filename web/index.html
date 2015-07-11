@@ -40,7 +40,7 @@
                         <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'>
                     </div>
                 </form>
-                <div id='errorMessageBox' class="navbar-form navbar-right">
+                <div id='errorMessageBox'>
                     <div id='errorMessage' class="alert" role="alert"></div>
                 </div>
             </div><!-- /.navbar-collapse -->
@@ -49,7 +49,7 @@
     <div id='createXMLGame' class='pages'>
         <div class='formBack'>
             <h4>Load From XML</h4>
-            <div class='row'>
+            <div id='fileChooserDiv' class='row'>
                 <div class='col-xs-2 myCol'>
                     <!-- <span class="btn btn-default btn-file"> -->
                     <!-- Browse  -->
@@ -62,10 +62,6 @@
                 <div class='col-xs-2 myCol'>
                     <input id='uploadFile' type="button" class='btn btn-default' value='Upload' onClick='loadGameFromXML()' disabled>
                 </div>
-            </div>
-            <div id='playersDiv'>
-                <ul class="list-group" id='XMLplayersList'>
-                </ul>
             </div>
         </div>
     </div><div id='createNewGame' class='pages'>
@@ -186,9 +182,10 @@
     </div>
     <div id='joinGame' class='pages'>
         <div class='formBack'>
-            <h1>joinGame</h1>
-            <input id='userName' type="text" class="form-control" placeholder="Choose Name">
+            <h4>Join Game</h4>
+            <input id='userName' type="text" class="form-control" placeholder="Enter you name">
             <br>
+            <h5>Pick a game</h5>
             <div id='gamesDiv'>
                 <ul class="list-group" id='gamesList'>
                 </ul>
@@ -202,7 +199,7 @@
             </div>
             <div id='gamePanel'>
                 <div id='events' class='bottomPanel'>
-                    <ul id='eventsList' class='list-group-item'></ul>
+                    <ul id='eventsList' class='list-group-item scrollable'></ul>
                 </div>
                 <div id='chips' class='bottomPanel'>
                     Bet amount: <span id="betAmount">0</span>
@@ -216,7 +213,7 @@
                     </div>
                 </div>
                 <div id='players' class='bottomPanel'>
-                    <ul id='playersList' class='list-group-item'></ul>
+                    <ul id='playersList' class='list-group-item scrollable'></ul>
                 </div>
             </div>
         </div>

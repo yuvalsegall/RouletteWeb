@@ -50,8 +50,7 @@ function loadGameFromXML() {
                     showMessage(response.getResponseHeader('exception'), true);
                 },
                 success: function (response, xhr) {
-                    gameName = response;
-                    getPlayersDetails("XMLplayersList");
+                    getJoinGames();
                 }
             });
         };
@@ -98,7 +97,7 @@ function getPlayersDetails(listId) {
                     $("#player" + player.name).append($("<span></span>").addClass("playerMoney").attr("id", "player" + player.name + "money").html(player.money));
                 }
                 else {
-                    if (player.type === 'HUMAN')
+                    if (player.type === 'HUMAN' && player.id === 0)
                         $("#" + listId).append($("<li></li>").addClass("list-group-item").append($('<a onClick=joinXMLGame("' + player.name + '")></a>').append($("<span></span>").addClass("playerName").html(player.name))));
                 }
             });
@@ -119,7 +118,7 @@ function getPlayerDetails() {
 }
 
 function getEvents() {
-    lastEventId = typeof events === 'undefined' || events.length === 0 ? lastEventId : events[events.length - 1].id;
+    lastEventId = typeof events === 'undefined' || events.length === 0 || events === null ? lastEventId : events[events.length - 1].id;
     $.ajax({
         data: {"playerID": playerID, "eventID": lastEventId},
         url: 'GetEvents',
@@ -191,8 +190,7 @@ function isMyEvent(eventPlayerName) {
 }
 
 function addStringToFeed(str) {
-    $("#eventsList").append($("<li></li>").addClass("list-group-item").html(str));
-//    $("#eventsList").scrollTo($("#eventslist").size() - 1);
+    $("#eventsList").prepend($("<li></li>").addClass("list-group-item").html(str));
 }
 
 function makeBet(type) {
@@ -351,7 +349,7 @@ function createGame() {
             showMessage(response.getResponseHeader('exception'), true);
         },
         success: function (response, xhr) {
-            getWaitingGames();
+            getJoinGames();
         }
     });
 }
