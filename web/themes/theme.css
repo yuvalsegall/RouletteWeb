@@ -214,6 +214,17 @@ body {
     font-weight: bold;
 }
 
+#ballPosition,
+#betAmount{
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+#ballPosition{
+    text-align: center;
+    
+}
+
 .playerResigned{
     color: gray;
 }
