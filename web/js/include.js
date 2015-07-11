@@ -112,6 +112,23 @@ function hideMessage() {
     }, 3000);
 }
 
+function getButton(k, i){
+    var firstNumber = 3;
+
+    if (i === 0 || i === 1 || i === 25 || i === 26)
+        return null;
+    else if (i % 2 === 0) {
+        var first = 3 * parseInt(i / 2);
+        numbers = [first, first - 1, first - 2];
+        return createTableButton(buttonId,'STREET', numbers);
+    } else {
+        var first = 3 * parseInt(i / 2);
+        var second = first + 3;
+        numbers = [first, first - 1, first - 2, second, second - 1, second - 2];
+        return createTableButton(buttonId, 'SIX_LANE', numbers);
+    }    
+}
+
 function setBoard(tableType) {
     var numOfCols = 27;
     var numOfRows = 6;
@@ -139,21 +156,11 @@ function setBoard(tableType) {
             row.append(cell);
             var button;
             if (k === 0) {
-                var firstNumber = 3;
-                if (i === 0 || i === 1 || i === 25 || i === 26)
+                button = getButton(k,i);
+                if(button === null)
                     continue;
-                else if (i % 2 === 0) {
-                    var first = 3 * parseInt(i / 2);
-                    numbers = [first, first - 1, first - 2];
-                    button = createTableButton(buttonId,'STREET', numbers);
+                else
                     cell.append(button);
-                } else {
-                    var first = 3 * parseInt(i / 2);
-                    var second = first + 3;
-                    numbers = [first, first - 1, first - 2, second, second - 1, second - 2];
-                    button = createTableButton(buttonId, 'SIX_LANE', numbers);
-                    cell.append(button);
-                }
             }
             if (k === 1) {
                 var firstNumber = 3;
