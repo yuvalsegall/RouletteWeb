@@ -6,14 +6,9 @@ var playerName;
 var gameName;
 var betNumbers;
 var betType;
-var COLUMN_1 = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
-var COLUMN_2 = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
-var COLUMN_3 = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
-var DERNIERE_DOUZAINE = [25,26,27,28,29,30,31,32,33,34,35,36];
-var MOYENNE_DOUZAINE = [13,14,15,16,17,18,19,20,21,22,23,24];
-var PREMIERE_DOUZAINE = [1,2,3,4,5,6,7,8,9,10,11,12];
-var PASSE = [19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36];
-var MANQUE = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+var COLUMN1 = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
+var COLUMN2 = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
+var COLUMN3 = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
 var SNAKE = [1,5,9,12,14,16,19,23,27,30,32,34];
 
 $(function () {
@@ -168,8 +163,8 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN_1;
-                    button = createTableButton('COLUMN_1', numbers);
+                    numbers = COLUMN1;
+                    button = createTableButton('COLUMN1', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
@@ -233,8 +228,8 @@ function setBoard(tableType) {
                     cell.append(button);
                 }
                 else if (i === 26) {
-                    numbers = COLUMN_2;
-                    button = createTableButton('COLUMN_2', numbers);
+                    numbers = COLUMN2;
+                    button = createTableButton('COLUMN2', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
@@ -296,8 +291,8 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN_3;
-                    button = createTableButton('COLUMN_3', numbers);
+                    numbers = COLUMN3;
+                    button = createTableButton('COLUMN3', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
@@ -334,18 +329,18 @@ function setBoard(tableType) {
             if(k === 0){
                 cell.addClass('firstActionTD');
                 if(i === 0){
-                    numbers = PREMIERE_DOUZAINE;
+                    numbers = null;
                     button = createTableButton('PREMIERE_DOUZAINE', numbers);
                 }else if(i === 2){
-                    numbers = MOYENNE_DOUZAINE;
+                    numbers = null;
                     button = createTableButton('MOYENNE_DOUZAINE', numbers);
                 }else{
-                    numbers = DERNIERE_DOUZAINE;
+                    numbers = null;
                     button = createTableButton('DERNIERE_DOUZAINE', numbers);                }
             }else{
                 cell.addClass('secondActionTD');
                 if(i === 0){
-                    numbers = MANQUE;
+                    numbers = null;
                     button = createTableButton('MANQUE', numbers);
                 }else if(i === 1){
                     numbers = null;
@@ -360,7 +355,7 @@ function setBoard(tableType) {
                     numbers = null;
                     button = createTableButton('IMPAIR', numbers);
                 }else if(i === 5){
-                    numbers = PASSE;
+                    numbers = null;
                     button = createTableButton('PASSE', numbers);
                 }
             }
