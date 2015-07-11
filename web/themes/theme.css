@@ -6,7 +6,8 @@
 }
 
 #errorMessageBox{
-    height: 40px;
+    height: 5px;
+    width: 400px;
 }
 
 #tableDiv{
@@ -113,16 +114,19 @@
     margin-bottom: 5px;
 }
 
-#minBetsSlider,
-#maxBetsSlider,
+#minWagesSlider,
+#maxWagesSlider,
 #humansSlider,
+#tableTypeIsFrench,
 #tableTypeIsFrench,
 #computersSlider {
     width: 100%;
+}#computersSlider {
+    width: 100%;
 }
 
-#minBetsSlider .slider-selection,
-#maxBetsSlider .slider-selection,
+#minWagesSlider .slider-selection,
+#maxWagesSlider .slider-selection,
 #humansSlider .slider-selection,
 #computersSlider .slider-selection {
     background: #BABABA;
@@ -195,6 +199,10 @@ body {
     display: none;  
 }
 
+#loginDiv{
+    display: none;  
+}
+
 .americanRoulette{
     background-image: url("/RouletteWeb/img/americanRoulette.png");
 }
@@ -227,4 +235,10 @@ body {
     width: 300px;
     margin-left: -150px;
     margin-top: -150px;
+}
+
+.scrollable {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }

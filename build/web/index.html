@@ -33,20 +33,19 @@
                     <li id="menuCreateXMLGame" role="presentation" class="menu"><a href="#" onClick="getCreateXMLGame()">Create Game From XML</a></li>
                     <li id="menuJoinGame" role="presentation" class="menu" ><a href="#" onClick="getJoinGames()">Join Game</a></li>
                 </ul>
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-right">
                     <div id='loginDiv' class="form-group">
                         <input id='serverAddress' type="text" class="form-control" value="localhost">
                         <input id='serverPort' type="text" class="form-control" value="80">
                         <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'>
                     </div>
                 </form>
-                <input type='button' class="btn" value='Resign' onClick='resign()'>
+                <div id='errorMessageBox' class="navbar-form navbar-right">
+                    <div id='errorMessage' class="alert" role="alert"></div>
+                </div>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div id='errorMessageBox'>
-        <div id='errorMessage' class="alert alert-danger" role="alert"></div>
-    </div>
     <div id='createXMLGame' class='pages'>
         <div class='formBack'>
             <h4>Load From XML</h4>
@@ -77,6 +76,7 @@
                     <input id='gameName' type="text" class="form-control" placeholder="Game Name">
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Table Type:</label>
@@ -85,6 +85,7 @@
                     <input type="checkbox" id="tableTypeIsFrench">
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Min Wages:</label>
@@ -95,7 +96,7 @@
                             <b>0</b>
                         </div>
                         <div class='col-xs-8'>	
-                            <input id="minWages" data-slider-id='minBetsSlider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>
+                            <input id="minWages" data-slider-id='minWagesSlider' type="text"/>
                         </div>
                         <div class='col-xs-2'>
                             <b>1</b>
@@ -103,6 +104,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Max Wages:</label>
@@ -113,7 +115,7 @@
                             <b>1</b>
                         </div>
                         <div class='col-xs-8'>	
-                            <input id="maxWages" data-slider-id='maxBetsSlider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="4"/>
+                            <input id="maxWages" data-slider-id='maxWagesSlider' type="text"/>
                         </div>
                         <div class='col-xs-2'>
                             <b>10</b>
@@ -121,6 +123,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Initial Sum ($):</label>
@@ -131,7 +134,7 @@
                             <b>10</b>
                         </div>
                         <div class='col-xs-8'>	
-                            <input id="initialAmount" data-slider-id='maxBetsSlider' type="text" data-slider-min="10" data-slider-max="100" data-slider-step="5" data-slider-value="30"/>
+                            <input id="initialAmount" data-slider-id='initialAmountSlider' type="text"/>
                         </div>
                         <div class='col-xs-2'>
                             <b>100</b>
@@ -139,6 +142,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Human players:</label>
@@ -149,7 +153,7 @@
                             <b>0</b>
                         </div>
                         <div class='col-xs-8'>	
-                            <input id="humans" data-slider-id='humansSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="1"/>
+                            <input id="humans" data-slider-id='humansSlider' type="text"/>
                         </div>
                         <div class='col-xs-2'>
                             <b>6</b>
@@ -157,6 +161,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class='row'>
                 <div class='col-xs-2 myCol'>
                     <label>Computer players:</label>
@@ -167,7 +172,7 @@
                             <b>0</b>
                         </div>
                         <div class='col-xs-8'>	
-                            <input id="computers" data-slider-id='computersSlider' type="text" data-slider-min="0" data-slider-max="6" data-slider-step="1" data-slider-value="0"/>
+                            <input id="computers" data-slider-id='computersSlider' type="text"/>
                         </div>
                         <div class='col-xs-2'>
                             <b>6</b>
@@ -175,6 +180,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <input id='startGameButton' type='button' class='btn btn-default' value='Start' onClick='checkParams()'>
         </div>
     </div>
@@ -192,27 +198,31 @@
     <div id='playGame' class='pages'>
         <div class='formBack'>
             <div id='boardRapper'>
-            	<div id='board'></div>
+                <div id='board'></div>
             </div>
             <div id='gamePanel'>
-	            <div id='events' class='bottomPanel'>
-	                <ul id='eventsList' class='list-group-item'></ul>
-	            </div>
-	            <div id='chips' class='bottomPanel'>
-	                BetAmount: <span id="betAmount">0</span>
-	                <input type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
-	                <input type="image" src="/RouletteWeb/img/chip2.png" onClick='addChipToAmount(2)' alt='2'>
-	                <input type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
-	                <input type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
-	            </div>
-	            <div id='players' class='bottomPanel'>
-	                <ul id='playersList' class='list-group-item'></ul>
-	            </div>
-	        </div>
+                <div id='events' class='bottomPanel'>
+                    <ul id='eventsList' class='list-group-item'></ul>
+                </div>
+                <div id='chips' class='bottomPanel'>
+                    Bet amount: <span id="betAmount">0</span>
+                    <input type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
+                    <input type="image" src="/RouletteWeb/img/chip2.png" onClick='addChipToAmount(2)' alt='2'>
+                    <input type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
+                    <input type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
+                    <div id='actions' class='bottomPanel'>
+                        <input type='button' class="btn" value='Resign' onClick='resign()'>
+                        <input type='button' class="btn" value='Finish Betting' onClick='finishBetting()'> 
+                    </div>
+                </div>
+                <div id='players' class='bottomPanel'>
+                    <ul id='playersList' class='list-group-item'></ul>
+                </div>
+            </div>
         </div>
         <div id='centerPoint'>
-    		<div id='wheel' class='bottomPanel'></div>
-    	</div>
+            <div id='wheel' class='bottomPanel'></div>
+        </div>
     </div>
     <footer class="footer">
         <div class="container">

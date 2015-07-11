@@ -22,29 +22,21 @@ function init() {
     eventsInterval = null;
     playersDetails = null;
     playerDetails = null;
-    currentPage = null;
     degrees = 270;
     betAmount = 0;
     mustBet = null;
     hadBet = false;
-    $("#serverAddress").val("localhost");
-    $("#serverPort").val("80");
     $("#XMLFileChooser").val("");
     $("#gameName").val("");
     $('#fileNameField').val(" ");
     $("#uploadFile").prop('disabled', true);
-    $("#minWages").attr("data-slider-value", "0");
-    $("#maxWages").attr("data-slider-value", "4");
-    $("#initialAmount").attr("data-slider-value", "30");
-    $("#humans").attr("data", "value: '6'");
-    $("#computers").val("6");
-    $("#computers").slider({
-        'value': '6'
-    });
-    $("#gameName").val("");
-    $("#XMLFileChooser").val("");
-    $("#gameName").val("");
-    setForm();
+    $('#minWagesSlider').slider({min: 0, max: 1, step: 1, value: 0});
+    $('#maxWagesSlider').slider({min: 1, max: 10, step: 1, value: 4});
+    $('#initialAmountSlider').slider({min: 10, max: 100, step: 5, value: 30});
+    $('#humansSlider').slider({min: 0, max: 6, step: 1, value: 1});
+    $('#computersSlider').slider({min: 0, max: 6, step: 1, value: 4});
+    $("#userName").val("");
+    checkServerStatus();
 }
 
 function loadGameFromXML() {
@@ -300,7 +292,7 @@ function getCreateNewGame() {
     replacePage('createNewGame');
 }
 
-function getJoinGame() {
+function getJoinGames() {
     $(".menu").removeClass("active");
     $("#menuJoinGame").addClass("active");
     init();
@@ -323,7 +315,6 @@ function joinGame(gameToJoin) {
     }
     playerName = $('#userName').val();
     joinPlayerToGame();
-
 }
 function joinXMLGame(playerNameToJoin) {
     playerName = playerNameToJoin;
@@ -353,7 +344,7 @@ function replacePage(target) {
 
 function createGame() {
     $.ajax({
-        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computers').val(), 'humanPlayers': $('#humans').val(), 'minWages': $('#minWages').val(), 'maxWages': $('#maxWages').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmount').val()},
+        data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computersSlider').val(), 'humanPlayers': $('#humansSlider').val(), 'minWages': $('#minWagesSlider').val(), 'maxWages': $('#maxWagesSlider').val(), 'rouletteType': $('#check_id').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmountSlider').val()},
         url: 'CreateGame',
         timeout: 5000,
         error: function (response) {
