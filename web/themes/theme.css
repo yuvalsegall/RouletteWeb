@@ -218,13 +218,13 @@ body {
     font-weight: bold;
 }
 
-#ballDiv,
+.ballDiv,
 #betAmount{
     font-weight: bolder;
     margin-top: 10px;
 }
 
-#ballDiv{
+.ballDiv{
     text-align: center;
 
 }

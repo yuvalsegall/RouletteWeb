@@ -126,7 +126,31 @@ function getButtonforFirstRow(buttonId, k, i){
         var second = first + 3;
         numbers = [first, first - 1, first - 2, second, second - 1, second - 2];
         return createTableButton(buttonId, 'SIX_LANE', numbers);
-    }    
+    }
+}
+
+function getButtonforFirstNumbersRow(buttonId, k, i){
+    var firstNumber = 3;
+
+    if (i === 0 && tableType === 'AMERICAN') {
+        numbers = [37];
+        return createTableButton(buttonId, 'STRAIGHT', numbers);
+    }else if (i === 1) {
+        numbers = [0, 37, 1, 2, 3];
+        return createTableButton(buttonId, 'TOP_LINE', numbers);
+    }else if (i === 25)
+        return null;
+    else if (i === 26) {
+        numbers = null;
+        return createTableButton(buttonId, 'COLUMN1', numbers);
+    }else if (i % 2 === 0) {
+        numbers = [firstNumber * parseInt((i / 2))];
+        return createTableButton(buttonId, 'STRAIGHT', numbers);
+    }else {
+        var first = firstNumber * parseInt((i / 2));
+        numbers = [first, first + 3];
+        return createTableButton(buttonId, 'SPLIT', numbers);
+    }
 }
 
 function setBoard(tableType) {
@@ -162,7 +186,7 @@ function setBoard(tableType) {
                 else
                     cell.append(button);
             }
-            if (k === 1) {
+            if (k === 1) { ///////
                 var firstNumber = 3;
                 if (i === 0 && tableType === 'AMERICAN') {
                     numbers = [37];
