@@ -126,11 +126,11 @@ function setBoard(tableType) {
     boardDiv.append(table);
     tableType === 'AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for (var k = 0; k < numOfRows; k++) {
-        buttonId++;
         var row = $('<tr></tr>');
         k === 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
         for (var i = 0; i < numOfCols; i++) {
+            buttonId++;
             var cell = $('<td></td>');
             if (i === 0)
                 cell.addClass('firstTd');
@@ -330,6 +330,7 @@ function setBoard(tableType) {
         var row = $('<tr></tr>').addClass('firstAction');
         table.append(row);
         for (var i = 0; i < numOfActionCols; i++) {
+            buttonId++;
             if (k === 0 && i % 2 === 1 && i !== numOfActionCols - 1)
                 continue;
             var cell = $('<td></td>');
