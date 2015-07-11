@@ -163,7 +163,7 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN1;
+                    numbers = null;
                     button = createTableButton('COLUMN1', numbers);
                     cell.append(button);
                 }
@@ -228,7 +228,7 @@ function setBoard(tableType) {
                     cell.append(button);
                 }
                 else if (i === 26) {
-                    numbers = COLUMN2;
+                    numbers = null;
                     button = createTableButton('COLUMN2', numbers);
                     cell.append(button);
                 }
@@ -291,7 +291,7 @@ function setBoard(tableType) {
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
-                    numbers = COLUMN3;
+                    numbers = null;
                     button = createTableButton('COLUMN3', numbers);
                     cell.append(button);
                 }
