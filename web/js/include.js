@@ -117,6 +117,7 @@ function setBoard(tableType) {
     var numOfRows = 6;
     var numOfActionRows = 2;
     var numOfActionCols = 7;
+    var buttonId = 9999;
     $('#board').empty();
     $('#board').append('<div id=tableDiv></div>');
     var boardDiv = $('#tableDiv');
@@ -125,6 +126,7 @@ function setBoard(tableType) {
     boardDiv.append(table);
     tableType === 'AMERICAN' ? boardDiv.toggleClass('american') : boardDiv.toggleClass('french');
     for (var k = 0; k < numOfRows; k++) {
+        buttonId++;
         var row = $('<tr></tr>');
         k === 0 ? row.addClass('firstRow') : row.addClass('allRows');
         table.append(row);
@@ -143,13 +145,13 @@ function setBoard(tableType) {
                 else if (i % 2 === 0) {
                     var first = 3 * parseInt(i / 2);
                     numbers = [first, first - 1, first - 2];
-                    button = createTableButton('STREET', numbers);
+                    button = createTableButton(buttonId,'STREET', numbers);
                     cell.append(button);
                 } else {
                     var first = 3 * parseInt(i / 2);
                     var second = first + 3;
                     numbers = [first, first - 1, first - 2, second, second - 1, second - 2];
-                    button = createTableButton('SIX_LANE', numbers);
+                    button = createTableButton(buttonId, 'SIX_LANE', numbers);
                     cell.append(button);
                 }
             }
@@ -157,30 +159,30 @@ function setBoard(tableType) {
                 var firstNumber = 3;
                 if (i === 0 && tableType === 'AMERICAN') {
                     numbers = [37];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else if (i === 1) {
                     numbers = [0, 37, 1, 2, 3];
-                    button = createTableButton('TOP_LINE', numbers);
+                    button = createTableButton(buttonId, 'TOP_LINE', numbers);
                     cell.append(button);
                 }
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
                     numbers = null;
-                    button = createTableButton('COLUMN1', numbers);
+                    button = createTableButton(buttonId, 'COLUMN1', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
                     numbers = [firstNumber * parseInt((i / 2))];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else {
                     var first = firstNumber * parseInt((i / 2));
                     numbers = [first, first + 3];
-                    button = createTableButton('SPLIT', numbers);
+                    button = createTableButton(buttonId, 'SPLIT', numbers);
                     cell.append(button);
                 }
             }
@@ -188,17 +190,17 @@ function setBoard(tableType) {
                 var firstNumber = 3;
                 if (i === 0) {
                     tableType === 'AMERICAN' ? numbers = [37] : numbers = [0];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else if (i === 1) {
                     if (tableType === 'AMERICAN') {
                         numbers = [2, 3, 37];
-                        button = createTableButton('BASKET', numbers);
+                        button = createTableButton(buttonId, 'BASKET', numbers);
                         cell.append(button);
                     } else {
                         numbers = [2, 3, 0];
-                        button = createTableButton('TRIO', numbers);
+                        button = createTableButton(buttonId, 'TRIO', numbers);
                         cell.append(button);
                     }
                 }
@@ -207,14 +209,14 @@ function setBoard(tableType) {
                 else if (i % 2 === 0) {
                     var first = firstNumber * (i / 2);
                     numbers = [first, first - 1];
-                    button = createTableButton('SPLIT', numbers);
+                    button = createTableButton(buttonId, 'SPLIT', numbers);
                     cell.append(button);
                 }
                 else {
                     var first = firstNumber * parseInt((i / 2));
                     var second = firstNumber * parseInt((i / 2)) + 3;
                     numbers = [first, first - 1, second, second - 1];
-                    button = createTableButton('CORNER', numbers);
+                    button = createTableButton(buttonId, 'CORNER', numbers);
                     cell.append(button);
                 }
             }
@@ -222,30 +224,30 @@ function setBoard(tableType) {
                 var firstNumber = 3;
                 if (i === 0 && tableType === 'FRENCH') {
                     numbers = [0];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else if (i === 0 || i === 25)
                     continue;
                 else if (i === 1) {
                     numbers = [0, 2, 37];
-                    button = createTableButton('BASKET', numbers);
+                    button = createTableButton(buttonId, 'BASKET', numbers);
                     cell.append(button);
                 }
                 else if (i === 26) {
                     numbers = null;
-                    button = createTableButton('COLUMN2', numbers);
+                    button = createTableButton(buttonId, 'COLUMN2', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
                     numbers = [firstNumber * parseInt((i / 2)) - 1];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else {
                     var first = firstNumber * parseInt((i / 2)) - 1;
                     numbers = [first, first + 3];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
             }
@@ -253,15 +255,15 @@ function setBoard(tableType) {
                 var firstNumber = 3;
                 if (i === 0) {
                     tableType === 'AMERICAN' ? numbers = [37] : numbers = [0];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else if (i === 1) {
                     numbers = [0, 1, 2];
                     if (tableType === 'AMERICAN') {
-                        button = createTableButton('BASKET', numbers);
+                        button = createTableButton(buttonId, 'BASKET', numbers);
                     } else {
-                        button = createTableButton('TRIO', numbers);
+                        button = createTableButton(buttonId, 'TRIO', numbers);
                     }
                     cell.append(button);
                 }
@@ -270,14 +272,14 @@ function setBoard(tableType) {
                 else if (i % 2 === 0) {
                     var first = firstNumber * (i / 2) - 1;
                     numbers = [first, first - 1];
-                    button = createTableButton('SPLIT', numbers);
+                    button = createTableButton(buttonId, 'SPLIT', numbers);
                     cell.append(button);
                 }
                 else {
                     var first = firstNumber * parseInt((i / 2)) - 1;
                     var second = firstNumber * parseInt((i / 2)) + 2;
                     numbers = [first, first - 1, second, second - 1];
-                    button = createTableButton('CORNER', numbers);
+                    button = createTableButton(buttonId, 'CORNER', numbers);
                     cell.append(button);
                 }
             }
@@ -285,30 +287,30 @@ function setBoard(tableType) {
                 var firstNumber = 3;
                 if (i === 0 && tableType === 'AMERICAN') {
                     numbers = [37];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else if (i === 1) {
                     numbers = [0, 37, 1, 2, 3];
-                    button = createTableButton('TOP_LINE', numbers);
+                    button = createTableButton(buttonId, 'TOP_LINE', numbers);
                     cell.append(button);
                 }
                 else if (i === 25)
                     continue;
                 else if (i === 26) {
                     numbers = null;
-                    button = createTableButton('COLUMN3', numbers);
+                    button = createTableButton(buttonId, 'COLUMN3', numbers);
                     cell.append(button);
                 }
                 else if (i % 2 === 0) {
                     numbers = [firstNumber * parseInt((i / 2)) - 2];
-                    button = createTableButton('STRAIGHT', numbers);
+                    button = createTableButton(buttonId, 'STRAIGHT', numbers);
                     cell.append(button);
                 }
                 else {
                     var first = firstNumber * parseInt((i / 2)) - 2;
                     numbers = [first, first + 3];
-                    button = createTableButton('SPLIT', numbers);
+                    button = createTableButton(buttonId, 'SPLIT', numbers);
                     cell.append(button);
                 }
             }
@@ -334,40 +336,40 @@ function setBoard(tableType) {
             if (k === 0 && i === numOfActionCols - 1) {
                 cell.attr('id', 'snakeTd');
                 numbers = null;
-                button = createTableButton('SNAKE', numbers);
+                button = createTableButton(buttonId, 'SNAKE', numbers);
             }
             else if (k === 0) {
                 cell.addClass('firstActionTD');
                 if (i === 0) {
                     numbers = null;
-                    button = createTableButton('PREMIERE_DOUZAINE', numbers);
+                    button = createTableButton(buttonId, 'PREMIERE_DOUZAINE', numbers);
                 } else if (i === 2) {
                     numbers = null;
-                    button = createTableButton('MOYENNE_DOUZAINE', numbers);
+                    button = createTableButton(buttonId, 'MOYENNE_DOUZAINE', numbers);
                 } else {
                     numbers = null;
-                    button = createTableButton('DERNIERE_DOUZAINE', numbers);
+                    button = createTableButton(buttonId, 'DERNIERE_DOUZAINE', numbers);
                 }
             } else {
                 cell.addClass('secondActionTD');
                 if (i === 0) {
                     numbers = null;
-                    button = createTableButton('MANQUE', numbers);
+                    button = createTableButton(buttonId, 'MANQUE', numbers);
                 } else if (i === 1) {
                     numbers = null;
-                    button = createTableButton('PAIR', numbers);
+                    button = createTableButton(buttonId, 'PAIR', numbers);
                 } else if (i === 2) {
                     numbers = null;
-                    button = createTableButton('ROUGE', numbers);
+                    button = createTableButton(buttonId, 'ROUGE', numbers);
                 } else if (i === 3) {
                     numbers = null;
-                    button = createTableButton('NOIR', numbers);
+                    button = createTableButton(buttonId, 'NOIR', numbers);
                 } else if (i === 4) {
                     numbers = null;
-                    button = createTableButton('IMPAIR', numbers);
+                    button = createTableButton(buttonId, 'IMPAIR', numbers);
                 } else if (i === 5) {
                     numbers = null;
-                    button = createTableButton('PASSE', numbers);
+                    button = createTableButton(buttonId, 'PASSE', numbers);
                 } else {
                     continue;
                 }
