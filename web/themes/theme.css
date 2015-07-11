@@ -87,6 +87,8 @@
 }
 
 .tableButton{
+    background: transparent;
+    border: 0px;
     width: 100%;
     height: 100% !important;
     cursor: pointer;
@@ -117,14 +119,12 @@
     margin-bottom: 5px;
 }
 
-.toggle.btn {
-  min-width: 100px;
-}
-
 #minWagesSlider,
 #maxWagesSlider,
 #humansSlider,
 #computersSlider {
+    width: 100%;
+}#computersSlider {
     width: 100%;
 }
 

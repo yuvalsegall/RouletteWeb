@@ -336,7 +336,8 @@ function setBoard(tableType) {
                     button = createTableButton('MOYENNE_DOUZAINE', numbers);
                 }else{
                     numbers = null;
-                    button = createTableButton('DERNIERE_DOUZAINE', numbers);                }
+                    button = createTableButton('DERNIERE_DOUZAINE', numbers);
+                }
             }else{
                 cell.addClass('secondActionTD');
                 if(i === 0){
