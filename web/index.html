@@ -210,14 +210,24 @@
                     <ul id='eventsList' class='list-group-item scrollable'></ul>
                 </div>
                 <div id='chips' class='bottomPanel'>
-                    Bet amount: <span id="betAmount">0</span>
-                    <input class='chip' type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
-                    <input class='chip' type="image" src="/RouletteWeb/img/chip2.png" onClick='addChipToAmount(2)' alt='2'>
-                    <input class='chip' type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
-                    <input class='chip' type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
-                    <div id='actions' class='bottomPanel'>
-                        <input type='button' class="btn" value='Resign' onClick='resign()'>
-                        <input type='button' class="btn" value='Finish Betting' onClick='finishBetting()'> 
+                    <div class='row'>
+                        <div class='col-xs-9'>
+                            <input class='chip' type="image" src="/RouletteWeb/img/chip1.png" onClick='addChipToAmount(1)' alt='1'>
+                            <input class='chip' type="image" src="/RouletteWeb/img/chip2.png" onClick='addChipToAmount(2)' alt='2'>
+                            <input class='chip' type="image" src="/RouletteWeb/img/chip5.png" onClick='addChipToAmount(5)' alt='5'>
+                            <input class='chip' type="image" src="/RouletteWeb/img/chip10.png" onClick='addChipToAmount(10)' alt='10'>
+                        </div>
+                        <div class='col-xs-3'>
+                            Bet amount: <span id="betAmount">0</span>
+                        </div>                      
+                    </div>
+                    <div class='row'>
+                        <div class='col-xs-6'>
+                            <input type='button' class="btn" value='Finish Betting' onClick='finishBetting()'> 
+                        </div>
+                        <div class='col-xs-6'>
+                            <input type='button' class="btn" value='Resign' onClick='resign()'>
+                        </div>
                     </div>
                 </div>
                 <div id='players' class='bottomPanel'>
