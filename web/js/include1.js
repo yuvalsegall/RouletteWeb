@@ -19,6 +19,7 @@ $(document).on('change', '#XMLFileChooser',
 function init() {
     lastEventId = 0;
     events = null;
+    clearInterval(eventsInterval);
     eventsInterval = null;
     playersDetails = null;
     playerDetails = null;
@@ -36,9 +37,9 @@ function init() {
     $('#humansSlider').slider({min: 0, max: 6, step: 1, value: 1});
     $('#computersSlider').slider({min: 0, max: 6, step: 1, value: 4});
     $("#userName").val("");
+    $("#gamesDiv").show();
     $("#userNameDiv").hide();
     $("#playersDiv").hide();
-    $("#gamesDiv").show();
     checkServerStatus();
 }
 
@@ -107,11 +108,7 @@ function getPlayersDetails(listId, game) {
 
                 });
             $("#gamesDiv").fadeOut();
-            setTimeout(function () {
-                $(playersDetails.filter(function (player) {
-                    return player.type === 'HUMAN';
-                }).length === 0 ? "#userNameDiv" : "#playersDiv").fadeIn();
-            }, 500);
+            isXMLGame();
         }});
 }
 
@@ -344,6 +341,20 @@ function joinPlayerToGame() {
         success: function (response) {
             playerID = response;
             startGame();
+        }
+    });
+}
+
+function isXMLGame() {
+    $.ajax({
+        data: {"gameName": gameName},
+        url: 'GetGameDetails',
+        error: function (response) {
+        },
+        success: function (response, xhr) {
+            setTimeout(function () {
+                $(response.loadedFromXML ? "#playersDiv" : "#userNameDiv").fadeIn();
+            }, 500);
         }
     });
 }
