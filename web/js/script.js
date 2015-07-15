@@ -131,7 +131,6 @@ function setServlets() {
         },
         success: function (response) {
             $('#servlets').hide();
-            $('#server').show();
             hideMessage();
             setTimeout(function () {
                 showMessage("Connected to the Servlets", false, true);
@@ -140,7 +139,7 @@ function setServlets() {
                 setTimeout(function () {
                     hideMessage();
                     setTimeout(function () {
-                        showMessage("Please connect to the Server", true, true);
+                        checkServerStatus();
                     }, 700);
                 }, 700);
             }, 700);
