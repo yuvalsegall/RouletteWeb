@@ -1,0 +1,301 @@
+#errorMessage{
+    display: none;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+#errorMessageBox{
+    height: 5px;
+    width: 400px;
+    position: fixed;
+    right: 30px;
+    top: 70px;
+}
+
+#tableDiv{
+    width:810px;
+    background-color: green;
+    text-align: center;
+    height: 249px;
+    padding-left: 60px;
+    /*padding-right: 20px;*/
+}
+
+#chips{
+    padding-left: 5px;
+}
+
+#secondTable{
+    width:795px;
+    text-align: center;
+    padding-left: 116px;
+    margin-top: -108px;
+}
+
+#thirdTable{
+    width:745px;
+    height: 80px;
+    text-align: center;
+    padding-left: 116px;
+}
+
+.table{
+    width: 720px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#snakeTd{
+    width:50px;
+    border: 0px !important;
+    padding: 0px !important; 
+}
+.firstTd{
+    width:45px;
+    border: 0px !important;
+    padding: 0px !important;
+}
+
+.lastTd{
+    width:45px;
+    border: 0px !important;
+    padding: 0px !important;
+    margin-right: 36px;
+}
+
+
+.menu{
+}
+
+.midTd{
+    width:26px !important;
+    border: 0px !important;
+    padding: 0px !important;
+}
+
+.allRows{
+    height: 21px;
+}
+
+.firstRow{
+    height: 25px;
+}
+
+.firstAction{
+    margin-left:49px;
+    height: 44px;
+}
+
+.firstActionTD{
+    width:248px;
+    border: 0px !important;
+    padding: 0px !important;
+}
+
+.secondActionTD{
+    width:124px;
+    border: 0px !important;
+    padding: 0px !important;    
+}
+
+.chip{
+    outline: none;
+}
+
+.tableButtonWithChip{
+    background: url("/RouletteWeb/img/tableChip.png") no-repeat center !important;
+}
+
+.tableButton{
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100% !important;
+    cursor: pointer;
+    min-width: 25px !important;
+    padding: 0px;
+    outline: none;
+}
+
+.redButton{
+    background-color: red;
+}
+
+.american{
+    background-image: url("/RouletteWeb/img/americanTable.png");
+}
+
+.french{
+    background-image: url("/RouletteWeb/img/frenchTable.png");
+}
+
+.formBack{
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.myCol{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#minWagesSlider,
+#maxWagesSlider,
+#humansSlider,
+#computersSlider {
+    width: 100%;
+}
+
+.toggle.btn{
+    min-width: 100px;
+}
+
+#minWagesSlider .slider-selection,
+#maxWagesSlider .slider-selection,
+#humansSlider .slider-selection,
+#computersSlider .slider-selection {
+    background: #BABABA;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+#board{
+    width: 810px;
+    display: inline-block;
+}
+.boardButton {
+    /*background: transparent;*/
+    border: none !important;
+    font-size:0;
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* fixed height of the footer */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+    margin: 20px 0;
+}
+
+.playerMoney{
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.ballDiv,
+#betAmount{
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+.ballDiv{
+    text-align: center;
+
+}
+
+.playerResigned{
+    color: gray;
+}
+
+#servlets,
+#server,
+.pages{
+    display: none;  
+}
+
+#loginDiv{
+    display: none;  
+}
+
+.americanRoulette{
+    background-image: url("/RouletteWeb/img/americanRoulette.png");
+}
+
+.frenchRoulette{
+    background-image: url("/RouletteWeb/img/frenchRoulette.png");
+}
+
+.innerActionDiv{
+    margin-top: 15px;
+}
+
+#resignButton{
+    margin-top: 45px;
+}
+
+.betAmountDiv{
+    padding-top: 5px;
+}
+
+#boardRapper{
+    width:100%;
+    text-align: center;
+}
+#gamePanel{
+    width:100%;
+    overflow: hidden;
+}
+.bottomPanel{
+    float:left;
+    width: 33%;
+    height: 300px;
+}
+#centerPoint {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+#wheel{
+    display: none;
+    height: 300px;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+}
+
+.scrollable {
+    height:280px;
+    overflow-x: hidden;
+}
