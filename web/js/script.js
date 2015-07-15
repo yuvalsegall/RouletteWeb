@@ -836,11 +836,13 @@ function createTableButton(id, type, numbers) {
 }
 
 function showMessage(msg, isError, toHide) {
-    isMessageShow = true;
-    $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
-    $('#errorMessage').text(msg).fadeIn();
-    if (!toHide || toHide === undefined)
-        hideMessage(true);
+    if(msg !== "") {
+        isMessageShow = true;
+        $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
+        $('#errorMessage').text(msg).fadeIn();
+        if (!toHide || toHide === undefined)
+            hideMessage(true);        
+    }
 }
 
 function hideMessage(toWait) {
