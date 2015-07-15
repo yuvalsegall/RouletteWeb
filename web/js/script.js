@@ -1,4 +1,4 @@
-var MAIN_URL = 'http://10.0.0.3/RouletteWeb/';
+var SERVLETS_URL = 'http://localhost:80/RouletteWeb/';
 var MAX_PLAYERS = 6;
 var hasServer = false;
 var playerID;
@@ -92,33 +92,91 @@ function setForm() {
 function checkServerStatus() {
     $.ajax({
         data: null,
-        url: 'Configurations',
+        url: SERVLETS_URL + 'Configurations',
         error: function (response) {
             waitForLogin();
-            $('#loginDiv').show();
-            showMessage("Please connect to a server", true, true);
+            if (response.status !== 503) {
+                $('#servlets').show();
+                $('#server').hide();
+                showMessage("Please connect to the Servlets", true, true);
+            }
+            else {
+                $('#server').show();
+                showMessage("Please connect to the Server", true, true);
+            }
         },
         success: function (response, xhr) {
             hasServer = true;
-            $('#loginDiv').hide();
+            $('#server').hide();
+            $('#servlets').hide();
             hideMessage();
         }
     });
 }
 
-function setServer() {
+function setServlets() {
+    hideMessage(false);
+    setTimeout(function () {
+        showMessage("Connecting...", false, true);
+    }, 700);
+    SERVLETS_URL = 'http://' + $('#servletsAddress').val() + ':' + $('#servletsPort').val() + '/RouletteWeb/';
     $.ajax({
-        type: "POST",
-        url: 'Configurations',
-        data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+        url: SERVLETS_URL + 'Login',
         error: function (response) {
-            showMessage('Error Connectiong to server, try again', true, true);
+            $('#servlets').show();
+            hideMessage(false);
+            setTimeout(function () {
+                showMessage('Error Connectiong to servlets, try again', true, true);
+            }, 700);
         },
         success: function (response) {
-            $('#loginDiv').hide();
+            $('#servlets').hide();
+            $('#server').show();
+            hideMessage();
+            setTimeout(function () {
+                showMessage("Connected to the Servlets", false, true);
+                setTimeout(function () {
+                }, 700);
+                setTimeout(function () {
+                    hideMessage();
+                    setTimeout(function () {
+                        showMessage("Please connect to the Server", true, true);
+                    }, 700);
+                }, 700);
+            }, 700);
+        },
+        dataType: null
+    });
+}
+
+function setServer() {
+    hideMessage(false);
+    setTimeout(function () {
+        showMessage("Connecting...", false, true);
+    }, 700);
+    $.ajax({
+        type: "POST",
+        url: SERVLETS_URL + 'Configurations',
+        data: {'ip': $('#serverAddress').val(), 'port': $('#serverPort').val()},
+        error: function (response) {
+            hideMessage(false);
+            setTimeout(function () {
+                showMessage('Error Connectiong to server, try again', true, true);
+            }, 700);
+        },
+        success: function (response) {
+            $('#server').hide();
             hasServer = true;
             enableGame();
-            hideMessage();
+            setTimeout(function () {
+                hideMessage();
+                setTimeout(function () {
+                    showMessage("Connected to the Server", false, true);
+                    setTimeout(function () {
+                    }, 700);
+                    hideMessage();
+                }, 700);
+            }, 700);
         },
         dataType: null
     });
@@ -411,7 +469,7 @@ function loadGameFromXML() {
         reader.onload = function (e) {
             $.ajax({
                 data: {"xmlData": e.target.result},
-                url: 'CreateGameFromXML', error: function (response) {
+                url: SERVLETS_URL + 'CreateGameFromXML', error: function (response) {
                     showMessage(response.getResponseHeader('exception'), true);
                 },
                 success: function (response, xhr) {
@@ -428,7 +486,7 @@ function loadGameFromXML() {
 function startGame() {
     $.ajax({
         data: {"gameName": gameName},
-        url: 'GetGameDetails',
+        url: SERVLETS_URL + 'GetGameDetails',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -449,7 +507,7 @@ function getPlayersDetails(listId, game) {
     gameName = decodeURI(game);
     $.ajax({
         data: {"gameName": gameName},
-        url: 'GetPlayersDetails',
+        url: SERVLETS_URL + 'GetPlayersDetails',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -476,7 +534,7 @@ function getPlayersDetails(listId, game) {
 function getPlayerDetails() {
     $.ajax({
         data: {"playerID": playerID},
-        url: 'GetPlayerDetails',
+        url: SERVLETS_URL + 'GetPlayerDetails',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'));
         },
@@ -489,7 +547,7 @@ function getEvents() {
     lastEventId = events.length === 0 ? lastEventId : events[events.length - 1].id;
     $.ajax({
         data: {"playerID": playerID, "eventID": lastEventId},
-        url: 'GetEvents',
+        url: SERVLETS_URL + 'GetEvents',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -573,7 +631,7 @@ function makeBet(id, type) {
         else
             $.ajax({
                 data: {"playerID": playerID, "type": type, "betMoney": betAmount, "numbers": numbers},
-                url: 'MakeBet',
+                url: SERVLETS_URL + 'MakeBet',
                 error: function (response) {
                     showMessage(response.getResponseHeader('exception'), true);
                 },
@@ -596,7 +654,7 @@ function finishBetting() {
         else
             $.ajax({
                 data: {"playerID": playerID},
-                url: 'FinishBetting',
+                url: SERVLETS_URL + 'FinishBetting',
                 error: function (response) {
                     showMessage(response.getResponseHeader('exception'), true);
                 },
@@ -610,7 +668,7 @@ function finishBetting() {
 function resign() {
     $.ajax({
         data: {"playerID": playerID},
-        url: 'Resign',
+        url: SERVLETS_URL + 'Resign',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -645,7 +703,7 @@ function getWaitingGames() {
     $.ajax({
         data: null,
         dataType: 'json',
-        url: 'GetWaitingGames',
+        url: SERVLETS_URL + 'GetWaitingGames',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -714,7 +772,7 @@ function joinPlayerToGame() {
     $.ajax({
         data: {'gameName': gameName, 'playerName': playerName},
         dataType: 'json',
-        url: 'JoinGame',
+        url: SERVLETS_URL + 'JoinGame',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -728,7 +786,7 @@ function joinPlayerToGame() {
 function isXMLGame() {
     $.ajax({
         data: {"gameName": gameName},
-        url: 'GetGameDetails',
+        url: SERVLETS_URL + 'GetGameDetails',
         error: function (response) {
         },
         success: function (response, xhr) {
@@ -750,7 +808,7 @@ function replacePage(target) {
 function createGame() {
     $.ajax({
         data: {'gameName': $('#gameName').val(), 'computerPlayers': $('#computersSlider').val(), 'humanPlayers': $('#humansSlider').val(), 'minWages': $('#minWagesSlider').val(), 'maxWages': $('#maxWagesSlider').val(), 'rouletteType': $('#tableTypeIsFrench').is(":checked") ? 'FRENCH' : 'AMERICAN', 'initalSumOfMoney': $('#initialAmountSlider').val()},
-        url: 'CreateGame',
+        url: SERVLETS_URL + 'CreateGame',
         error: function (response) {
             showMessage(response.getResponseHeader('exception'), true);
         },
@@ -792,6 +850,6 @@ function hideMessage(toWait) {
         setTimeout(function () {
             $('#errorMessage').removeClass("alert-danger");
             $('#errorMessage').removeClass("alert-info");
-        }, 2000);
-    }, toWait ? 7000 : 100);
+        }, 400);
+    }, toWait ? 4000 : 0);
 }

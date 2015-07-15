@@ -27,7 +27,14 @@
                     <li id="menuJoinGame" role="presentation" class="menu" ><a href="#" onClick="getJoinGames()">Join Game</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <div id='loginDiv' class="form-group">
+                    <div id='servlets' class="form-group">
+                        <b>Servlets:</b>
+                        <input id='servletsAddress' type="text" class="form-control" value="localhost">
+                        <input id='servletsPort' type="text" class="form-control" value="80">
+                        <input type="button" class="btn btn-default" onClick='setServlets()' value='Connect'>
+                    </div>
+                    <div id='server' class="form-group">
+                        <b>Server:</b>
                         <input id='serverAddress' type="text" class="form-control" value="localhost">
                         <input id='serverPort' type="text" class="form-control" value="80">
                         <input type="button" class="btn btn-default" onClick='setServer()' value='Connect'>
