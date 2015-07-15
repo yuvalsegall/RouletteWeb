@@ -110,6 +110,7 @@ function checkServerStatus() {
             $('#server').hide();
             $('#servlets').hide();
             hideMessage();
+            enableGame();
         }
     });
 }
@@ -131,7 +132,6 @@ function setServlets() {
         },
         success: function (response) {
             $('#servlets').hide();
-            $('#server').show();
             hideMessage();
             setTimeout(function () {
                 showMessage("Connected to the Servlets", false, true);
@@ -140,7 +140,7 @@ function setServlets() {
                 setTimeout(function () {
                     hideMessage();
                     setTimeout(function () {
-                        showMessage("Please connect to the Server", true, true);
+                        checkServerStatus();
                     }, 700);
                 }, 700);
             }, 700);
@@ -836,11 +836,13 @@ function createTableButton(id, type, numbers) {
 }
 
 function showMessage(msg, isError, toHide) {
-    isMessageShow = true;
-    $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
-    $('#errorMessage').text(msg).fadeIn();
-    if (!toHide || toHide === undefined)
-        hideMessage(true);
+    if(msg !== "") {
+        isMessageShow = true;
+        $('#errorMessage').addClass(isError ? "alert-danger" : "alert-info");
+        $('#errorMessage').text(msg).fadeIn();
+        if (!toHide || toHide === undefined)
+            hideMessage(true);        
+    }
 }
 
 function hideMessage(toWait) {
