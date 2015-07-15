@@ -63,26 +63,26 @@ $(document).on('change', '#XMLFileChooser',
 );
 
 function setForm() {
-    // $('#minWages').slider({
-    //     formatter: function (value) {
-    //         return 'Current value: ' + value;
-    //     }});
-    // $('#maxWages').slider({
-    //     formatter: function (value) {
-    //         return 'Current value: ' + value;
-    //     }});
-    // $('#humans').slider({
-    //     formatter: function (value) {
-    //         return 'Current value: ' + value;
-    //     }});
-    // $('#computers').slider({
-    //     formatter: function (value) {
-    //         return 'Current value: ' + value;
-    //     }});
-    // $('#initialAmount').slider({
-    //     formatter: function (value) {
-    //         return 'Current value: ' + value;
-    //     }});
+    $('#minWages').slider({
+        formatter: function (value) {
+            return 'Current value: ' + value;
+        }});
+    $('#maxWages').slider({
+        formatter: function (value) {
+            return 'Current value: ' + value;
+        }});
+    $('#humans').slider({
+        formatter: function (value) {
+            return 'Current value: ' + value;
+        }});
+    $('#computers').slider({
+        formatter: function (value) {
+            return 'Current value: ' + value;
+        }});
+    $('#initialAmount').slider({
+        formatter: function (value) {
+            return 'Current value: ' + value;
+        }});
     $('#tableTypeIsFrench').bootstrapToggle({
         on: 'French',
         off: 'American'
