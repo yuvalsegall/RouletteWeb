@@ -110,6 +110,7 @@ function checkServerStatus() {
             $('#server').hide();
             $('#servlets').hide();
             hideMessage();
+            enableGame();
         }
     });
 }
